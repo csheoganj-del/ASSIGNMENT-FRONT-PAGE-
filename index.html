@@ -53,22 +53,25 @@
 
         /* Desktop specific layout to pin Instructions and Insta to the left */
         @media screen and (min-width: 1300px) {
-            .instructions-panel {
-                position: fixed;
-                left: 40px;
-                top: 50%;
-                transform: translateY(-50%);
-                width: 320px;
-                z-index: 50;
-            }
-            
-            .insta-badge {
-                position: fixed;
-                left: 40px;
-                bottom: 40px;
-                z-index: 50;
-                margin-top: 0 !important;
-            }
+            /* Instructions Sidebar */
+        .instructions-panel {
+            position: fixed;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 300px;
+            background: var(--white);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            z-index: 100;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        /* Custom Scrollbar for Panel */
+        .instructions-panel::-webkit-scrollbar { width: 6px; }
+        .instructions-panel::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 4px; }
+        .instructions-panel::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
         }
 
         /* Mobile specific layout */
@@ -83,9 +86,8 @@
             .instructions-panel {
                 width: 100%;
                 max-width: 210mm;
-            }
-            .insta-badge {
-                margin-top: 25px;
+                max-height: 50vh;
+                overflow-y: auto;
             }
         }
 
@@ -245,7 +247,7 @@
                 border: none;
                 --page-bg: #FFFFFF !important; /* Ink-saver: Force pure white paper background */
             }
-            .screen-instruction, .print-btn, .insta-badge, .instructions-panel {
+            .screen-instruction, .right-controls, .instructions-panel {
                 display: none !important;
             }
             [contenteditable="true"]:empty::before {
@@ -734,27 +736,58 @@
         .theme-finearts .corner { display: none; }
         .theme-finearts .assignment-title { background: linear-gradient(45deg, #FF5252, #E040FB, #448AFF, #18FFFF, #69F0AE, #EEFF41, #FFAB40); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: none; }
 
-        /* -------------------------------------------------------- */
+        /* -------------------------------------------------------- */        /* Right Controls Group */
+        .right-controls {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 15px;
+            z-index: 100;
+        }
 
         /* Instagram Handle Styling */
         .insta-badge {
+            background: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
             display: flex;
             align-items: center;
-            gap: 6px;
-            text-decoration: none;
-            font-family: 'Poppins', sans-serif;
-            font-size: 13px;
-            font-weight: 500;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
         }
-        .insta-badge:hover { transform: translateY(-2px); opacity: 0.9; }
-        .made-by-text { color: var(--dark-grey); font-size: 12px; font-weight: 400; }
-        .insta-text {
-            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            font-weight: 600; letter-spacing: 0.5px;
+        .insta-badge:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
         }
-        .insta-icon { stroke: url(#insta-gradient); }
+
+        /* Print Button */
+        .print-btn {
+            background: #2563EB;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .print-btn:hover {
+            background: #1D4ED8;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+        }
 
         /* Instruction overlay for screen */
         .screen-instruction {
@@ -766,20 +799,8 @@
         }
         .screen-instruction b { color: var(--gold); font-weight: 500; }
 
-        /* Premium Floating Button */
-        .print-btn {
-            position: fixed; bottom: 30px; right: 30px; background-color: var(--gold);
-            color: var(--black); border: none; padding: 16px 30px; font-family: 'Poppins', sans-serif;
-            font-size: 15px; font-weight: 600; border-radius: 50px; cursor: pointer;
-            box-shadow: 0 10px 30px rgba(197, 160, 89, 0.4); display: flex; align-items: center; gap: 12px;
-            z-index: 100; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            text-transform: uppercase; letter-spacing: 1px;
-        }
-        .print-btn:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(197, 160, 89, 0.5); background-color: #dcb66c; }
-        .print-btn:active { transform: translateY(-2px); }
-
         @media (max-width: 500px) {
-            .print-btn { bottom: 20px; right: 20px; padding: 12px 24px; font-size: 13px; }
+            .right-controls { top: auto; bottom: 20px; right: 20px; }
             .screen-instruction { display: none !important; }
             body { padding: 20px 10px; }
         }
@@ -808,14 +829,18 @@
         Click text to edit as you wish.
     </div>
 
-    <button class="print-btn" onclick="window.print()">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="6 9 6 2 18 2 18 9"></polyline>
-            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
-            <rect x="6" y="14" width="12" height="8"></rect>
-        </svg>
-        Save as PDF / Print
-    </button>
+    <!-- Global UI Elements -->
+    <div class="right-controls">
+        <a href="https://instagram.com/itz__p.k.__" target="_blank" class="insta-badge">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #E1306C;"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            <span>Made by <strong>@itz__p.k.__</strong></span>
+        </a>
+        
+        <button class="print-btn" onclick="window.print()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+            Print A4 Page
+        </button>
+    </div>
 
     <div class="workspace-container">
         
