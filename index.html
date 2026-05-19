@@ -834,6 +834,86 @@
         .theme-grunge .corner-bl { bottom: -0.75cqw; left: -0.75cqw; transform: rotate(45deg); }
         .theme-grunge .corner-br { bottom: -0.75cqw; right: -0.75cqw; transform: rotate(-10deg); }
         /* --------------------------------------------------------
+           MATHS COLLECTION (42-47)
+           -------------------------------------------------------- */
+        .theme-math-calculus {
+            --primary: #1E3A8A; --text-main: #111827; --text-muted: #4B5563; --page-bg: #FFFFFF;
+        }
+        .theme-math-calculus .outer-border { border: 2px solid var(--primary); top: 3.5cqw; bottom: 3.5cqw; left: 3.5cqw; right: 3.5cqw; }
+        .theme-math-calculus .inner-border { border: 1px solid var(--text-main); top: 1.5cqw; bottom: 1.5cqw; left: 1.5cqw; right: 1.5cqw; }
+        .theme-math-calculus .corner { background: #FFFFFF; width: 4cqw; height: 6cqw; border: none; display: flex; align-items: center; justify-content: center; }
+        .theme-math-calculus .corner::before { content: '∫'; font-family: 'Times New Roman', serif; font-size: 8cqw; color: var(--primary); }
+        .theme-math-calculus .corner-tl { top: -2cqw; left: -2cqw; transform: rotate(45deg); }
+        .theme-math-calculus .corner-tr { top: -2cqw; right: -2cqw; transform: rotate(-45deg); }
+        .theme-math-calculus .corner-bl { bottom: -2cqw; left: -2cqw; transform: rotate(-45deg); }
+        .theme-math-calculus .corner-br { bottom: -2cqw; right: -2cqw; transform: rotate(45deg); }
+
+        .theme-math-geometry {
+            --primary: #D97706; --text-main: #111111; --text-muted: #555555; --page-bg: #FFFFFF;
+        }
+        .theme-math-geometry .outer-border { border: 1px solid var(--primary); top: 4cqw; bottom: 4cqw; left: 4cqw; right: 4cqw; }
+        .theme-math-geometry .inner-border { border: 1.5px solid var(--text-main); top: 1.5cqw; bottom: 1.5cqw; left: 1.5cqw; right: 1.5cqw; clip-path: polygon(10cqw 0, calc(100% - 10cqw) 0, 100% 10cqw, 100% calc(100% - 10cqw), calc(100% - 10cqw) 100%, 10cqw 100%, 0 calc(100% - 10cqw), 0 10cqw); }
+        .theme-math-geometry .corner { width: 0; height: 0; border-style: solid; background: transparent; }
+        .theme-math-geometry .corner-tl { top: -1.5cqw; left: -1.5cqw; border-width: 4cqw 4cqw 0 0; border-color: var(--primary) transparent transparent transparent; }
+        .theme-math-geometry .corner-tr { top: -1.5cqw; right: -1.5cqw; border-width: 0 4cqw 4cqw 0; border-color: transparent var(--primary) transparent transparent; }
+        .theme-math-geometry .corner-bl { bottom: -1.5cqw; left: -1.5cqw; border-width: 4cqw 0 0 4cqw; border-color: transparent transparent transparent var(--primary); }
+        .theme-math-geometry .corner-br { bottom: -1.5cqw; right: -1.5cqw; border-width: 0 0 4cqw 4cqw; border-color: transparent transparent var(--primary) transparent; }
+
+        .theme-math-matrix {
+            --primary: #000000; --text-main: #000000; --text-muted: #555555; --page-bg: #FFFFFF;
+        }
+        .theme-math-matrix .outer-border { border: none; border-left: 6px solid var(--primary); border-right: 6px solid var(--primary); top: 3cqw; bottom: 3cqw; left: 3cqw; right: 3cqw; }
+        .theme-math-matrix .outer-border::before, .theme-math-matrix .outer-border::after { content: ''; position: absolute; top: 0; width: 4cqw; height: 6px; background: var(--primary); }
+        .theme-math-matrix .outer-border::before { left: 0; }
+        .theme-math-matrix .outer-border::after { right: 0; }
+        .theme-math-matrix .inner-border { border: none; }
+        .theme-math-matrix .inner-border::before, .theme-math-matrix .inner-border::after { content: ''; position: absolute; bottom: 0; width: 4cqw; height: 6px; background: var(--primary); z-index: 10; }
+        .theme-math-matrix .inner-border::before { left: -1.5cqw; }
+        .theme-math-matrix .inner-border::after { right: -1.5cqw; }
+        .theme-math-matrix .corner { display: none; }
+
+        .theme-math-sigma {
+            --primary: #7C3AED; --text-main: #111111; --text-muted: #555555; --page-bg: #FFFFFF;
+        }
+        .theme-math-sigma .outer-border { border: 1.5px solid var(--text-main); top: 4cqw; bottom: 4cqw; left: 4cqw; right: 4cqw; }
+        .theme-math-sigma .inner-border { border: none; }
+        .theme-math-sigma .corner { background: #FFFFFF; width: 5cqw; height: 5cqw; display: flex; align-items: center; justify-content: center; font-family: 'Times New Roman', serif; font-size: 5cqw; color: var(--primary); font-weight: bold; border: none; }
+        .theme-math-sigma .corner-tl { top: -2.5cqw; left: -2.5cqw; } .theme-math-sigma .corner-tl::before { content: '∑'; }
+        .theme-math-sigma .corner-tr { top: -2.5cqw; right: -2.5cqw; } .theme-math-sigma .corner-tr::before { content: '∏'; }
+        .theme-math-sigma .corner-bl { bottom: -2.5cqw; left: -2.5cqw; } .theme-math-sigma .corner-bl::before { content: 'Ω'; }
+        .theme-math-sigma .corner-br { bottom: -2.5cqw; right: -2.5cqw; } .theme-math-sigma .corner-br::before { content: '∞'; }
+
+        .theme-math-graph {
+            --primary: #2563EB; --text-main: #0F172A; --text-muted: #64748B; --page-bg: #FFFFFF;
+        }
+        .theme-math-graph .outer-border { 
+            border: 2px solid var(--primary); 
+            top: 3cqw; bottom: 3cqw; left: 3cqw; right: 3cqw; 
+            background-image: linear-gradient(#E2E8F0 1px, transparent 1px), linear-gradient(90deg, #E2E8F0 1px, transparent 1px);
+            background-size: 2cqw 2cqw;
+            background-position: center center;
+            z-index: -1;
+        }
+        .theme-math-graph .inner-border {
+            background: #FFFFFF;
+            border: 1px solid var(--primary);
+            top: 4cqw; bottom: 4cqw; left: 4cqw; right: 4cqw;
+            box-shadow: 0 0 1cqw rgba(0,0,0,0.05);
+        }
+        .theme-math-graph .corner { display: none; }
+
+        .theme-math-pi {
+            --primary: #E11D48; --text-main: #111111; --text-muted: #555555; --page-bg: #FFFFFF;
+        }
+        .theme-math-pi .outer-border { border: 3px double var(--primary); top: 3.5cqw; bottom: 3.5cqw; left: 3.5cqw; right: 3.5cqw; }
+        .theme-math-pi .inner-border { border: none; }
+        .theme-math-pi .corner { background: #FFFFFF; width: 4cqw; height: 4cqw; display: flex; align-items: center; justify-content: center; font-family: 'Times New Roman', serif; font-size: 5cqw; color: var(--primary); border: 2px solid var(--primary); border-radius: 50%; }
+        .theme-math-pi .corner-tl { top: -2cqw; left: -2cqw; } .theme-math-pi .corner-tl::before { content: 'π'; font-size: 3.5cqw;}
+        .theme-math-pi .corner-tr { top: -2cqw; right: -2cqw; } .theme-math-pi .corner-tr::before { content: 'π'; font-size: 3.5cqw;}
+        .theme-math-pi .corner-bl { bottom: -2cqw; left: -2cqw; } .theme-math-pi .corner-bl::before { content: 'π'; font-size: 3.5cqw;}
+        .theme-math-pi .corner-br { bottom: -2cqw; right: -2cqw; } .theme-math-pi .corner-br::before { content: 'π'; font-size: 3.5cqw;}
+
+        /* --------------------------------------------------------
            FONT TOOLBAR
            -------------------------------------------------------- */
         .font-toolbar {
@@ -1074,6 +1154,13 @@
                     <button class="theme-btn" data-theme="theme-mondrian" style="background: #FFFFFF; border: 2px solid #000000; box-shadow: inset 4px 4px 0 #DC2626, inset -4px -4px 0 #2563EB;" title="Modern Art"></button>
                     <button class="theme-btn" data-theme="theme-cinematic" style="background: #FFFFFF; border-top: 6px solid #000000; border-bottom: 6px solid #000000;" title="Cinematic Letterbox"></button>
                     <button class="theme-btn" data-theme="theme-grunge" style="background: #FFFFFF; border: 2px dashed #52525B;" title="Torn Edge Grunge"></button>
+                    
+                    <button class="theme-btn" data-theme="theme-math-calculus" style="background: #FFFFFF; border: 2px solid #1E3A8A; position: relative;" title="Calculus Integration"><span style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); color:#1E3A8A; font-family:'Times New Roman',serif; font-size:24px;">∫</span></button>
+                    <button class="theme-btn" data-theme="theme-math-geometry" style="background: #FFFFFF; border: 1px solid #D97706; clip-path: polygon(25% 0, 75% 0, 100% 25%, 100% 75%, 75% 100%, 25% 100%, 0 75%, 0 25%);" title="Geometry & Angles"></button>
+                    <button class="theme-btn" data-theme="theme-math-matrix" style="background: #FFFFFF; border-left: 4px solid #000000; border-right: 4px solid #000000;" title="Discrete Matrix"></button>
+                    <button class="theme-btn" data-theme="theme-math-sigma" style="background: #FFFFFF; border: 1px solid #111111; position: relative;" title="Number Theory"><span style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); color:#7C3AED; font-family:'Times New Roman',serif; font-size:20px; font-weight:bold;">∑</span></button>
+                    <button class="theme-btn" data-theme="theme-math-graph" style="background-image: linear-gradient(#E2E8F0 2px, transparent 2px), linear-gradient(90deg, #E2E8F0 2px, transparent 2px); background-size: 8px 8px; border: 2px solid #2563EB;" title="Cartesian Graph"></button>
+                    <button class="theme-btn" data-theme="theme-math-pi" style="background: #FFFFFF; border: 3px double #E11D48; position: relative;" title="Mathematical Pi"><span style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); color:#E11D48; font-family:'Times New Roman',serif; font-size:20px; font-weight:bold;">π</span></button>
                 </div>
             </div>
 
@@ -1181,14 +1268,6 @@
                 pixncraftstudio
             </a>
         </div>
-        <div class="undo-redo-wrapper" style="display: flex; gap: 8px;">
-            <button class="print-btn" onclick="HistoryManager.undo()" title="Undo (Ctrl+Z)" style="padding: 12px; background: #475569;">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10h10a5 5 0 0 1 5 5v2a5 5 0 0 1-5 5H6"/><path d="M7 6L3 10l4 4"/></svg>
-            </button>
-            <button class="print-btn" onclick="HistoryManager.redo()" title="Redo (Ctrl+Y)" style="padding: 12px; background: #475569;">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10H11a5 5 0 0 0-5 5v2a5 5 0 0 0 5 5h7"/><path d="M17 6l4 4-4 4"/></svg>
-            </button>
-        </div>
         <button class="print-btn" onclick="window.print()">
             <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
             Save as PDF / Print
@@ -1227,136 +1306,56 @@
     <input type="file" id="logoUpload" accept="image/png, image/jpeg, image/svg+xml, image/webp" style="display: none;">
 
     <!-- Application Logic -->
-        // --- HISTORY MANAGER (Undo/Redo) ---
-        const HistoryManager = {
-            stack: [],
-            index: -1,
-            max: 50,
-            page: document.querySelector('.a4-page'),
-            isRestoring: false,
-
-            saveState() {
-                if(this.isRestoring) return;
-                const state = {
-                    html: this.page.innerHTML,
-                    className: this.page.className
-                };
-                
-                if(this.index >= 0 && this.stack[this.index].html === state.html && this.stack[this.index].className === state.className) return;
-
-                if (this.index < this.stack.length - 1) {
-                    this.stack = this.stack.slice(0, this.index + 1);
-                }
-
-                this.stack.push(state);
-                if (this.stack.length > this.max) this.stack.shift();
-                else this.index++;
-            },
-
-            undo() {
-                if (this.index > 0) {
-                    this.index--;
-                    this.restoreState();
-                }
-            },
-
-            redo() {
-                if (this.index < this.stack.length - 1) {
-                    this.index++;
-                    this.restoreState();
-                }
-            },
-
-            restoreState() {
-                this.isRestoring = true;
-                const state = this.stack[this.index];
-                
-                if(activeEditable) {
-                    fontToolbar.classList.remove('visible');
-                    activeEditable = null;
-                }
-
-                this.page.innerHTML = state.html;
-                this.page.className = state.className;
-                
-                const activeTheme = Array.from(this.page.classList).find(c => c.startsWith('theme-'));
-                document.querySelectorAll('.theme-btn').forEach(b => {
-                    b.classList.toggle('active', b.getAttribute('data-theme') === activeTheme);
-                });
-                
-                this.isRestoring = false;
-            }
-        };
-
-        // Initial save
-        HistoryManager.saveState();
-
-        // Keyboard Shortcuts
-        document.addEventListener('keydown', (e) => {
-            if (e.ctrlKey || e.metaKey) {
-                if (e.key === 'z') {
-                    if (e.shiftKey) HistoryManager.redo();
-                    else HistoryManager.undo();
+    <script>
+        // Prevent multi-line breaks in single-line fields
+        document.querySelectorAll('[contenteditable="true"]').forEach(element => {
+            element.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
                     e.preventDefault();
-                } else if (e.key === 'y') {
-                    HistoryManager.redo();
-                    e.preventDefault();
+                    element.blur();
                 }
-            }
-        });
-
-        // Prevent multi-line breaks (Delegated)
-        document.addEventListener('keydown', (e) => {
-            if (e.target.matches('[contenteditable="true"]') && e.key === 'Enter') {
-                e.preventDefault();
-                e.target.blur();
-            }
-        });
-
-        // Save state when user finishes typing
-        document.addEventListener('focusout', (e) => {
-            if (e.target.matches('[contenteditable="true"]')) {
-                setTimeout(() => HistoryManager.saveState(), 50);
-            }
+            });
         });
 
         // Advanced Theme Switching Logic
         const themeBtns = document.querySelectorAll('.theme-btn');
+        const page = document.querySelector('.a4-page');
+
         themeBtns.forEach(btn => {
             btn.addEventListener('click', () => {
-                const page = document.querySelector('.a4-page');
+                // Remove all existing theme classes
                 page.className = 'a4-page';
-                page.classList.add(btn.getAttribute('data-theme'));
+                
+                // Add the selected theme class
+                const themeClass = btn.getAttribute('data-theme');
+                page.classList.add(themeClass);
+
+                // Update active button state
                 themeBtns.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
-                HistoryManager.saveState();
             });
         });
 
-        // Logo Upload Logic (Delegated)
-        document.addEventListener('click', (e) => {
-            const emblem = e.target.closest('#emblemContainer');
-            if(emblem) {
-                document.getElementById('logoUpload').click();
-            }
-        });
-        
-        document.getElementById('logoUpload').addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(event) {
-                    const emblemContainer = document.getElementById('emblemContainer');
-                    if(emblemContainer) {
-                        emblemContainer.innerHTML = `<img src="${event.target.result}" alt="Custom Logo">`;
-                        HistoryManager.saveState();
-                    }
-                };
-                reader.readAsDataURL(file);
-            }
-            this.value = '';
-        });
+        // Logo Upload Logic
+        const emblemContainer = document.getElementById('emblemContainer');
+        const logoUpload = document.getElementById('logoUpload');
 
+        if (emblemContainer && logoUpload) {
+            emblemContainer.addEventListener('click', () => {
+                logoUpload.click();
+            });
+
+            logoUpload.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        emblemContainer.innerHTML = `<img src="${event.target.result}" alt="Custom Logo">`;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
         // Contextual Font Toolbar Logic
         const fontToolbar = document.getElementById('fontToolbar');
         let activeEditable = null;
@@ -1366,36 +1365,32 @@
             const rect = activeEditable.getBoundingClientRect();
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+            
             fontToolbar.style.top = `${rect.top + scrollTop - 45}px`;
             fontToolbar.style.left = `${rect.left + scrollLeft + (rect.width / 2)}px`;
         }
 
-        // Delegated Focus/Blur/Input for Toolbar
-        document.addEventListener('focusin', (e) => {
-            if (e.target.matches('[contenteditable="true"]')) {
+        document.querySelectorAll('[contenteditable="true"]').forEach(element => {
+            element.addEventListener('focus', (e) => {
                 activeEditable = e.target;
                 updateToolbarPosition();
                 fontToolbar.classList.add('visible');
+                
+                // Sync Font Select UI
                 const currentFont = activeEditable.style.fontFamily;
                 document.getElementById('fontFamilySelect').value = currentFont ? currentFont : "";
-            }
-        });
+            });
 
-        document.addEventListener('focusout', (e) => {
-            if (e.target.matches('[contenteditable="true"]')) {
+            element.addEventListener('blur', (e) => {
                 setTimeout(() => {
                     if (document.activeElement !== activeEditable) {
                         fontToolbar.classList.remove('visible');
                         activeEditable = null;
                     }
                 }, 100);
-            }
-        });
-
-        document.addEventListener('input', (e) => {
-            if (e.target.matches('[contenteditable="true"]')) {
-                updateToolbarPosition();
-            }
+            });
+            
+            element.addEventListener('input', updateToolbarPosition);
         });
 
         window.addEventListener('resize', updateToolbarPosition);
@@ -1407,28 +1402,24 @@
             newScale = Math.max(0.5, Math.min(2.0, newScale));
             activeEditable.style.setProperty('--font-scale', newScale);
             updateToolbarPosition();
-            HistoryManager.saveState();
         }
 
         function changeFontFamily(font) {
             if (!activeEditable) return;
             activeEditable.style.fontFamily = font;
             activeEditable.focus();
-            HistoryManager.saveState();
         }
 
         function changeTextColor(color) {
             if (!activeEditable) return;
             activeEditable.style.color = color;
             activeEditable.focus();
-            HistoryManager.saveState();
         }
 
         function changeBgColor(color) {
             if (!activeEditable) return;
             activeEditable.style.backgroundColor = color;
             activeEditable.focus();
-            HistoryManager.saveState();
         }
 
         function resetFormatting() {
@@ -1440,7 +1431,6 @@
             document.getElementById('fontFamilySelect').value = "";
             activeEditable.focus();
             updateToolbarPosition();
-            HistoryManager.saveState();
         }
     </script>
 </body>
