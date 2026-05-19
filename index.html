@@ -216,7 +216,7 @@
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 20px rgba(197, 160, 89, 0.1);
             display: flex;
             flex-direction: column;
-            overflow: hidden;
+            overflow: hidden; /* CRITICAL: Prevents content from breaking A4 shape */
             flex-shrink: 0;
             container-type: inline-size;
             transition: background-color 0.4s ease;
@@ -337,7 +337,7 @@
             padding-bottom: 0.5cqw; padding-left: 2cqw; min-height: 4.2cqw; transition: border-color 0.3s;
         }
 
-        .footer { width: 100%; display: flex; justify-content: space-between; align-items: flex-end; padding: 0 5cqw; }
+        .footer { width: 100%; display: flex; justify-content: space-between; align-items: flex-end; padding: 0 5cqw; margin-top: auto; }
         .signature-block { display: flex; flex-direction: column; align-items: center; width: 30cqw; }
         .signature-name {
             font-family: var(--font-body); font-size: 2.5cqw; font-weight: 500;
@@ -373,31 +373,33 @@
         }
         .theme-bauhaus .header {
             grid-column: 1 / 3; display: flex; flex-direction: row; flex-wrap: wrap; align-items: flex-end;
-            border-bottom: 1.5cqw solid var(--text-main); padding: 10cqw 10cqw 4cqw 10cqw; text-align: left;
+            border-bottom: 1cqw solid var(--text-main); padding: 6cqw 8cqw 2cqw 8cqw; text-align: left;
         }
         .theme-bauhaus .college-name {
-            width: 100%; text-align: left; font-size: 5cqw; font-weight: 900; letter-spacing: -1px; margin-bottom: 2cqw;
+            width: 100%; text-align: left; font-size: 4.5cqw; font-weight: 900; letter-spacing: -1px; margin-bottom: 1cqw;
         }
         .theme-bauhaus .course-name, .theme-bauhaus .session-year {
-            width: auto; text-align: left; margin-right: 4cqw; font-size: 2.5cqw; margin-bottom: 0; font-style: normal; font-weight: 600;
+            width: auto; text-align: left; margin-right: 4cqw; font-size: 2cqw; margin-bottom: 0; font-style: normal; font-weight: 600;
         }
         .theme-bauhaus .assignment-title {
-            grid-column: 1 / 3; text-align: left; font-size: 11cqw; padding: 4cqw 10cqw; margin: 0;
-            border-bottom: 0.5cqw solid var(--text-main); letter-spacing: -3px; font-weight: 900; text-shadow: none;
+            grid-column: 1 / 3; text-align: left; font-size: 8cqw; padding: 2cqw 8cqw; margin: 0;
+            border-bottom: 0.5cqw solid var(--text-main); letter-spacing: -2px; font-weight: 900; text-shadow: none;
         }
         .theme-bauhaus .details-section {
-            grid-column: 1 / 2; grid-row: 3 / 5; padding: 8cqw 10cqw; margin: 0;
-            border-right: 0.5cqw solid var(--text-main); gap: 4cqw; justify-content: flex-start;
+            grid-column: 1 / 2; grid-row: 3 / 5; padding: 6cqw 8cqw; margin: 0;
+            border-right: 0.5cqw solid var(--text-main); gap: 2.5cqw; justify-content: flex-start;
         }
         .theme-bauhaus .field-row { flex-direction: column; align-items: flex-start; }
-        .theme-bauhaus .field-label { width: 100%; color: var(--primary); font-size: 2.5cqw; margin-bottom: 1cqw;}
-        .theme-bauhaus .field-value { width: 100%; border-bottom: none; padding-left: 0; font-size: 3.5cqw; font-weight: 700; }
+        .theme-bauhaus .field-label { width: 100%; color: var(--primary); font-size: 1.8cqw; margin-bottom: 0.5cqw;}
+        .theme-bauhaus .field-value { width: 100%; border-bottom: none; padding-left: 0; font-size: 2.6cqw; font-weight: 700; min-height: 3cqw; }
         .theme-bauhaus .footer {
             grid-column: 2 / 3; grid-row: 3 / 5; flex-direction: column; justify-content: flex-end; align-items: flex-start;
-            padding: 10cqw; gap: 8cqw; border-top: none;
+            padding: 8cqw; gap: 6cqw; border-top: none;
         }
         .theme-bauhaus .signature-block { width: 100%; align-items: flex-start; }
-        .theme-bauhaus .signature-name { text-align: left; font-weight: 800; }
+        .theme-bauhaus .signature-name { text-align: left; font-weight: 800; font-size: 2.5cqw; }
+        .theme-bauhaus .signature-label { font-size: 1.5cqw; }
+        .theme-bauhaus .signature-line { margin-bottom: 0.5cqw; }
 
         /* --------------------------------------------------------
            THEME 3: EDITORIAL MAGAZINE (Vertical Text Layout)
@@ -410,33 +412,33 @@
             display: none !important;
         }
         .theme-editorial .content-wrapper {
-            padding: 12cqw; display: grid; gap: 6cqw;
+            padding: 10cqw; display: grid; gap: 4cqw;
             grid-template-columns: 8cqw 1fr; grid-template-rows: auto 1fr auto;
         }
         .theme-editorial .header {
-            grid-column: 1 / 2; grid-row: 1 / 4; flex-direction: column; align-items: center;
-            border-right: 2px solid var(--primary); padding-right: 4cqw; width: auto;
+            grid-column: 1 / 2; grid-row: 1 / 4; flex-direction: column; align-items: center; justify-content: center;
+            border-right: 2px solid var(--primary); padding-right: 3cqw; width: auto;
         }
         .theme-editorial .college-name {
-            writing-mode: vertical-rl; transform: scale(-1); font-size: 4cqw; letter-spacing: 0.5cqw; margin: 0; width: auto; line-height: 1;
+            writing-mode: vertical-rl; transform: scale(-1); font-size: 3.5cqw; letter-spacing: 0.2cqw; margin: 0; width: auto; line-height: 1; text-align: center;
         }
         .theme-editorial .course-name, .theme-editorial .session-year {
-            writing-mode: vertical-rl; transform: scale(-1); margin-top: 5cqw; width: auto; margin-bottom: 0;
+            writing-mode: vertical-rl; transform: scale(-1); margin-top: 3cqw; width: auto; margin-bottom: 0; font-size: 2cqw;
         }
         .theme-editorial .assignment-title {
-            grid-column: 2 / 3; text-align: right; font-size: 11cqw; font-weight: 400; font-style: italic; color: var(--primary);
-            margin: 0; padding-bottom: 6cqw; border-bottom: 1px solid var(--text-main); text-shadow: none;
+            grid-column: 2 / 3; text-align: right; font-size: 9cqw; font-weight: 400; font-style: italic; color: var(--primary);
+            margin: 0; padding-bottom: 4cqw; border-bottom: 1px solid var(--text-main); text-shadow: none;
         }
         .theme-editorial .details-section {
-            grid-column: 2 / 3; margin: 0; padding-top: 6cqw; justify-content: flex-start;
+            grid-column: 2 / 3; margin: 0; padding-top: 2cqw; justify-content: flex-start; gap: 3cqw;
         }
-        .theme-editorial .field-row { border-bottom: 1px solid var(--text-muted); padding-bottom: 1cqw; }
-        .theme-editorial .field-label { width: auto; padding-right: 4cqw; font-size: 1.8cqw; }
-        .theme-editorial .field-value { border-bottom: none; text-align: right; font-size: 3cqw; }
+        .theme-editorial .field-row { border-bottom: 1px solid var(--text-muted); padding-bottom: 0.5cqw; }
+        .theme-editorial .field-label { width: auto; padding-right: 4cqw; font-size: 1.6cqw; }
+        .theme-editorial .field-value { border-bottom: none; text-align: right; font-size: 2.6cqw; min-height: 3cqw;}
         .theme-editorial .footer {
-            grid-column: 2 / 3; padding: 4cqw 0 0 0; border-top: 1px solid var(--text-main);
+            grid-column: 2 / 3; padding: 3cqw 0 0 0; border-top: 1px solid var(--text-main); flex-direction: row; justify-content: space-between; margin-top: auto;
         }
-        .theme-editorial .signature-name { font-style: italic; font-weight: 400; }
+        .theme-editorial .signature-name { font-style: italic; font-weight: 400; font-size: 2.2cqw; }
 
         /* --------------------------------------------------------
            THEME 4: MODERN CYBER (Geometric Shapes & High Contrast)
@@ -446,29 +448,33 @@
             --font-heading: 'Poppins', sans-serif; --font-body: 'Poppins', sans-serif;
         }
         .theme-cyber::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 45cqw;
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 35cqw;
             background: var(--text-main); clip-path: polygon(0 0, 100% 0, 100% 100%, 0 65%); z-index: 0;
         }
         .theme-cyber .outer-border, .theme-cyber .inner-border, .theme-cyber .corner, .theme-cyber .separator, .theme-cyber .watermark { 
             display: none !important; 
         }
-        .theme-cyber .content-wrapper { padding: 10cqw; }
+        .theme-cyber .content-wrapper { padding: 8cqw; }
         .theme-cyber .header { align-items: flex-start; text-align: left; }
-        .theme-cyber .college-name { color: #FFFFFF; text-align: left; font-size: 4.5cqw; letter-spacing: -1px; }
-        .theme-cyber .course-name, .theme-cyber .session-year { color: var(--primary); text-align: left; }
-        .theme-cyber .emblem { color: #FFFFFF; align-self: flex-start; }
+        .theme-cyber .college-name { color: #FFFFFF; text-align: left; font-size: 3.5cqw; letter-spacing: -1px; margin-bottom: 0.5cqw; }
+        .theme-cyber .course-name, .theme-cyber .session-year { color: var(--primary); text-align: left; font-size: 2cqw; margin-bottom: 1cqw; }
+        .theme-cyber .emblem { color: #FFFFFF; align-self: flex-start; margin-bottom: 1.5cqw; }
+        .theme-cyber .emblem svg { width: 5cqw; height: 5cqw; }
         .theme-cyber .assignment-title { 
-            text-align: right; margin-top: 15cqw; font-size: 9cqw; letter-spacing: -2px; font-weight: 800; color: var(--primary); text-shadow: none;
+            text-align: right; margin-top: 4cqw; font-size: 7cqw; letter-spacing: -2px; font-weight: 800; color: var(--primary); text-shadow: none; margin-bottom: 2cqw;
         }
         .theme-cyber .details-section { 
-            margin: 4cqw 0 0 0; background: #F8FAFC; padding: 8cqw; border-left: 6px solid var(--primary); border-radius: 12px; 
+            margin: 0; background: #F8FAFC; padding: 6cqw; border-left: 6px solid var(--primary); border-radius: 12px; gap: 2.5cqw;
         }
-        .theme-cyber .field-value { border-bottom: 2px solid var(--text-main); }
+        .theme-cyber .field-row { margin-bottom: 0; }
+        .theme-cyber .field-label { font-size: 1.6cqw; width: 20cqw; }
+        .theme-cyber .field-value { border-bottom: 2px solid var(--text-main); font-size: 2.4cqw; min-height: 3cqw; }
         .theme-cyber .footer { 
-            background: var(--text-main); color: #FFFFFF; padding: 6cqw; border-radius: 12px; margin-top: auto; 
+            background: var(--text-main); color: #FFFFFF; padding: 5cqw; border-radius: 12px; margin-top: auto; 
         }
-        .theme-cyber .signature-name, .theme-cyber .signature-label { color: #FFFFFF; }
-        .theme-cyber .signature-line { background-color: var(--primary); height: 2px; border: none; }
+        .theme-cyber .signature-name, .theme-cyber .signature-label { color: #FFFFFF; font-size: 2cqw; }
+        .theme-cyber .signature-name { font-size: 2.4cqw; }
+        .theme-cyber .signature-line { background-color: var(--primary); height: 2px; border: none; margin-bottom: 0.8cqw; }
 
         /* --------------------------------------------------------
            THEME 5: ELEGANT BOTANICAL (Rounded Organic Feel)
@@ -485,19 +491,24 @@
         }
         .theme-botanical .corner { display: none !important; }
         .theme-botanical .watermark { display: none !important; }
-        .theme-botanical .emblem svg { stroke: var(--text-main); width: 10cqw; height: 10cqw; }
-        .theme-botanical .college-name { font-style: italic; text-transform: capitalize; font-size: 5cqw; margin-top: 2cqw; }
+        .theme-botanical .content-wrapper { padding: 12cqw 10cqw; }
+        .theme-botanical .emblem svg { stroke: var(--text-main); width: 8cqw; height: 8cqw; margin-bottom: 1cqw; }
+        .theme-botanical .college-name { font-style: italic; text-transform: capitalize; font-size: 4cqw; margin-top: 1cqw; }
+        .theme-botanical .course-name { font-size: 2.5cqw; }
+        .theme-botanical .session-year { font-size: 1.6cqw; margin-bottom: 2cqw; }
         .theme-botanical .assignment-title { 
             font-weight: 400; letter-spacing: 1cqw; border-top: 1px solid var(--primary); border-bottom: 1px solid var(--primary); 
-            padding: 3cqw 0; margin: 6cqw 0; font-size: 6cqw; text-shadow: none;
+            padding: 2cqw 0; margin: 3cqw 0; font-size: 5.5cqw; text-shadow: none;
         }
-        .theme-botanical .details-section { gap: 3cqw; align-items: center; }
+        .theme-botanical .details-section { gap: 2cqw; align-items: center; margin-bottom: 2cqw; }
         .theme-botanical .field-row { flex-direction: column; align-items: center; text-align: center; }
-        .theme-botanical .field-label { width: auto; font-size: 1.8cqw; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 1cqw;}
+        .theme-botanical .field-label { width: auto; font-size: 1.5cqw; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 0.5cqw;}
         .theme-botanical .field-value { 
-            text-align: center; border-bottom: 1.5px dotted var(--text-main); padding-left: 0; min-height: 4cqw; width: 60%;
+            text-align: center; border-bottom: 1.5px dotted var(--text-main); padding-left: 0; min-height: 3cqw; width: 60%; font-size: 2.5cqw;
         }
-        .theme-botanical .footer { padding: 0 10cqw; }
+        .theme-botanical .footer { padding: 0 5cqw; margin-top: auto; }
+        .theme-botanical .signature-name { font-size: 2.2cqw; }
+        .theme-botanical .signature-label { font-size: 1.4cqw; }
 
         /* -------------------------------------------------------- */
 
