@@ -237,12 +237,13 @@
                 width: 100%;
             }
             .a4-page {
-                box-shadow: none;
+                box-shadow: none !important;
                 width: 210mm !important;
                 height: 297mm !important;
                 aspect-ratio: auto;
                 margin: 0;
                 border: none;
+                --page-bg: #FFFFFF !important; /* Ink-saver: Force pure white paper background */
             }
             .screen-instruction, .print-btn, .insta-badge, .instructions-panel {
                 display: none !important;
@@ -250,6 +251,31 @@
             [contenteditable="true"]:empty::before {
                 content: "" !important;
             }
+
+            /* --- PRINTER-FRIENDLY OVERRIDES (Ink Saving & Contrast) --- */
+            
+            /* Theme 7: Deco Geometry */
+            .a4-page.theme-deco { --text-main: #111111 !important; --text-muted: #555555 !important; }
+            .theme-deco .corner { background: #FFFFFF !important; }
+
+            /* Theme 8: Neon Cyberpunk */
+            .a4-page.theme-neon { --text-main: #111111 !important; --text-muted: #555555 !important; --primary: #0088AA !important; }
+            .theme-neon .outer-border { box-shadow: none !important; border: 2px solid #CC00CC !important; }
+            .theme-neon .inner-border { box-shadow: none !important; border: 1px solid #0088AA !important; }
+            .theme-neon .assignment-title { text-shadow: none !important; }
+
+            /* Theme 10: Engineering Blueprint */
+            .a4-page.theme-blueprint { --text-main: #111111 !important; --text-muted: #555555 !important; --primary: #1565C0 !important; background-image: none !important; }
+            .theme-blueprint .outer-border { border-color: #1565C0 !important; }
+            .theme-blueprint .inner-border { border-color: rgba(21, 101, 192, 0.5) !important; }
+            .theme-blueprint .corner { background: #1565C0 !important; border: none !important; }
+            .theme-blueprint .assignment-title { border-color: #1565C0 !important; background: transparent !important; }
+
+            /* Theme 18: Physics / Astronomy */
+            .a4-page.theme-physics { --text-main: #111111 !important; --text-muted: #555555 !important; --primary: #008080 !important; }
+            .theme-physics .outer-border { border-color: rgba(0, 128, 128, 0.5) !important; }
+            .theme-physics .inner-border::before { border-color: rgba(0, 128, 128, 0.5) !important; }
+            .theme-physics .corner { box-shadow: none !important; }
         }
 
         /* --------------------------------------------------------
