@@ -1081,6 +1081,52 @@
         .theme-commerce-executive .corner { display: none; }
 
         /* --------------------------------------------------------
+           PRINT MODES
+           -------------------------------------------------------- */
+        .a4-page.bw-mode {
+            --primary: #000000 !important;
+            --text-main: #000000 !important;
+            --text-muted: #333333 !important;
+            --page-bg: #FFFFFF !important;
+            filter: grayscale(100%) contrast(120%) !important;
+        }
+
+        .bw-toggle-container {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #E2E8F0;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 44px;
+            height: 24px;
+        }
+        .toggle-switch input { opacity: 0; width: 0; height: 0; }
+        .slider {
+            position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0;
+            background-color: #475569; transition: .3s; border-radius: 24px;
+        }
+        .slider:before {
+            position: absolute; content: ""; height: 18px; width: 18px; left: 3px; bottom: 3px;
+            background-color: white; transition: .3s; border-radius: 50%; box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        input:checked + .slider { background-color: #10B981; }
+        input:checked + .slider:before { transform: translateX(20px); }
+        
+        @media print {
+            .bw-toggle-container { display: none !important; }
+        }
+
+        /* --------------------------------------------------------
            FONT TOOLBAR
            -------------------------------------------------------- */
         .font-toolbar {
@@ -1349,6 +1395,17 @@
                 </div>
             </div>
 
+            <div class="bw-toggle-container">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+                    B&W Print Mode
+                </div>
+                <label class="toggle-switch" title="Convert colors for Black & White printing">
+                    <input type="checkbox" id="bwToggle" onchange="toggleBwMode(this.checked)">
+                    <span class="slider"></span>
+                </label>
+            </div>
+
             <div class="instruction-section">
                 <h3>English Instructions</h3>
                 <ul class="instruction-list">
@@ -1508,8 +1565,12 @@
 
         themeBtns.forEach(btn => {
             btn.addEventListener('click', () => {
+                // Preserve B&W mode if active
+                const isBw = page.classList.contains('bw-mode');
+                
                 // Remove all existing theme classes
                 page.className = 'a4-page';
+                if (isBw) page.classList.add('bw-mode');
                 
                 // Add the selected theme class
                 const themeClass = btn.getAttribute('data-theme');
@@ -1616,6 +1677,14 @@
             document.getElementById('fontFamilySelect').value = "";
             activeEditable.focus();
             updateToolbarPosition();
+        }
+        // B&W Toggle Logic
+        function toggleBwMode(isActive) {
+            if (isActive) {
+                page.classList.add('bw-mode');
+            } else {
+                page.classList.remove('bw-mode');
+            }
         }
     </script>
 </body>
