@@ -243,25 +243,6 @@
             [contenteditable="true"]:empty::before {
                 content: "" !important;
             }
-
-            .a4-page.theme-deco { --text-main: #111111 !important; --text-muted: #555555 !important; }
-            .theme-deco .corner { background: #FFFFFF !important; }
-
-            .a4-page.theme-neon { --text-main: #111111 !important; --text-muted: #555555 !important; --primary: #0088AA !important; }
-            .theme-neon .outer-border { box-shadow: none !important; border: 2px solid #CC00CC !important; }
-            .theme-neon .inner-border { box-shadow: none !important; border: 1px solid #0088AA !important; }
-            .theme-neon .assignment-title { text-shadow: none !important; }
-
-            .a4-page.theme-blueprint { --text-main: #111111 !important; --text-muted: #555555 !important; --primary: #1565C0 !important; background-image: none !important; }
-            .theme-blueprint .outer-border { border-color: #1565C0 !important; }
-            .theme-blueprint .inner-border { border-color: rgba(21, 101, 192, 0.5) !important; }
-            .theme-blueprint .corner { background: #1565C0 !important; border: none !important; }
-            .theme-blueprint .assignment-title { border-color: #1565C0 !important; background: transparent !important; }
-
-            .a4-page.theme-physics { --text-main: #111111 !important; --text-muted: #555555 !important; --primary: #008080 !important; }
-            .theme-physics .outer-border { border-color: rgba(0, 128, 128, 0.5) !important; }
-            .theme-physics .inner-border::before { border-color: rgba(0, 128, 128, 0.5) !important; }
-            .theme-physics .corner { box-shadow: none !important; }
         }
 
         .outer-border {
@@ -414,7 +395,7 @@
         .theme-postal .separator span { border-radius: 0; width: 4cqw; height: 1cqw; transform: none; background: var(--text-main); }
 
         .theme-deco {
-            --primary: #D4AF37; --text-main: #FFFFFF; --text-muted: #BBBBBB; --page-bg: #1A1A1A;
+            --primary: #D4AF37; --text-main: #111111; --text-muted: #555555; --page-bg: #FFFFFF;
         }
         .theme-deco .outer-border { border: 2px solid var(--primary); top: 4cqw; bottom: 4cqw; left: 4cqw; right: 4cqw; }
         .theme-deco .inner-border { border: 1px solid var(--primary); top: 1cqw; bottom: 1cqw; left: 1cqw; right: 1cqw; }
@@ -425,19 +406,19 @@
         .theme-deco .corner-br { bottom: -1.5cqw; right: -1.5cqw; }
 
         .theme-neon {
-            --primary: #00F0FF; --text-main: #FFFFFF; --text-muted: #B0BEC5; --page-bg: #0B0F19;
+            --primary: #0088AA; --text-main: #111111; --text-muted: #555555; --page-bg: #FFFFFF;
         }
         .theme-neon .outer-border { 
-            border: 2px solid #FF00FF; box-shadow: 0 0 1cqw #FF00FF, inset 0 0 1cqw #FF00FF;
+            border: 2px solid #CC00CC;
             top: 4cqw; bottom: 4cqw; left: 4cqw; right: 4cqw; border-radius: 1.5cqw;
         }
         .theme-neon .inner-border { 
-            border: 1px solid var(--primary); box-shadow: 0 0 0.5cqw var(--primary), inset 0 0 0.5cqw var(--primary);
+            border: 1px solid var(--primary);
             top: 1.5cqw; bottom: 1.5cqw; left: 1.5cqw; right: 1.5cqw; border-radius: 0.8cqw;
         }
         .theme-neon .corner { display: none; }
-        .theme-neon .assignment-title { text-shadow: 0 0 1cqw var(--primary); font-weight: 900; letter-spacing: 2.5cqw; }
-        .theme-neon .separator::before, .theme-neon .separator::after { background: linear-gradient(90deg, transparent, #FF00FF, transparent); }
+        .theme-neon .assignment-title { font-weight: 900; letter-spacing: 2.5cqw; }
+        .theme-neon .separator::before, .theme-neon .separator::after { background: linear-gradient(90deg, transparent, #CC00CC, transparent); }
 
         .theme-scallop {
             --primary: #9C27B0; --text-main: #4A148C; --text-muted: #7B1FA2; --page-bg: #FDF4F6;
@@ -452,20 +433,16 @@
         .theme-scallop .separator span { border-radius: 50%; }
 
         .theme-blueprint {
-            --primary: #FFFFFF; --text-main: #FFFFFF; --text-muted: #BBDEFB; --page-bg: #1565C0;
-            background-image: 
-                linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
-            background-size: 2cqw 2cqw;
+            --primary: #1565C0; --text-main: #111111; --text-muted: #555555; --page-bg: #FFFFFF;
         }
-        .theme-blueprint .outer-border { border: 2px solid #FFFFFF; top: 3.5cqw; bottom: 3.5cqw; left: 3.5cqw; right: 3.5cqw; }
-        .theme-blueprint .inner-border { border: 1px solid rgba(255,255,255,0.5); top: 1cqw; bottom: 1cqw; left: 1cqw; right: 1cqw; }
-        .theme-blueprint .corner { width: 1cqw; height: 1cqw; background: #FFFFFF; border-radius: 50%; border: none; }
+        .theme-blueprint .outer-border { border: 2px solid var(--primary); top: 3.5cqw; bottom: 3.5cqw; left: 3.5cqw; right: 3.5cqw; }
+        .theme-blueprint .inner-border { border: 1px solid rgba(21, 101, 192, 0.5); top: 1cqw; bottom: 1cqw; left: 1cqw; right: 1cqw; }
+        .theme-blueprint .corner { width: 1cqw; height: 1cqw; background: var(--primary); border-radius: 50%; border: none; }
         .theme-blueprint .corner-tl { top: -0.5cqw; left: -0.5cqw; }
         .theme-blueprint .corner-tr { top: -0.5cqw; right: -0.5cqw; }
         .theme-blueprint .corner-bl { bottom: -0.5cqw; left: -0.5cqw; }
         .theme-blueprint .corner-br { bottom: -0.5cqw; right: -0.5cqw; }
-        .theme-blueprint .assignment-title { border: 1px solid #FFFFFF; padding: 1cqw; letter-spacing: 1cqw; background: rgba(255,255,255,0.05); }
+        .theme-blueprint .assignment-title { border: 1px solid var(--primary); padding: 1cqw; letter-spacing: 1cqw; }
 
         .theme-india {
             --primary: #000080;
@@ -574,17 +551,13 @@
         .theme-literature .corner-bl { bottom: -1.75cqw; left: -1.75cqw; transform: rotate(270deg); }
 
         .theme-physics {
-            --primary: #66FCF1; --text-main: #FFFFFF; --text-muted: #C5C6C7; --page-bg: #0B0C10;
+            --primary: #008080; --text-main: #111111; --text-muted: #555555; --page-bg: #FFFFFF;
         }
-        .theme-physics .outer-border { border: 1px solid rgba(102, 252, 241, 0.2); border-radius: 100%; top: -15cqw; bottom: -15cqw; left: -5cqw; right: -5cqw; } 
+        .theme-physics .outer-border { border: 1px solid rgba(0, 128, 128, 0.5); border-radius: 100%; top: -15cqw; bottom: -15cqw; left: -5cqw; right: -5cqw; } 
         .theme-physics .inner-border { border: 1px solid var(--primary); top: 4cqw; bottom: 4cqw; left: 4cqw; right: 4cqw; border-radius: 0; }
-        .theme-physics .corner { width: 0.8cqw; height: 0.8cqw; background: var(--primary); border-radius: 50%; box-shadow: 0 0 1cqw var(--primary); border: none; }
-        .theme-physics .corner-tl { top: 0cqw; left: 0cqw; transform: translate(-50%, -50%); }
-        .theme-physics .corner-tr { top: 0cqw; right: 0cqw; transform: translate(50%, -50%); }
-        .theme-physics .corner-bl { bottom: 0cqw; left: 0cqw; transform: translate(-50%, 50%); }
-        .theme-physics .corner-br { bottom: 0cqw; right: 0cqw; transform: translate(50%, 50%); }
+        .theme-physics .corner { display: none; }
         .theme-physics .inner-border::before {
-            content: ''; position: absolute; border: 1px dashed rgba(102, 252, 241, 0.4); border-radius: 50%;
+            content: ''; position: absolute; border: 1px dashed rgba(0, 128, 128, 0.5); border-radius: 50%;
             top: -10cqw; bottom: -10cqw; left: -15cqw; right: -15cqw; pointer-events: none;
         }
 
@@ -746,10 +719,10 @@
                     <button class="theme-btn" data-theme="theme-emerald" style="background: linear-gradient(135deg, #022C22 50%, #065F46 50%);" title="Emerald Elegant"></button>
                     
                     <button class="theme-btn" data-theme="theme-postal" style="background: repeating-linear-gradient(135deg, #D32F2F, #D32F2F 4px, #FDFBF7 4px, #FDFBF7 8px, #1A237E 8px, #1A237E 12px, #FDFBF7 12px, #FDFBF7 16px);" title="Vintage Postal"></button>
-                    <button class="theme-btn" data-theme="theme-deco" style="background: linear-gradient(135deg, #1A1A1A 50%, #D4AF37 50%);" title="Deco Geometry"></button>
-                    <button class="theme-btn" data-theme="theme-neon" style="background: linear-gradient(135deg, #0B0F19 50%, #00F0FF 50%); border-color: #FF00FF;" title="Neon Cyberpunk"></button>
+                    <button class="theme-btn" data-theme="theme-deco" style="background: linear-gradient(135deg, #FFFFFF 50%, #D4AF37 50%);" title="Deco Geometry"></button>
+                    <button class="theme-btn" data-theme="theme-neon" style="background: linear-gradient(135deg, #FFFFFF 50%, #0088AA 50%); border-color: #CC00CC;" title="Neon Cyberpunk"></button>
                     <button class="theme-btn" data-theme="theme-scallop" style="background: radial-gradient(circle, #9C27B0 30%, #F3E5F5 30%);" title="Elegant Scallop"></button>
-                    <button class="theme-btn" data-theme="theme-blueprint" style="background: repeating-linear-gradient(90deg, transparent, transparent 4px, rgba(255,255,255,0.5) 4px, rgba(255,255,255,0.5) 5px), #1565C0;" title="Engineering Blueprint"></button>
+                    <button class="theme-btn" data-theme="theme-blueprint" style="background: #FFFFFF; border: 2px solid #1565C0;" title="Engineering Blueprint"></button>
                     <button class="theme-btn" data-theme="theme-india" style="background: linear-gradient(135deg, #FF9933 33%, #FFFFFF 33%, #FFFFFF 66%, #138808 66%); box-shadow: inset 0 0 0 1px #000080;" title="Tricolor Pride"></button>
                     
                     <button class="theme-btn" data-theme="theme-maths" style="background: linear-gradient(135deg, #2563EB 50%, #F8FAFC 50%); border-color: #1E293B;" title="B.Sc. Mathematics"></button>
@@ -759,7 +732,7 @@
                     <button class="theme-btn" data-theme="theme-cs" style="background: #111827; border: 2px dashed #059669;" title="Computer Science / IT"></button>
                     
                     <button class="theme-btn" data-theme="theme-literature" style="background: #F4ECD8; border: 2px solid #5D4037; border-radius: 50% 0 50% 0;" title="B.A. Literature"></button>
-                    <button class="theme-btn" data-theme="theme-physics" style="background: radial-gradient(circle, #0B0C10 40%, #66FCF1 100%);" title="B.Sc. Physics / Astronomy"></button>
+                    <button class="theme-btn" data-theme="theme-physics" style="background: radial-gradient(circle, #FFFFFF 40%, #008080 100%);" title="B.Sc. Physics / Astronomy"></button>
                     <button class="theme-btn" data-theme="theme-law" style="background: #FFFFFF; border-left: 6px solid #111111; border-right: 6px solid #111111;" title="LL.B. Law / Political Science"></button>
                     <button class="theme-btn" data-theme="theme-medical" style="background: #FAFAFA; border: 2px solid #0277BD; position: relative;" title="MBBS / Medical / Nursing">
                         <span style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #D32F2F; font-weight: bold; font-size: 16px;">+</span>
