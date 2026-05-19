@@ -53,25 +53,18 @@
 
         /* Desktop specific layout to pin Instructions and Insta to the left */
         @media screen and (min-width: 1300px) {
-            /* Instructions Sidebar */
-        .instructions-panel {
-            position: fixed;
-            left: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 300px;
-            background: var(--white);
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            z-index: 100;
-            max-height: 90vh;
-            overflow-y: auto;
-        }
-        /* Custom Scrollbar for Panel */
-        .instructions-panel::-webkit-scrollbar { width: 6px; }
-        .instructions-panel::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 4px; }
-        .instructions-panel::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
+            .instructions-panel {
+                position: fixed;
+                left: 40px;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 320px;
+                z-index: 50;
+                max-height: 80vh;
+                overflow-y: auto;
+            }
+            .instructions-panel::-webkit-scrollbar { width: 6px; }
+            .instructions-panel::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
         }
 
         /* Mobile specific layout */
@@ -86,8 +79,6 @@
             .instructions-panel {
                 width: 100%;
                 max-width: 210mm;
-                max-height: 50vh;
-                overflow-y: auto;
             }
         }
 
@@ -200,7 +191,6 @@
            -------------------------------------------------------- */
         
         .a4-page {
-            /* Variables populated by default theme */
             --primary: #C5A059;
             --text-main: #0F172A;
             --text-muted: #334155;
@@ -218,7 +208,7 @@
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 20px rgba(197, 160, 89, 0.1);
             display: flex;
             flex-direction: column;
-            overflow: hidden; /* CRITICAL: Prevents content from breaking A4 shape */
+            overflow: hidden;
             flex-shrink: 0;
             container-type: inline-size;
             transition: background-color 0.4s ease;
@@ -245,46 +235,35 @@
                 aspect-ratio: auto;
                 margin: 0;
                 border: none;
-                --page-bg: #FFFFFF !important; /* Ink-saver: Force pure white paper background */
+                --page-bg: #FFFFFF !important;
             }
-            .screen-instruction, .right-controls, .instructions-panel {
+            .screen-instruction, .bottom-actions, .instructions-panel {
                 display: none !important;
             }
             [contenteditable="true"]:empty::before {
                 content: "" !important;
             }
 
-            /* --- PRINTER-FRIENDLY OVERRIDES (Ink Saving & Contrast) --- */
-            
-            /* Theme 7: Deco Geometry */
             .a4-page.theme-deco { --text-main: #111111 !important; --text-muted: #555555 !important; }
             .theme-deco .corner { background: #FFFFFF !important; }
 
-            /* Theme 8: Neon Cyberpunk */
             .a4-page.theme-neon { --text-main: #111111 !important; --text-muted: #555555 !important; --primary: #0088AA !important; }
             .theme-neon .outer-border { box-shadow: none !important; border: 2px solid #CC00CC !important; }
             .theme-neon .inner-border { box-shadow: none !important; border: 1px solid #0088AA !important; }
             .theme-neon .assignment-title { text-shadow: none !important; }
 
-            /* Theme 10: Engineering Blueprint */
             .a4-page.theme-blueprint { --text-main: #111111 !important; --text-muted: #555555 !important; --primary: #1565C0 !important; background-image: none !important; }
             .theme-blueprint .outer-border { border-color: #1565C0 !important; }
             .theme-blueprint .inner-border { border-color: rgba(21, 101, 192, 0.5) !important; }
             .theme-blueprint .corner { background: #1565C0 !important; border: none !important; }
             .theme-blueprint .assignment-title { border-color: #1565C0 !important; background: transparent !important; }
 
-            /* Theme 18: Physics / Astronomy */
             .a4-page.theme-physics { --text-main: #111111 !important; --text-muted: #555555 !important; --primary: #008080 !important; }
             .theme-physics .outer-border { border-color: rgba(0, 128, 128, 0.5) !important; }
             .theme-physics .inner-border::before { border-color: rgba(0, 128, 128, 0.5) !important; }
             .theme-physics .corner { box-shadow: none !important; }
         }
 
-        /* --------------------------------------------------------
-           DEFAULT CSS (Theme 1: Classic Luxury)
-           Shared Base Layout For ALL Themes
-           -------------------------------------------------------- */
-        
         .outer-border {
             position: absolute;
             top: 4cqw; bottom: 4cqw; left: 4cqw; right: 4cqw;
@@ -382,7 +361,6 @@
             color: var(--text-main); text-transform: uppercase; letter-spacing: 0.2cqw;
         }
 
-        /* Editable Elements Global */
         [contenteditable="true"] { outline: none; border-bottom: 1px dashed transparent; transition: all 0.3s ease; }
         [contenteditable="true"]:empty:not(:focus)::before { content: attr(placeholder); color: var(--light-grey); font-style: italic; }
         @media screen {
@@ -390,12 +368,8 @@
             [contenteditable="true"]:focus { border-bottom: 1px solid var(--primary); background-color: rgba(0, 0, 0, 0.04); }
         }
 
-        /* --------------------------------------------------------
-           THEME 2: ROYAL SCHOLAR (Navy Blue & Silver, Ornate Circles)
-           -------------------------------------------------------- */
-        .a4-page.theme-royal {
+        .theme-royal {
             --primary: #1E3A8A; --text-main: #0F172A; --text-muted: #334155; --page-bg: #F8FAFC;
-            --font-heading: 'Cinzel', serif; --font-body: 'Playfair Display', serif;
         }
         .theme-royal .outer-border { border: 4px double var(--primary); top: 4cqw; bottom: 4cqw; left: 4cqw; right: 4cqw; }
         .theme-royal .inner-border { border: 1px solid var(--text-main); top: 2cqw; bottom: 2cqw; left: 2cqw; right: 2cqw; }
@@ -406,12 +380,8 @@
         .theme-royal .corner-br { bottom: -0.75cqw; right: -0.75cqw; }
         .theme-royal .separator::before, .theme-royal .separator::after { background: linear-gradient(90deg, transparent, var(--text-main), transparent); }
 
-        /* --------------------------------------------------------
-           THEME 3: MODERN MINIMALIST (High Contrast B&W, No Ornaments)
-           -------------------------------------------------------- */
-        .a4-page.theme-minimal {
+        .theme-minimal {
             --primary: #000000; --text-main: #111111; --text-muted: #555555; --page-bg: #FFFFFF;
-            --font-heading: 'Poppins', sans-serif; --font-body: 'Poppins', sans-serif;
         }
         .theme-minimal .outer-border { border: 3px solid var(--primary); top: 4cqw; bottom: 4cqw; left: 4cqw; right: 4cqw; }
         .theme-minimal .inner-border, .theme-minimal .corner { display: none; }
@@ -420,12 +390,8 @@
         .theme-minimal .watermark { opacity: 0.05; font-weight: 900; }
         .theme-minimal .assignment-title { text-shadow: none; letter-spacing: 1.5cqw; }
 
-        /* --------------------------------------------------------
-           THEME 4: CRIMSON HERITAGE (Deep Red, Cream, Dashed Lines)
-           -------------------------------------------------------- */
-        .a4-page.theme-crimson {
+        .theme-crimson {
             --primary: #991B1B; --text-main: #450A0A; --text-muted: #7F1D1D; --page-bg: #FEFDF8;
-            --font-heading: 'Playfair Display', serif; --font-body: 'Playfair Display', serif;
         }
         .theme-crimson .outer-border { border: 2px solid var(--primary); top: 4cqw; bottom: 4cqw; left: 4cqw; right: 4cqw; }
         .theme-crimson .inner-border { border: 1.5px dashed var(--text-main); top: 1.5cqw; bottom: 1.5cqw; left: 1.5cqw; right: 1.5cqw; }
@@ -434,12 +400,8 @@
         .theme-crimson .separator span { background-color: var(--text-main); }
         .theme-crimson .watermark { color: var(--primary); opacity: 0.04; }
 
-        /* --------------------------------------------------------
-           THEME 5: EMERALD ELEGANT (Rounded Corners, Green Tint)
-           -------------------------------------------------------- */
-        .a4-page.theme-emerald {
+        .theme-emerald {
             --primary: #065F46; --text-main: #022C22; --text-muted: #064E3B; --page-bg: #F0FDF4;
-            --font-heading: 'Cinzel', serif; --font-body: 'Poppins', sans-serif;
         }
         .theme-emerald .outer-border { border: 2px solid var(--primary); border-radius: 6cqw; top: 3.5cqw; bottom: 3.5cqw; left: 3.5cqw; right: 3.5cqw; }
         .theme-emerald .inner-border { border: 1.5px solid var(--text-main); border-radius: 5cqw; top: 1.5cqw; bottom: 1.5cqw; left: 1.5cqw; right: 1.5cqw; }
@@ -447,12 +409,8 @@
         .theme-emerald .separator span { border-radius: 50%; transform: none; width: 1.5cqw; height: 1.5cqw; }
         .theme-emerald .watermark { opacity: 0.03; color: var(--primary); }
 
-        /* --------------------------------------------------------
-           THEME 6: VINTAGE POSTAL (Airmail Edges)
-           -------------------------------------------------------- */
-        .a4-page.theme-postal {
+        .theme-postal {
             --primary: #D32F2F; --text-main: #1A237E; --text-muted: #3949AB; --page-bg: #FDFBF7;
-            --font-heading: 'Courier New', monospace; --font-body: 'Courier New', monospace;
         }
         .theme-postal .outer-border { 
             border: 1.5cqw solid transparent; 
@@ -464,12 +422,8 @@
         .theme-postal .assignment-title { border-top: 2px dashed var(--text-main); border-bottom: 2px dashed var(--text-main); padding: 1cqw 0; text-shadow: none; letter-spacing: 0.5cqw; }
         .theme-postal .separator span { border-radius: 0; width: 4cqw; height: 1cqw; transform: none; background: var(--text-main); }
 
-        /* --------------------------------------------------------
-           THEME 7: DECO GEOMETRY (Dark Art Deco, Gold accents, Diamond corners)
-           -------------------------------------------------------- */
-        .a4-page.theme-deco {
+        .theme-deco {
             --primary: #D4AF37; --text-main: #FFFFFF; --text-muted: #BBBBBB; --page-bg: #1A1A1A;
-            --font-heading: 'Cinzel', serif; --font-body: 'Poppins', sans-serif;
         }
         .theme-deco .outer-border { border: 2px solid var(--primary); top: 4cqw; bottom: 4cqw; left: 4cqw; right: 4cqw; }
         .theme-deco .inner-border { border: 1px solid var(--primary); top: 1cqw; bottom: 1cqw; left: 1cqw; right: 1cqw; }
@@ -480,12 +434,8 @@
         .theme-deco .corner-br { bottom: -1.5cqw; right: -1.5cqw; }
         .theme-deco .watermark { opacity: 0.05; color: var(--primary); }
 
-        /* --------------------------------------------------------
-           THEME 8: NEON CYBERPUNK (Glowing Borders)
-           -------------------------------------------------------- */
-        .a4-page.theme-neon {
+        .theme-neon {
             --primary: #00F0FF; --text-main: #FFFFFF; --text-muted: #B0BEC5; --page-bg: #0B0F19;
-            --font-heading: 'Poppins', sans-serif; --font-body: 'Poppins', sans-serif;
         }
         .theme-neon .outer-border { 
             border: 2px solid #FF00FF; box-shadow: 0 0 1cqw #FF00FF, inset 0 0 1cqw #FF00FF;
@@ -499,12 +449,8 @@
         .theme-neon .assignment-title { text-shadow: 0 0 1cqw var(--primary); font-weight: 900; letter-spacing: 2.5cqw; }
         .theme-neon .separator::before, .theme-neon .separator::after { background: linear-gradient(90deg, transparent, #FF00FF, transparent); }
 
-        /* --------------------------------------------------------
-           THEME 9: ELEGANT SCALLOP (Dotted playful borders)
-           -------------------------------------------------------- */
-        .a4-page.theme-scallop {
+        .theme-scallop {
             --primary: #9C27B0; --text-main: #4A148C; --text-muted: #7B1FA2; --page-bg: #FDF4F6;
-            --font-heading: 'Playfair Display', serif; --font-body: 'Playfair Display', serif;
         }
         .theme-scallop .outer-border { 
             border: 1.5cqw dotted var(--primary); top: 3.5cqw; bottom: 3.5cqw; left: 3.5cqw; right: 3.5cqw; border-radius: 4cqw;
@@ -515,12 +461,8 @@
         .theme-scallop .corner { display: none; }
         .theme-scallop .separator span { border-radius: 50%; }
 
-        /* --------------------------------------------------------
-           THEME 10: ENGINEERING BLUEPRINT (Grid Background)
-           -------------------------------------------------------- */
-        .a4-page.theme-blueprint {
+        .theme-blueprint {
             --primary: #FFFFFF; --text-main: #FFFFFF; --text-muted: #BBDEFB; --page-bg: #1565C0;
-            --font-heading: 'Courier New', monospace; --font-body: 'Courier New', monospace;
             background-image: 
                 linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
@@ -535,16 +477,11 @@
         .theme-blueprint .corner-br { bottom: -0.5cqw; right: -0.5cqw; }
         .theme-blueprint .assignment-title { border: 1px solid #FFFFFF; padding: 1cqw; letter-spacing: 1cqw; background: rgba(255,255,255,0.05); }
 
-        /* --------------------------------------------------------
-           THEME 11: TRICOLOR PRIDE (India Flag Border)
-           -------------------------------------------------------- */
-        .a4-page.theme-india {
+        .theme-india {
             --primary: #000080;
             --text-main: #0F172A; 
             --text-muted: #334155; 
             --page-bg: #FFFFFF;
-            --font-heading: 'Cinzel', serif; 
-            --font-body: 'Poppins', sans-serif;
         }
         .theme-india .outer-border { 
             border: 0.8cqw solid #138808; 
@@ -570,12 +507,8 @@
         }
         .theme-india .separator span { background-color: #000080; border-radius: 50%; width: 1.2cqw; height: 1.2cqw; }
 
-        /* --------------------------------------------------------
-           THEME 12: MATHEMATICS (Geometric & Precise)
-           -------------------------------------------------------- */
-        .a4-page.theme-maths {
+        .theme-maths {
             --primary: #2563EB; --text-main: #1E293B; --text-muted: #64748B; --page-bg: #F8FAFC;
-            --font-heading: 'Poppins', sans-serif; --font-body: 'Poppins', sans-serif;
             background-image: linear-gradient(rgba(37, 99, 235, 0.05) 1px, transparent 1px),
                               linear-gradient(90deg, rgba(37, 99, 235, 0.05) 1px, transparent 1px);
             background-size: 2cqw 2cqw;
@@ -587,18 +520,13 @@
         .theme-maths .corner-tr { top: -0.75cqw; right: -0.75cqw; }
         .theme-maths .corner-bl { bottom: -0.75cqw; left: -0.75cqw; }
         .theme-maths .corner-br { bottom: -0.75cqw; right: -0.75cqw; }
-        .theme-maths .assignment-title { letter-spacing: 2cqw; font-weight: 800; text-transform: uppercase; }
 
-        /* --------------------------------------------------------
-           THEME 13: BIOLOGY / BOTANY (Organic & Earthy)
-           -------------------------------------------------------- */
-        .a4-page.theme-biology {
+        .theme-biology {
             --primary: #4D7C0F; --text-main: #14532D; --text-muted: #78350F; --page-bg: #FAFAF9;
-            --font-heading: 'Playfair Display', serif; --font-body: 'Poppins', sans-serif;
         }
         .theme-biology .outer-border { 
             border: 3px solid var(--primary); 
-            border-radius: 15cqw 4cqw 15cqw 4cqw; /* Leaf shape */
+            border-radius: 15cqw 4cqw 15cqw 4cqw;
             top: 4cqw; bottom: 4cqw; left: 4cqw; right: 4cqw; 
         }
         .theme-biology .inner-border { 
@@ -607,46 +535,32 @@
             top: 1.5cqw; bottom: 1.5cqw; left: 1.5cqw; right: 1.5cqw; 
         }
         .theme-biology .corner { display: none; }
-        .theme-biology .separator::before, .theme-biology .separator::after { background: linear-gradient(90deg, transparent, var(--text-muted), transparent); height: 1px; }
         .theme-biology .separator span { background: var(--primary); border-radius: 50% 0 50% 0; transform: rotate(45deg); }
 
-        /* --------------------------------------------------------
-           THEME 14: ARTS / HUMANITIES (Expressive & Elegant)
-           -------------------------------------------------------- */
-        .a4-page.theme-arts {
+        .theme-arts {
             --primary: #9D174D; --text-main: #4C1D95; --text-muted: #B45309; --page-bg: #FFFBFB;
-            --font-heading: 'Cinzel', serif; --font-body: 'Playfair Display', serif;
         }
         .theme-arts .outer-border { 
             border: 1px solid var(--primary);
             box-shadow: -1cqw 1cqw 0 0 rgba(157, 23, 77, 0.15), 1cqw -1cqw 0 0 rgba(76, 29, 149, 0.15);
             top: 5cqw; bottom: 5cqw; left: 5cqw; right: 5cqw; 
         }
-        .theme-arts .inner-border { border: 1px solid var(--text-main); top: -1.5cqw; bottom: 1.5cqw; left: 1.5cqw; right: -1.5cqw; } /* Asymmetrical shift */
+        .theme-arts .inner-border { border: 1px solid var(--text-main); top: -1.5cqw; bottom: 1.5cqw; left: 1.5cqw; right: -1.5cqw; }
         .theme-arts .corner { display: none; }
-        .theme-arts .assignment-title { font-style: italic; letter-spacing: 0.5cqw; text-transform: capitalize; font-size: 7.5cqw; }
 
-        /* --------------------------------------------------------
-           THEME 15: COMMERCE / ACCOUNTING (Ledger style, Corporate)
-           -------------------------------------------------------- */
-        .a4-page.theme-commerce {
+        .theme-commerce {
             --primary: #0F172A; --text-main: #000000; --text-muted: #475569; --page-bg: #FFFFFF;
-            --font-heading: 'Playfair Display', serif; --font-body: 'Poppins', sans-serif;
             background-image: linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px);
-            background-size: 100% 4cqw; /* Mimics lined ledger paper */
+            background-size: 100% 4cqw;
             background-position: 0 16cqw;
         }
         .theme-commerce .outer-border { border: 4px double var(--primary); top: 3.5cqw; bottom: 3.5cqw; left: 6cqw; right: 4cqw; }
-        .theme-commerce .inner-border { border: none; border-left: 2px solid #DC2626; top: 0; bottom: 0; left: 1.5cqw; right: 0; } /* Red margin line */
+        .theme-commerce .inner-border { border: none; border-left: 2px solid #DC2626; top: 0; bottom: 0; left: 1.5cqw; right: 0; }
         .theme-commerce .corner { display: none; }
-        .theme-commerce .separator { display: none; } /* Clean look */
+        .theme-commerce .separator { display: none; }
 
-        /* --------------------------------------------------------
-           THEME 16: COMPUTER SCIENCE / IT (Terminal, Brackets)
-           -------------------------------------------------------- */
-        .a4-page.theme-cs {
+        .theme-cs {
             --primary: #059669; --text-main: #111827; --text-muted: #4B5563; --page-bg: #F9FAFB;
-            --font-heading: 'Courier New', monospace; --font-body: 'Courier New', monospace;
         }
         .theme-cs .outer-border { border: 2px solid var(--text-main); top: 4cqw; bottom: 4cqw; left: 4cqw; right: 4cqw; }
         .theme-cs .inner-border { border: 1.5px dashed var(--primary); top: 1.5cqw; bottom: 1.5cqw; left: 1.5cqw; right: 1.5cqw; }
@@ -658,12 +572,8 @@
         .theme-cs .assignment-title::before { content: "< "; color: var(--primary); }
         .theme-cs .assignment-title::after { content: " />"; color: var(--primary); }
 
-        /* --------------------------------------------------------
-           THEME 17: LITERATURE (Parchment & Scroll)
-           -------------------------------------------------------- */
-        .a4-page.theme-literature {
+        .theme-literature {
             --primary: #5D4037; --text-main: #3E2723; --text-muted: #8D6E63; --page-bg: #F4ECD8;
-            --font-heading: 'Playfair Display', serif; --font-body: 'Playfair Display', serif;
         }
         .theme-literature .outer-border { border: 2px solid var(--primary); top: 4cqw; bottom: 4cqw; left: 4cqw; right: 4cqw; }
         .theme-literature .inner-border { border: 1px solid var(--text-main); top: 1.5cqw; bottom: 1.5cqw; left: 1.5cqw; right: 1.5cqw; }
@@ -672,14 +582,9 @@
         .theme-literature .corner-tr { top: -1.75cqw; right: -1.75cqw; transform: rotate(90deg); }
         .theme-literature .corner-br { bottom: -1.75cqw; right: -1.75cqw; transform: rotate(180deg); }
         .theme-literature .corner-bl { bottom: -1.75cqw; left: -1.75cqw; transform: rotate(270deg); }
-        .theme-literature .assignment-title { text-transform: capitalize; font-style: italic; }
 
-        /* --------------------------------------------------------
-           THEME 18: PHYSICS / ASTRONOMY (Dark Void, Orbit Rings)
-           -------------------------------------------------------- */
-        .a4-page.theme-physics {
+        .theme-physics {
             --primary: #66FCF1; --text-main: #FFFFFF; --text-muted: #C5C6C7; --page-bg: #0B0C10;
-            --font-heading: 'Poppins', sans-serif; --font-body: 'Poppins', sans-serif;
         }
         .theme-physics .outer-border { border: 1px solid rgba(102, 252, 241, 0.2); border-radius: 100%; top: -15cqw; bottom: -15cqw; left: -5cqw; right: -5cqw; } 
         .theme-physics .inner-border { border: 1px solid var(--primary); top: 4cqw; bottom: 4cqw; left: 4cqw; right: 4cqw; border-radius: 0; }
@@ -693,23 +598,14 @@
             top: -10cqw; bottom: -10cqw; left: -15cqw; right: -15cqw; pointer-events: none;
         }
 
-        /* --------------------------------------------------------
-           THEME 19: LAW / POLITICAL SCIENCE (Greek Pillars)
-           -------------------------------------------------------- */
-        .a4-page.theme-law {
+        .theme-law {
             --primary: #B8860B; --text-main: #111111; --text-muted: #555555; --page-bg: #FFFFFF;
-            --font-heading: 'Cinzel', serif; --font-body: 'Playfair Display', serif;
         }
         .theme-law .outer-border { border-left: 2cqw solid var(--text-main); border-right: 2cqw solid var(--text-main); border-top: 0.5cqw solid var(--text-main); border-bottom: 0.5cqw solid var(--text-main); top: 3cqw; bottom: 3cqw; left: 4cqw; right: 4cqw; }
         .theme-law .inner-border { border-left: 0.5cqw solid var(--primary); border-right: 0.5cqw solid var(--primary); border-top: 1px solid var(--primary); border-bottom: 1px solid var(--primary); top: 1cqw; bottom: 1cqw; left: 1cqw; right: 1cqw; }
-        .theme-law .corner { display: none; }
         
-        /* --------------------------------------------------------
-           THEME 20: MEDICAL / NURSING (Clinical & Red Cross)
-           -------------------------------------------------------- */
-        .a4-page.theme-medical {
+        .theme-medical {
             --primary: #0277BD; --text-main: #01579B; --text-muted: #4F8A10; --page-bg: #FAFAFA;
-            --font-heading: 'Poppins', sans-serif; --font-body: 'Poppins', sans-serif;
         }
         .theme-medical .outer-border { border: 2px solid var(--primary); top: 4cqw; bottom: 4cqw; left: 4cqw; right: 4cqw; border-radius: 2cqw; }
         .theme-medical .inner-border { border: 1px solid rgba(2, 119, 189, 0.3); top: 1.5cqw; bottom: 1.5cqw; left: 1.5cqw; right: 1.5cqw; border-radius: 1cqw; }
@@ -720,12 +616,8 @@
         .theme-medical .corner-bl { bottom: -1cqw; left: -1cqw; }
         .theme-medical .corner-br { bottom: -1cqw; right: -1cqw; }
 
-        /* --------------------------------------------------------
-           THEME 21: FINE ARTS (Rainbow Paint Gradient)
-           -------------------------------------------------------- */
-        .a4-page.theme-finearts {
+        .theme-finearts {
             --primary: #E91E63; --text-main: #212121; --text-muted: #757575; --page-bg: #FFFFFF;
-            --font-heading: 'Playfair Display', serif; --font-body: 'Poppins', sans-serif;
         }
         .theme-finearts .outer-border { 
             border: 1.5cqw solid transparent;
@@ -733,61 +625,73 @@
             top: 3.5cqw; bottom: 3.5cqw; left: 3.5cqw; right: 3.5cqw; 
         }
         .theme-finearts .inner-border { border: 1.5px dashed var(--text-muted); top: 2cqw; bottom: 2cqw; left: 2cqw; right: 2cqw; }
-        .theme-finearts .corner { display: none; }
         .theme-finearts .assignment-title { background: linear-gradient(45deg, #FF5252, #E040FB, #448AFF, #18FFFF, #69F0AE, #EEFF41, #FFAB40); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: none; }
 
-        /* -------------------------------------------------------- */        /* Right Controls Group */
-        .right-controls {
+        /* --- FLOATING ACTION BUTTONS (Print & Credits) --- */
+        .bottom-actions {
             position: fixed;
-            top: 20px;
+            bottom: 20px;
             right: 20px;
             display: flex;
             flex-direction: column;
             align-items: flex-end;
-            gap: 15px;
-            z-index: 100;
+            gap: 12px;
+            z-index: 1000;
         }
 
-        /* Instagram Handle Styling */
-        .insta-badge {
-            background: white;
-            padding: 10px 20px;
-            border-radius: 50px;
-            text-decoration: none;
-            color: #333;
-            font-size: 14px;
+        .credit-wrapper {
             display: flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
-        .insta-badge:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 4px;
         }
 
-        /* Print Button */
+        .made-by-text {
+            font-family: 'Poppins', sans-serif;
+            font-size: 11px;
+            color: #64748B;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-right: 4px;
+        }
+
         .print-btn {
             background: #2563EB;
             color: white;
             border: none;
-            padding: 15px 30px;
-            border-radius: 50px;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
             font-size: 16px;
-            font-weight: 600;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
-            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+            transition: all 0.2s ease;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
-        .print-btn:hover {
-            background: #1D4ED8;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+        .print-btn svg { width: 20px; height: 20px; }
+        .print-btn:hover { background: #1D4ED8; transform: translateY(-2px); box-shadow: 0 15px 30px rgba(37, 99, 235, 0.4); }
+
+        .insta-badge {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            color: white;
+            padding: 10px 16px;
+            border-radius: 30px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 10px 25px rgba(220, 39, 67, 0.3);
+            transition: all 0.2s ease;
         }
+        .insta-badge svg { width: 18px; height: 18px; }
+        .insta-badge:hover { transform: translateY(-2px) scale(1.05); box-shadow: 0 15px 30px rgba(220, 39, 67, 0.4); }
 
         /* Instruction overlay for screen */
         .screen-instruction {
@@ -800,7 +704,6 @@
         .screen-instruction b { color: var(--gold); font-weight: 500; }
 
         @media (max-width: 500px) {
-            .right-controls { top: auto; bottom: 20px; right: 20px; }
             .screen-instruction { display: none !important; }
             body { padding: 20px 10px; }
         }
@@ -808,7 +711,6 @@
 </head>
 <body>
 
-    <!-- SVG Gradients -->
     <svg width="0" height="0" style="position: absolute;">
         <defs>
             <linearGradient id="insta-gradient" x1="0%" y1="100%" x2="100%" y2="0%">
@@ -829,18 +731,7 @@
         Click text to edit as you wish.
     </div>
 
-    <!-- Global UI Elements -->
-    <div class="right-controls">
-        <a href="https://instagram.com/itz__p.k.__" target="_blank" class="insta-badge">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #E1306C;"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-            <span>Made by <strong>@itz__p.k.__</strong></span>
-        </a>
-        
-        <button class="print-btn" onclick="window.print()">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
-            Print A4 Page
-        </button>
-    </div>
+    </button>
 
     <div class="workspace-container">
         
