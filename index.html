@@ -870,6 +870,36 @@
         }
         .font-btn:hover { background: #334155; }
         .font-divider { width: 1px; height: 16px; background: #475569; }
+        .font-select {
+            background: transparent;
+            color: #F8FAFC;
+            border: none;
+            padding: 4px 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 13px;
+            cursor: pointer;
+            outline: none;
+        }
+        .font-select option { background: #1E293B; color: #F8FAFC; }
+        .color-picker-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .color-picker-wrapper:hover { background: #334155; }
+        .color-input {
+            position: absolute;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
         @media print { .font-toolbar { display: none !important; } }
 
         /* --- FLOATING ACTION BUTTONS (Print & Credits) --- */
@@ -1159,9 +1189,30 @@
 
     <!-- Font Size Context Toolbar -->
     <div class="font-toolbar" id="fontToolbar" onmousedown="event.preventDefault()">
-        <button class="font-btn" onclick="adjustFontSize(-0.1)" title="Decrease Font Size">A-</button>
+        <select class="font-select" id="fontFamilySelect" onchange="changeFontFamily(this.value)" title="Font Style">
+            <option value="">Default Font</option>
+            <option value="'Cinzel', serif">Cinzel</option>
+            <option value="'Playfair Display', serif">Playfair Display</option>
+            <option value="'Poppins', sans-serif">Poppins</option>
+            <option value="'Inter', sans-serif">Inter</option>
+            <option value="'Times New Roman', serif">Times New Roman</option>
+            <option value="'Arial', sans-serif">Arial</option>
+            <option value="'Courier New', monospace">Courier</option>
+        </select>
         <div class="font-divider"></div>
+        <button class="font-btn" onclick="adjustFontSize(-0.1)" title="Decrease Font Size">A-</button>
         <button class="font-btn" onclick="adjustFontSize(0.1)" title="Increase Font Size">A+</button>
+        <div class="font-divider"></div>
+        <div class="color-picker-wrapper" title="Text Color">
+            <span style="color: #A1A1AA; font-weight: bold;">A</span>
+            <input type="color" class="color-input" id="textColorPicker" onchange="changeTextColor(this.value)">
+        </div>
+        <div class="color-picker-wrapper" title="Background Highlight">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#A1A1AA" stroke-width="2"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path><circle cx="11" cy="11" r="2"></circle></svg>
+            <input type="color" class="color-input" id="bgColorPicker" onchange="changeBgColor(this.value)" value="#FFFF00">
+        </div>
+        <div class="font-divider"></div>
+        <button class="font-btn" onclick="resetFormatting()" title="Reset Formatting">⟲</button>
     </div>
 
     <!-- Hidden File Input for Logo -->
@@ -1237,6 +1288,10 @@
                 activeEditable = e.target;
                 updateToolbarPosition();
                 fontToolbar.classList.add('visible');
+                
+                // Sync Font Select UI
+                const currentFont = activeEditable.style.fontFamily;
+                document.getElementById('fontFamilySelect').value = currentFont ? currentFont : "";
             });
 
             element.addEventListener('blur', (e) => {
@@ -1255,14 +1310,39 @@
 
         function adjustFontSize(delta) {
             if (!activeEditable) return;
-            
             let currentScale = parseFloat(activeEditable.style.getPropertyValue('--font-scale')) || 1;
             let newScale = currentScale + delta;
-            
-            // Clamp between 0.5 (50%) and 2.0 (200%)
             newScale = Math.max(0.5, Math.min(2.0, newScale));
-            
             activeEditable.style.setProperty('--font-scale', newScale);
+            updateToolbarPosition();
+        }
+
+        function changeFontFamily(font) {
+            if (!activeEditable) return;
+            activeEditable.style.fontFamily = font;
+            activeEditable.focus();
+        }
+
+        function changeTextColor(color) {
+            if (!activeEditable) return;
+            activeEditable.style.color = color;
+            activeEditable.focus();
+        }
+
+        function changeBgColor(color) {
+            if (!activeEditable) return;
+            activeEditable.style.backgroundColor = color;
+            activeEditable.focus();
+        }
+
+        function resetFormatting() {
+            if (!activeEditable) return;
+            activeEditable.style.removeProperty('--font-scale');
+            activeEditable.style.removeProperty('font-family');
+            activeEditable.style.removeProperty('color');
+            activeEditable.style.removeProperty('background-color');
+            document.getElementById('fontFamilySelect').value = "";
+            activeEditable.focus();
             updateToolbarPosition();
         }
     </script>
