@@ -292,8 +292,12 @@
         }
 
         .header { text-align: center; width: 100%; display: flex; flex-direction: column; align-items: center; }
-        .emblem { margin-bottom: 2.5cqw; color: var(--primary); }
-        .emblem svg { width: 7cqw; height: 7cqw; }
+        .emblem { 
+            margin-bottom: 2.5cqw; color: var(--primary); cursor: pointer; 
+            transition: transform 0.2s ease, opacity 0.2s ease; display: flex; justify-content: center; align-items: center;
+        }
+        @media screen { .emblem:hover { transform: scale(1.05); opacity: 0.8; } }
+        .emblem svg, .emblem img { width: 7cqw; height: 7cqw; object-fit: contain; }
 
         .college-name {
             font-family: var(--font-heading); font-size: 4.3cqw; font-weight: 700;
@@ -459,7 +463,7 @@
         .theme-cyber .college-name { color: #FFFFFF; text-align: left; font-size: 3.5cqw; letter-spacing: -1px; margin-bottom: 0.5cqw; }
         .theme-cyber .course-name, .theme-cyber .session-year { color: var(--primary); text-align: left; font-size: 2cqw; margin-bottom: 1cqw; }
         .theme-cyber .emblem { color: #FFFFFF; align-self: flex-start; margin-bottom: 1.5cqw; }
-        .theme-cyber .emblem svg { width: 5cqw; height: 5cqw; }
+        .theme-cyber .emblem svg, .theme-cyber .emblem img { width: 5cqw; height: 5cqw; }
         .theme-cyber .assignment-title { 
             text-align: right; margin-top: 4cqw; font-size: 7cqw; letter-spacing: -2px; font-weight: 800; color: var(--primary); text-shadow: none; margin-bottom: 2cqw;
         }
@@ -492,7 +496,7 @@
         .theme-botanical .corner { display: none !important; }
         .theme-botanical .watermark { display: none !important; }
         .theme-botanical .content-wrapper { padding: 12cqw 10cqw; }
-        .theme-botanical .emblem svg { stroke: var(--text-main); width: 8cqw; height: 8cqw; margin-bottom: 1cqw; }
+        .theme-botanical .emblem svg, .theme-botanical .emblem img { stroke: var(--text-main); width: 8cqw; height: 8cqw; margin-bottom: 1cqw; }
         .theme-botanical .college-name { font-style: italic; text-transform: capitalize; font-size: 4cqw; margin-top: 1cqw; }
         .theme-botanical .course-name { font-size: 2.5cqw; }
         .theme-botanical .session-year { font-size: 1.6cqw; margin-bottom: 2cqw; }
@@ -622,6 +626,7 @@
                 <ul class="instruction-list">
                     <li><b>Click to Edit:</b> Click on any text inside the page to type your custom information directly.</li>
                     <li><b>Leave Blanks:</b> If you want to keep fields blank, delete the text. The placeholder text will hide automatically on print.</li>
+                    <li><b>Custom Logo:</b> Click on the central logo at the top to upload your own college or school logo image.</li>
                     <li><b>PDF Generation:</b> Click the floating gold <b>Save as PDF</b> button on the bottom right.</li>
                     <li><b>Print Settings:</b> In the print window, set paper size as <b>A4</b>, and check the <b>Background Graphics</b> option.</li>
                 </ul>
@@ -632,6 +637,7 @@
                 <ul class="instruction-list">
                     <li><b>बदलने के लिए क्लिक करें:</b> पेज पर किसी भी जानकारी पर क्लिक करके सीधे अपनी जानकारी टाइप करें।</li>
                     <li><b>खाली छोड़ें:</b> यदि आप किसी फील्ड को खाली रखना चाहते हैं, तो उसे डिलीट कर दें। प्रिंट करते समय खाली स्थान साफ दिखाई देगा।</li>
+                    <li><b>कस्टम लोगो:</b> अपना खुद का कॉलेज या स्कूल का लोगो अपलोड करने के लिए सबसे ऊपर वाले लोगो पर क्लिक करें।</li>
                     <li><b>PDF सेव करें:</b> नीचे दाईं ओर दिए गए <b>Save as PDF</b> बटन पर क्लिक करें।</li>
                     <li><b>प्रिंट सेटिंग्स:</b> प्रिंट विंडो में पेपर साइज <b>A4</b> रखें, और <b>Background Graphics</b> विकल्प को चालू (Checked) करें।</li>
                 </ul>
@@ -654,7 +660,7 @@
             <div class="content-wrapper">
                 
                 <div class="header">
-                    <div class="emblem">
+                    <div class="emblem" id="emblemContainer" title="Click to upload custom logo">
                         <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
                             <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
@@ -720,6 +726,9 @@
         <span class="insta-text">pixncraftstudio</span>
     </a>
 
+    <!-- Hidden File Input for Logo -->
+    <input type="file" id="logoUpload" accept="image/png, image/jpeg, image/svg+xml, image/webp" style="display: none;">
+
     <!-- Application Logic -->
     <script>
         // Prevent multi-line breaks in single-line fields
@@ -750,6 +759,27 @@
                 btn.classList.add('active');
             });
         });
+
+        // Logo Upload Logic
+        const emblemContainer = document.getElementById('emblemContainer');
+        const logoUpload = document.getElementById('logoUpload');
+
+        if (emblemContainer && logoUpload) {
+            emblemContainer.addEventListener('click', () => {
+                logoUpload.click();
+            });
+
+            logoUpload.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        emblemContainer.innerHTML = `<img src="${event.target.result}" alt="Custom Logo">`;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
     </script>
 </body>
 </html>
