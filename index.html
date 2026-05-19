@@ -286,12 +286,6 @@
         .corner-bl { bottom: -2px; left: -2px; border-right: none; border-top: none; }
         .corner-br { bottom: -2px; right: -2px; border-left: none; border-top: none; }
 
-        .watermark {
-            position: absolute; top: 50%; left: 50%;
-            transform: translate(-50%, -50%) rotate(-45deg);
-            font-size: 16cqw; font-family: var(--font-heading); color: var(--text-main); opacity: 0.03;
-            font-weight: 700; letter-spacing: 3.5cqw; z-index: 1; pointer-events: none; user-select: none; white-space: nowrap;
-        }
 
         .content-wrapper {
             position: relative; z-index: 20; width: 100%; height: 100%;
@@ -387,7 +381,6 @@
         .theme-minimal .inner-border, .theme-minimal .corner { display: none; }
         .theme-minimal .separator::before, .theme-minimal .separator::after { background: var(--primary); height: 2px; }
         .theme-minimal .separator span { display: none; }
-        .theme-minimal .watermark { opacity: 0.05; font-weight: 900; }
         .theme-minimal .assignment-title { text-shadow: none; letter-spacing: 1.5cqw; }
 
         .theme-crimson {
@@ -398,7 +391,6 @@
         .theme-crimson .corner { width: 4cqw; height: 4cqw; border: 2px solid var(--primary); }
         .theme-crimson .assignment-title { border-top: 1px solid var(--primary); border-bottom: 1px solid var(--primary); padding: 1cqw 0; text-shadow: none; }
         .theme-crimson .separator span { background-color: var(--text-main); }
-        .theme-crimson .watermark { color: var(--primary); opacity: 0.04; }
 
         .theme-emerald {
             --primary: #065F46; --text-main: #022C22; --text-muted: #064E3B; --page-bg: #F0FDF4;
@@ -407,7 +399,6 @@
         .theme-emerald .inner-border { border: 1.5px solid var(--text-main); border-radius: 5cqw; top: 1.5cqw; bottom: 1.5cqw; left: 1.5cqw; right: 1.5cqw; }
         .theme-emerald .corner { display: none; }
         .theme-emerald .separator span { border-radius: 50%; transform: none; width: 1.5cqw; height: 1.5cqw; }
-        .theme-emerald .watermark { opacity: 0.03; color: var(--primary); }
 
         .theme-postal {
             --primary: #D32F2F; --text-main: #1A237E; --text-muted: #3949AB; --page-bg: #FDFBF7;
@@ -432,7 +423,6 @@
         .theme-deco .corner-tr { top: -1.5cqw; right: -1.5cqw; }
         .theme-deco .corner-bl { bottom: -1.5cqw; left: -1.5cqw; }
         .theme-deco .corner-br { bottom: -1.5cqw; right: -1.5cqw; }
-        .theme-deco .watermark { opacity: 0.05; color: var(--primary); }
 
         .theme-neon {
             --primary: #00F0FF; --text-main: #FFFFFF; --text-muted: #B0BEC5; --page-bg: #0B0F19;
@@ -803,7 +793,6 @@
 
         <!-- Main A4 Paper (Only this gets printed) -->
         <div class="a4-page theme-classic">
-            <div class="watermark">ASSIGNMENT</div>
             
             <div class="outer-border">
                 <div class="inner-border">
