@@ -8,7 +8,7 @@
     <!-- Premium Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Poppins:wght@300;400;500;600;800;900&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -157,34 +157,48 @@
 
         /* Theme Selector UI */
         .theme-selector {
-            display: flex;
-            gap: 12px;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 8px;
             margin-top: 5px;
-            flex-wrap: wrap;
         }
         .theme-btn {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 8px;
             border: 2px solid transparent;
             cursor: pointer;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             transition: transform 0.2s, border-color 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+        .theme-btn::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            right: 2px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.8);
         }
         .theme-btn:hover {
-            transform: scale(1.15);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
         }
         .theme-btn.active {
             border-color: var(--black);
             box-shadow: 0 0 0 2px white, 0 0 0 4px var(--black);
+            transform: scale(1.05);
         }
 
         /* --------------------------------------------------------
-           A4 PAGE THEME VARIABLES
+           A4 PAGE FLUID CONTAINER
            -------------------------------------------------------- */
         
         .a4-page {
-            /* Default: Classic Luxury */
+            /* Variables populated by default theme */
             --primary: #C5A059;
             --text-main: #0F172A;
             --text-muted: #334155;
@@ -205,64 +219,8 @@
             overflow: hidden;
             flex-shrink: 0;
             container-type: inline-size;
-            transition: all 0.4s ease;
+            transition: background-color 0.4s ease;
         }
-
-        /* Theme: Minimal Modern */
-        .a4-page.theme-minimal {
-            --primary: #000000;
-            --text-main: #111111;
-            --text-muted: #555555;
-            --font-heading: 'Poppins', sans-serif;
-            --font-body: 'Poppins', sans-serif;
-            --page-bg: #FFFFFF;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
-        }
-        .a4-page.theme-minimal .outer-border { border: 2.5px solid var(--text-main); }
-        .a4-page.theme-minimal .inner-border { display: none; }
-        .a4-page.theme-minimal .corner { display: none; }
-        .a4-page.theme-minimal .separator::before, .a4-page.theme-minimal .separator::after { background: var(--text-main); height: 2px; }
-        .a4-page.theme-minimal .separator span { background-color: var(--text-main); border-radius: 50%; }
-
-        /* Theme: Royal Blue */
-        .a4-page.theme-royal {
-            --primary: #1D4ED8;
-            --text-main: #0F172A;
-            --text-muted: #1E293B;
-            --font-heading: 'Cinzel', serif;
-            --font-body: 'Playfair Display', serif;
-            --page-bg: #F8FAFC;
-        }
-        .a4-page.theme-royal .outer-border { border: 4px double var(--primary); }
-        .a4-page.theme-royal .inner-border { border: 1.5px solid var(--primary); }
-        .a4-page.theme-royal .corner { border-radius: 50%; }
-
-        /* Theme: Crimson Academic */
-        .a4-page.theme-crimson {
-            --primary: #991B1B;
-            --text-main: #450A0A;
-            --text-muted: #7F1D1D;
-            --font-heading: 'Playfair Display', serif;
-            --font-body: 'Playfair Display', serif;
-            --page-bg: #FEF2F2;
-        }
-        .a4-page.theme-crimson .outer-border { border: 2.5px dashed var(--primary); }
-        .a4-page.theme-crimson .inner-border { border: 1.5px solid var(--text-main); }
-        .a4-page.theme-crimson .corner { display: none; }
-
-        /* Theme: Emerald Scholar */
-        .a4-page.theme-emerald {
-            --primary: #047857;
-            --text-main: #022C22;
-            --text-muted: #064E3B;
-            --font-heading: 'Cinzel', serif;
-            --font-body: 'Poppins', sans-serif;
-            --page-bg: #F0FDF4;
-        }
-        .a4-page.theme-emerald .outer-border { border: 3px solid var(--primary); }
-        .a4-page.theme-emerald .inner-border { border: 1px dashed var(--text-main); }
-        .a4-page.theme-emerald .corner { width: 4cqw; height: 4cqw; border-width: 2.5px; }
-
 
         @media print {
             @page {
@@ -295,37 +253,25 @@
         }
 
         /* --------------------------------------------------------
-           Fluid Design Tokens Using Container Query Units (cqw)
+           DEFAULT CSS (Theme 1: Classic Luxury)
            -------------------------------------------------------- */
         
         .outer-border {
             position: absolute;
-            top: 5.7cqw;
-            bottom: 5.7cqw;
-            left: 5.7cqw;
-            right: 5.7cqw;
+            top: 5.7cqw; bottom: 5.7cqw; left: 5.7cqw; right: 5.7cqw;
             border: 1px solid var(--primary);
-            pointer-events: none;
-            z-index: 10;
-            transition: all 0.3s ease;
+            pointer-events: none; z-index: 10;
         }
 
         .inner-border {
             position: absolute;
-            top: 2.85cqw;
-            bottom: 2.85cqw;
-            left: 2.85cqw;
-            right: 2.85cqw;
+            top: 2.85cqw; bottom: 2.85cqw; left: 2.85cqw; right: 2.85cqw;
             border: 1.5px solid var(--text-main);
-            transition: all 0.3s ease;
         }
 
         .corner {
-            position: absolute;
-            width: 3.5cqw;
-            height: 3.5cqw;
+            position: absolute; width: 3.5cqw; height: 3.5cqw;
             border: 1.5px solid var(--primary);
-            transition: all 0.3s ease;
         }
         .corner-tl { top: -2px; left: -2px; border-right: none; border-bottom: none; }
         .corner-tr { top: -2px; right: -2px; border-left: none; border-bottom: none; }
@@ -333,230 +279,227 @@
         .corner-br { bottom: -2px; right: -2px; border-left: none; border-top: none; }
 
         .watermark {
-            position: absolute;
-            top: 50%;
-            left: 50%;
+            position: absolute; top: 50%; left: 50%;
             transform: translate(-50%, -50%) rotate(-45deg);
-            font-size: 16cqw;
-            font-family: var(--font-heading);
-            color: var(--text-main);
-            opacity: 0.03;
-            font-weight: 700;
-            letter-spacing: 3.5cqw;
-            z-index: 1;
-            pointer-events: none;
-            user-select: none;
-            white-space: nowrap;
+            font-size: 16cqw; font-family: var(--font-heading); color: var(--text-main); opacity: 0.03;
+            font-weight: 700; letter-spacing: 3.5cqw; z-index: 1; pointer-events: none; user-select: none; white-space: nowrap;
         }
 
         .content-wrapper {
-            position: relative;
-            z-index: 20;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            position: relative; z-index: 20; width: 100%; height: 100%;
+            display: flex; flex-direction: column; justify-content: space-between;
             padding: 16.6cqw 11.9cqw 14.3cqw 11.9cqw;
         }
 
-        .header {
-            text-align: center;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .emblem {
-            margin-bottom: 2.5cqw;
-            color: var(--primary);
-        }
-        .emblem svg {
-            width: 7cqw;
-            height: 7cqw;
-        }
+        .header { text-align: center; width: 100%; display: flex; flex-direction: column; align-items: center; }
+        .emblem { margin-bottom: 2.5cqw; color: var(--primary); }
+        .emblem svg { width: 7cqw; height: 7cqw; }
 
         .college-name {
-            font-family: var(--font-heading);
-            font-size: 4.3cqw;
-            font-weight: 700;
-            color: var(--text-main);
-            letter-spacing: 0.3cqw;
-            margin-bottom: 1.2cqw;
-            text-transform: uppercase;
-            width: 100%;
-            line-height: 1.3;
+            font-family: var(--font-heading); font-size: 4.3cqw; font-weight: 700;
+            color: var(--text-main); letter-spacing: 0.3cqw; margin-bottom: 1.2cqw;
+            text-transform: uppercase; width: 100%; line-height: 1.3;
         }
 
         .course-name {
-            font-family: var(--font-body);
-            font-size: 2.8cqw;
-            font-style: italic;
-            color: var(--text-muted);
-            margin-bottom: 0.8cqw;
-            width: 100%;
+            font-family: var(--font-body); font-size: 2.8cqw; font-style: italic;
+            color: var(--text-muted); margin-bottom: 0.8cqw; width: 100%;
         }
 
         .session-year {
-            font-family: var(--font-ui);
-            font-size: 1.9cqw;
-            font-weight: 500;
-            color: var(--primary);
-            letter-spacing: 0.4cqw;
-            text-transform: uppercase;
-            margin-bottom: 4cqw;
-            width: 100%;
+            font-family: var(--font-ui); font-size: 1.9cqw; font-weight: 500;
+            color: var(--primary); letter-spacing: 0.4cqw; text-transform: uppercase;
+            margin-bottom: 4cqw; width: 100%;
         }
 
-        .separator {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            margin: 2cqw 0;
-        }
-        .separator::before, .separator::after {
-            content: '';
-            width: 15cqw;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--primary), transparent);
-        }
-        .separator span {
-            display: inline-block;
-            width: 1cqw;
-            height: 1cqw;
-            background-color: var(--primary);
-            transform: rotate(45deg);
-            margin: 0 2cqw;
-        }
+        .separator { display: flex; align-items: center; justify-content: center; width: 100%; margin: 2cqw 0; }
+        .separator::before, .separator::after { content: ''; width: 15cqw; height: 1px; background: linear-gradient(90deg, transparent, var(--primary), transparent); }
+        .separator span { display: inline-block; width: 1cqw; height: 1cqw; background-color: var(--primary); transform: rotate(45deg); margin: 0 2cqw; }
 
         .assignment-title {
-            font-family: var(--font-heading);
-            font-size: 7.3cqw;
-            font-weight: 700;
-            color: var(--text-main);
-            letter-spacing: 2.2cqw;
-            text-transform: uppercase;
-            text-align: center;
-            margin: 4.5cqw 0;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
+            font-family: var(--font-heading); font-size: 7.3cqw; font-weight: 700;
+            color: var(--text-main); letter-spacing: 2.2cqw; text-transform: uppercase;
+            text-align: center; margin: 4.5cqw 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
         }
 
-        .details-section {
-            width: 90%;
-            margin: 0 auto 3cqw auto;
-            display: flex;
-            flex-direction: column;
-            gap: 3.5cqw;
-            flex-grow: 1;
-            justify-content: center;
-        }
-
-        .field-row {
-            display: flex;
-            align-items: flex-end;
-            width: 100%;
-            transition: transform 0.3s ease;
-        }
-        
-        @media screen {
-            .field-row:hover {
-                transform: translateX(1cqw);
-            }
-            .field-row:hover .field-value {
-                border-bottom-color: var(--primary);
-            }
-        }
+        .details-section { width: 90%; margin: 0 auto 3cqw auto; display: flex; flex-direction: column; gap: 3.5cqw; flex-grow: 1; justify-content: center; }
+        .field-row { display: flex; align-items: flex-end; width: 100%; transition: transform 0.3s ease; }
+        @media screen { .field-row:hover { transform: translateX(1cqw); } .field-row:hover .field-value { border-bottom-color: var(--primary); } }
 
         .field-label {
-            font-family: var(--font-heading);
-            font-size: 2cqw;
-            font-weight: 600;
-            color: var(--text-main);
-            width: 28cqw;
-            flex-shrink: 0;
-            text-transform: uppercase;
-            letter-spacing: 0.2cqw;
+            font-family: var(--font-heading); font-size: 2cqw; font-weight: 600;
+            color: var(--text-main); width: 28cqw; flex-shrink: 0; text-transform: uppercase; letter-spacing: 0.2cqw;
         }
 
         .field-value {
-            flex-grow: 1;
-            font-family: var(--font-body);
-            font-size: 2.8cqw;
-            color: var(--text-main);
-            border-bottom: 1px dashed var(--light-grey);
-            padding-bottom: 0.5cqw;
-            padding-left: 2cqw;
-            min-height: 4.2cqw;
-            transition: border-color 0.3s;
+            flex-grow: 1; font-family: var(--font-body); font-size: 2.8cqw;
+            color: var(--text-main); border-bottom: 1px dashed var(--light-grey);
+            padding-bottom: 0.5cqw; padding-left: 2cqw; min-height: 4.2cqw; transition: border-color 0.3s;
+        }
+
+        .footer { width: 100%; display: flex; justify-content: space-between; align-items: flex-end; padding: 0 5cqw; }
+        .signature-block { display: flex; flex-direction: column; align-items: center; width: 30cqw; }
+        .signature-name {
+            font-family: var(--font-body); font-size: 2.5cqw; font-weight: 500;
+            color: var(--text-main); margin-bottom: 1cqw; text-align: center; width: 100%; min-height: 3.8cqw;
+        }
+        .signature-line { width: 100%; height: 1px; background-color: var(--text-main); margin-bottom: 1.2cqw; }
+        .signature-label {
+            font-family: var(--font-heading); font-size: 1.6cqw; font-weight: 600;
+            color: var(--text-main); text-transform: uppercase; letter-spacing: 0.2cqw;
         }
 
         /* Editable Elements Global */
-        [contenteditable="true"] {
-            outline: none;
-            border-bottom: 1px dashed transparent;
-            transition: all 0.3s ease;
-        }
-
-        [contenteditable="true"]:empty:not(:focus)::before {
-            content: attr(placeholder);
-            color: var(--light-grey);
-            font-style: italic;
-        }
-
+        [contenteditable="true"] { outline: none; border-bottom: 1px dashed transparent; transition: all 0.3s ease; }
+        [contenteditable="true"]:empty:not(:focus)::before { content: attr(placeholder); color: var(--light-grey); font-style: italic; }
         @media screen {
-            [contenteditable="true"]:hover {
-                border-bottom: 1px dashed var(--light-grey);
-                background-color: rgba(0, 0, 0, 0.02);
-            }
-            [contenteditable="true"]:focus {
-                border-bottom: 1px solid var(--primary);
-                background-color: rgba(0, 0, 0, 0.04);
-            }
+            [contenteditable="true"]:hover { border-bottom: 1px dashed var(--light-grey); background-color: rgba(0, 0, 0, 0.02); }
+            [contenteditable="true"]:focus { border-bottom: 1px solid var(--primary); background-color: rgba(0, 0, 0, 0.04); }
         }
 
-        .footer {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            padding: 0 5cqw;
+        /* --------------------------------------------------------
+           THEME 2: BAUHAUS STRUCTURE (Grid based layout)
+           -------------------------------------------------------- */
+        .a4-page.theme-bauhaus {
+            --primary: #E63946; --text-main: #000000; --text-muted: #444444; --page-bg: #FFFFFF;
+            --font-heading: 'Poppins', sans-serif; --font-body: 'Poppins', sans-serif;
         }
+        .theme-bauhaus .outer-border, .theme-bauhaus .inner-border, .theme-bauhaus .corner, .theme-bauhaus .watermark, .theme-bauhaus .separator, .theme-bauhaus .emblem {
+            display: none !important;
+        }
+        .theme-bauhaus .content-wrapper {
+            padding: 0 !important; display: grid;
+            grid-template-columns: 1fr 1fr; grid-template-rows: auto auto 1fr auto; height: 100%;
+        }
+        .theme-bauhaus .header {
+            grid-column: 1 / 3; display: flex; flex-direction: row; flex-wrap: wrap; align-items: flex-end;
+            border-bottom: 1.5cqw solid var(--text-main); padding: 10cqw 10cqw 4cqw 10cqw; text-align: left;
+        }
+        .theme-bauhaus .college-name {
+            width: 100%; text-align: left; font-size: 5cqw; font-weight: 900; letter-spacing: -1px; margin-bottom: 2cqw;
+        }
+        .theme-bauhaus .course-name, .theme-bauhaus .session-year {
+            width: auto; text-align: left; margin-right: 4cqw; font-size: 2.5cqw; margin-bottom: 0; font-style: normal; font-weight: 600;
+        }
+        .theme-bauhaus .assignment-title {
+            grid-column: 1 / 3; text-align: left; font-size: 11cqw; padding: 4cqw 10cqw; margin: 0;
+            border-bottom: 0.5cqw solid var(--text-main); letter-spacing: -3px; font-weight: 900; text-shadow: none;
+        }
+        .theme-bauhaus .details-section {
+            grid-column: 1 / 2; grid-row: 3 / 5; padding: 8cqw 10cqw; margin: 0;
+            border-right: 0.5cqw solid var(--text-main); gap: 4cqw; justify-content: flex-start;
+        }
+        .theme-bauhaus .field-row { flex-direction: column; align-items: flex-start; }
+        .theme-bauhaus .field-label { width: 100%; color: var(--primary); font-size: 2.5cqw; margin-bottom: 1cqw;}
+        .theme-bauhaus .field-value { width: 100%; border-bottom: none; padding-left: 0; font-size: 3.5cqw; font-weight: 700; }
+        .theme-bauhaus .footer {
+            grid-column: 2 / 3; grid-row: 3 / 5; flex-direction: column; justify-content: flex-end; align-items: flex-start;
+            padding: 10cqw; gap: 8cqw; border-top: none;
+        }
+        .theme-bauhaus .signature-block { width: 100%; align-items: flex-start; }
+        .theme-bauhaus .signature-name { text-align: left; font-weight: 800; }
 
-        .signature-block {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 30cqw;
+        /* --------------------------------------------------------
+           THEME 3: EDITORIAL MAGAZINE (Vertical Text Layout)
+           -------------------------------------------------------- */
+        .a4-page.theme-editorial {
+            --primary: #8a7968; --text-main: #222222; --text-muted: #666666; --page-bg: #F4F1EA;
+            --font-heading: 'Playfair Display', serif; --font-body: 'Poppins', sans-serif;
         }
+        .theme-editorial .outer-border, .theme-editorial .inner-border, .theme-editorial .corner, .theme-editorial .watermark, .theme-editorial .separator, .theme-editorial .emblem {
+            display: none !important;
+        }
+        .theme-editorial .content-wrapper {
+            padding: 12cqw; display: grid; gap: 6cqw;
+            grid-template-columns: 8cqw 1fr; grid-template-rows: auto 1fr auto;
+        }
+        .theme-editorial .header {
+            grid-column: 1 / 2; grid-row: 1 / 4; flex-direction: column; align-items: center;
+            border-right: 2px solid var(--primary); padding-right: 4cqw; width: auto;
+        }
+        .theme-editorial .college-name {
+            writing-mode: vertical-rl; transform: scale(-1); font-size: 4cqw; letter-spacing: 0.5cqw; margin: 0; width: auto; line-height: 1;
+        }
+        .theme-editorial .course-name, .theme-editorial .session-year {
+            writing-mode: vertical-rl; transform: scale(-1); margin-top: 5cqw; width: auto; margin-bottom: 0;
+        }
+        .theme-editorial .assignment-title {
+            grid-column: 2 / 3; text-align: right; font-size: 11cqw; font-weight: 400; font-style: italic; color: var(--primary);
+            margin: 0; padding-bottom: 6cqw; border-bottom: 1px solid var(--text-main); text-shadow: none;
+        }
+        .theme-editorial .details-section {
+            grid-column: 2 / 3; margin: 0; padding-top: 6cqw; justify-content: flex-start;
+        }
+        .theme-editorial .field-row { border-bottom: 1px solid var(--text-muted); padding-bottom: 1cqw; }
+        .theme-editorial .field-label { width: auto; padding-right: 4cqw; font-size: 1.8cqw; }
+        .theme-editorial .field-value { border-bottom: none; text-align: right; font-size: 3cqw; }
+        .theme-editorial .footer {
+            grid-column: 2 / 3; padding: 4cqw 0 0 0; border-top: 1px solid var(--text-main);
+        }
+        .theme-editorial .signature-name { font-style: italic; font-weight: 400; }
 
-        .signature-name {
-            font-family: var(--font-body);
-            font-size: 2.5cqw;
-            font-weight: 500;
-            color: var(--text-main);
-            margin-bottom: 1cqw;
-            text-align: center;
-            width: 100%;
-            min-height: 3.8cqw;
+        /* --------------------------------------------------------
+           THEME 4: MODERN CYBER (Geometric Shapes & High Contrast)
+           -------------------------------------------------------- */
+        .a4-page.theme-cyber {
+            --primary: #3B82F6; --text-main: #0F172A; --text-muted: #64748B; --page-bg: #FFFFFF;
+            --font-heading: 'Poppins', sans-serif; --font-body: 'Poppins', sans-serif;
         }
+        .theme-cyber::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 45cqw;
+            background: var(--text-main); clip-path: polygon(0 0, 100% 0, 100% 100%, 0 65%); z-index: 0;
+        }
+        .theme-cyber .outer-border, .theme-cyber .inner-border, .theme-cyber .corner, .theme-cyber .separator, .theme-cyber .watermark { 
+            display: none !important; 
+        }
+        .theme-cyber .content-wrapper { padding: 10cqw; }
+        .theme-cyber .header { align-items: flex-start; text-align: left; }
+        .theme-cyber .college-name { color: #FFFFFF; text-align: left; font-size: 4.5cqw; letter-spacing: -1px; }
+        .theme-cyber .course-name, .theme-cyber .session-year { color: var(--primary); text-align: left; }
+        .theme-cyber .emblem { color: #FFFFFF; align-self: flex-start; }
+        .theme-cyber .assignment-title { 
+            text-align: right; margin-top: 15cqw; font-size: 9cqw; letter-spacing: -2px; font-weight: 800; color: var(--primary); text-shadow: none;
+        }
+        .theme-cyber .details-section { 
+            margin: 4cqw 0 0 0; background: #F8FAFC; padding: 8cqw; border-left: 6px solid var(--primary); border-radius: 12px; 
+        }
+        .theme-cyber .field-value { border-bottom: 2px solid var(--text-main); }
+        .theme-cyber .footer { 
+            background: var(--text-main); color: #FFFFFF; padding: 6cqw; border-radius: 12px; margin-top: auto; 
+        }
+        .theme-cyber .signature-name, .theme-cyber .signature-label { color: #FFFFFF; }
+        .theme-cyber .signature-line { background-color: var(--primary); height: 2px; border: none; }
 
-        .signature-line {
-            width: 100%;
-            height: 1px;
-            background-color: var(--text-main);
-            margin-bottom: 1.2cqw;
+        /* --------------------------------------------------------
+           THEME 5: ELEGANT BOTANICAL (Rounded Organic Feel)
+           -------------------------------------------------------- */
+        .a4-page.theme-botanical {
+            --primary: #22C55E; --text-main: #14532D; --text-muted: #166534; --page-bg: #F0FDF4;
+            --font-heading: 'Playfair Display', serif; --font-body: 'Playfair Display', serif;
         }
+        .theme-botanical .outer-border { 
+            border: 1.5px solid var(--text-main); border-radius: 40px; top: 4cqw; bottom: 4cqw; left: 4cqw; right: 4cqw; 
+        }
+        .theme-botanical .inner-border { 
+            border: 1px solid var(--primary); border-radius: 30px; top: 6cqw; bottom: 6cqw; left: 6cqw; right: 6cqw; 
+        }
+        .theme-botanical .corner { display: none !important; }
+        .theme-botanical .watermark { display: none !important; }
+        .theme-botanical .emblem svg { stroke: var(--text-main); width: 10cqw; height: 10cqw; }
+        .theme-botanical .college-name { font-style: italic; text-transform: capitalize; font-size: 5cqw; margin-top: 2cqw; }
+        .theme-botanical .assignment-title { 
+            font-weight: 400; letter-spacing: 1cqw; border-top: 1px solid var(--primary); border-bottom: 1px solid var(--primary); 
+            padding: 3cqw 0; margin: 6cqw 0; font-size: 6cqw; text-shadow: none;
+        }
+        .theme-botanical .details-section { gap: 3cqw; align-items: center; }
+        .theme-botanical .field-row { flex-direction: column; align-items: center; text-align: center; }
+        .theme-botanical .field-label { width: auto; font-size: 1.8cqw; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 1cqw;}
+        .theme-botanical .field-value { 
+            text-align: center; border-bottom: 1.5px dotted var(--text-main); padding-left: 0; min-height: 4cqw; width: 60%;
+        }
+        .theme-botanical .footer { padding: 0 10cqw; }
 
-        .signature-label {
-            font-family: var(--font-heading);
-            font-size: 1.6cqw;
-            font-weight: 600;
-            color: var(--text-main);
-            text-transform: uppercase;
-            letter-spacing: 0.2cqw;
-        }
+        /* -------------------------------------------------------- */
 
         /* Instagram Handle Styling */
         .insta-badge {
@@ -569,104 +512,41 @@
             font-weight: 500;
             transition: all 0.3s ease;
         }
-
-        .insta-badge:hover {
-            transform: translateY(-2px);
-            opacity: 0.9;
-        }
-
-        .made-by-text {
-            color: var(--dark-grey);
-            font-size: 12px;
-            font-weight: 400;
-        }
-
+        .insta-badge:hover { transform: translateY(-2px); opacity: 0.9; }
+        .made-by-text { color: var(--dark-grey); font-size: 12px; font-weight: 400; }
         .insta-text {
             background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 600;
-            letter-spacing: 0.5px;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            font-weight: 600; letter-spacing: 0.5px;
         }
-
-        .insta-icon {
-            stroke: url(#insta-gradient);
-        }
+        .insta-icon { stroke: url(#insta-gradient); }
 
         /* Instruction overlay for screen */
         .screen-instruction {
-            position: fixed;
-            top: 25px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: var(--black);
-            color: var(--white);
-            padding: 12px 25px;
-            border-radius: 30px;
-            font-size: 14px;
-            font-weight: 300;
-            letter-spacing: 1px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            z-index: 100;
-            pointer-events: none;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            position: fixed; top: 25px; left: 50%; transform: translateX(-50%);
+            background-color: var(--black); color: var(--white); padding: 12px 25px;
+            border-radius: 30px; font-size: 14px; font-weight: 300; letter-spacing: 1px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2); z-index: 100; pointer-events: none;
+            display: flex; align-items: center; gap: 10px;
         }
-        
-        .screen-instruction b {
-            color: var(--gold);
-            font-weight: 500;
-        }
+        .screen-instruction b { color: var(--gold); font-weight: 500; }
 
         /* Premium Floating Button */
         .print-btn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: var(--gold);
-            color: var(--black);
-            border: none;
-            padding: 16px 30px;
-            font-family: 'Poppins', sans-serif;
-            font-size: 15px;
-            font-weight: 600;
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0 10px 30px rgba(197, 160, 89, 0.4);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            z-index: 100;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            position: fixed; bottom: 30px; right: 30px; background-color: var(--gold);
+            color: var(--black); border: none; padding: 16px 30px; font-family: 'Poppins', sans-serif;
+            font-size: 15px; font-weight: 600; border-radius: 50px; cursor: pointer;
+            box-shadow: 0 10px 30px rgba(197, 160, 89, 0.4); display: flex; align-items: center; gap: 12px;
+            z-index: 100; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-transform: uppercase; letter-spacing: 1px;
         }
+        .print-btn:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(197, 160, 89, 0.5); background-color: #dcb66c; }
+        .print-btn:active { transform: translateY(-2px); }
 
-        .print-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(197, 160, 89, 0.5);
-            background-color: #dcb66c;
-        }
-
-        .print-btn:active {
-            transform: translateY(-2px);
-        }
-
-        /* Custom viewport adjustments for standard print button placement on tiny screens */
         @media (max-width: 500px) {
-            .print-btn {
-                bottom: 20px;
-                right: 20px;
-                padding: 12px 24px;
-                font-size: 13px;
-            }
-            .screen-instruction {
-                display: none !important; /* Hide tiny top instruction on mobile */
-            }
-            body {
-                padding: 20px 10px;
-            }
+            .print-btn { bottom: 20px; right: 20px; padding: 12px 24px; font-size: 13px; }
+            .screen-instruction { display: none !important; }
+            body { padding: 20px 10px; }
         }
     </style>
 </head>
@@ -693,7 +573,6 @@
         Click text to edit as you wish.
     </div>
 
-    <!-- Floating PDF Generator Button -->
     <button class="print-btn" onclick="window.print()">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="6 9 6 2 18 2 18 9"></polyline>
@@ -703,10 +582,9 @@
         Save as PDF / Print
     </button>
 
-    <!-- Workspace container holding instructions sidebar and the paper sheet -->
     <div class="workspace-container">
         
-        <!-- Left Sidebar: English & Hindi Instructions -->
+        <!-- Left Sidebar: Instructions & Theme Switcher -->
         <div class="instructions-panel">
             <h2>
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C5A059" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -718,13 +596,13 @@
             </h2>
             
             <div class="instruction-section">
-                <h3>Select Theme / थीम चुनें</h3>
+                <h3>Select Design / डिज़ाइन चुनें</h3>
                 <div class="theme-selector">
                     <button class="theme-btn active" data-theme="theme-classic" style="background: linear-gradient(135deg, #0F172A 50%, #C5A059 50%);" title="Classic Luxury"></button>
-                    <button class="theme-btn" data-theme="theme-minimal" style="background: linear-gradient(135deg, #111111 50%, #FFFFFF 50%);" title="Minimal Modern"></button>
-                    <button class="theme-btn" data-theme="theme-royal" style="background: linear-gradient(135deg, #0F172A 50%, #1D4ED8 50%);" title="Royal Blue"></button>
-                    <button class="theme-btn" data-theme="theme-crimson" style="background: linear-gradient(135deg, #450A0A 50%, #991B1B 50%);" title="Crimson Academic"></button>
-                    <button class="theme-btn" data-theme="theme-emerald" style="background: linear-gradient(135deg, #022C22 50%, #047857 50%);" title="Emerald Scholar"></button>
+                    <button class="theme-btn" data-theme="theme-bauhaus" style="background: linear-gradient(135deg, #000000 50%, #E63946 50%);" title="Bauhaus Structure"></button>
+                    <button class="theme-btn" data-theme="theme-editorial" style="background: linear-gradient(135deg, #222222 50%, #8a7968 50%);" title="Editorial Magazine"></button>
+                    <button class="theme-btn" data-theme="theme-cyber" style="background: linear-gradient(135deg, #0F172A 50%, #3B82F6 50%);" title="Modern Cyber"></button>
+                    <button class="theme-btn" data-theme="theme-botanical" style="background: linear-gradient(135deg, #14532D 50%, #22C55E 50%);" title="Elegant Botanical"></button>
                 </div>
             </div>
 
@@ -753,7 +631,6 @@
         <div class="a4-page theme-classic">
             <div class="watermark">ASSIGNMENT</div>
             
-            <!-- Double Border Design -->
             <div class="outer-border">
                 <div class="inner-border">
                     <div class="corner corner-tl"></div>
@@ -765,10 +642,8 @@
 
             <div class="content-wrapper">
                 
-                <!-- Top Header Section -->
                 <div class="header">
                     <div class="emblem">
-                        <!-- Changed stroke color to currentColor to adapt to themes -->
                         <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
                             <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
@@ -780,10 +655,8 @@
                     <div class="session-year" contenteditable="true" spellcheck="false" placeholder="Enter Session">Academic Session 2025 - 2026</div>
                 </div>
 
-                <!-- Big Title -->
                 <div class="assignment-title">Assignment</div>
 
-                <!-- Editable Fields -->
                 <div class="details-section">
                     <div class="field-row">
                         <div class="field-label">Subject</div>
@@ -807,7 +680,6 @@
                     </div>
                 </div>
 
-                <!-- Signatures -->
                 <div class="footer">
                     <div class="signature-block">
                         <div class="signature-name" contenteditable="true" spellcheck="false" placeholder="Recipient Name">Sr. Bhawar Lal Sir</div>
@@ -826,7 +698,7 @@
 
     </div>
 
-    <!-- Instagram Link (Pinned bottom-left on desktop, stacks on mobile. Outside print area) -->
+    <!-- Instagram Link -->
     <a href="https://instagram.com/pixncraftstudio" target="_blank" class="insta-badge">
         <span class="made-by-text">Made by:</span>
         <svg class="insta-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -849,7 +721,7 @@
             });
         });
 
-        // Theme Switching Logic
+        // Advanced Theme Switching Logic
         const themeBtns = document.querySelectorAll('.theme-btn');
         const page = document.querySelector('.a4-page');
 
@@ -858,7 +730,7 @@
                 // Remove all existing theme classes
                 page.className = 'a4-page';
                 
-                // Add the selected theme class
+                // Add the selected theme class to radically change layout & style
                 const themeClass = btn.getAttribute('data-theme');
                 page.classList.add(themeClass);
 
