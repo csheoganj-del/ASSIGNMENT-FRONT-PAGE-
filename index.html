@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S.M.P.B.J. Government College Assignment Cover</title>
+    
+    <!-- Premium Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --gold: #C5A059;
+            --black: #0F172A;
+            --dark-grey: #334155;
+            --light-grey: #94A3B8;
+            --white: #FFFFFF;
+            --bg-color: #E2E8F0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 50px 20px 60px 20px;
+            font-family: 'Poppins', sans-serif;
+            position: relative;
+        }
+
+        /* Workspace Layout holding A4 Page in center */
+        .workspace-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 1400px;
+            width: 100%;
+            position: relative;
+        }
+
+        /* Desktop specific layout to pin Instructions and Insta to the left */
+        @media screen and (min-width: 1300px) {
+            .instructions-panel {
+                position: fixed;
+                left: 40px;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 320px;
+                z-index: 50;
+            }
+            
+            .insta-badge {
+                position: fixed;
+                left: 40px;
+                bottom: 40px;
+                z-index: 50;
+                margin-top: 0 !important;
+            }
+        }
+
+        /* Mobile specific layout */
+        @media (max-width: 1299px) {
+            body {
+                padding: 30px 15px;
+            }
+            .workspace-container {
+                flex-direction: column;
+                gap: 30px;
+            }
+            .instructions-panel {
+                width: 100%;
+                max-width: 210mm;
+            }
+            .insta-badge {
+                margin-top: 25px;
+            }
+        }
+
+        /* Instructions Sidebar Styling */
+        .instructions-panel {
+            background: rgba(255, 255, 255, 0.85);
+            border: 1px solid rgba(197, 160, 89, 0.25);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .instructions-panel h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--black);
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .instruction-section {
+            margin-bottom: 20px;
+        }
+
+        .instruction-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .instruction-section h3 {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .instruction-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .instruction-list li {
+            font-size: 12px;
+            color: var(--dark-grey);
+            line-height: 1.5;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .instruction-list li::before {
+            content: '•';
+            color: var(--gold);
+            font-size: 18px;
+            position: absolute;
+            left: 5px;
+            top: -2px;
+            font-weight: bold;
+        }
+
+        /* Ultra-Fluid, Container Query Driven A4 Page */
+        .a4-page {
+            width: 100%;
+            max-width: 210mm;
+            aspect-ratio: 210 / 297;
+            height: auto;
+            background: var(--white);
+            position: relative;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 20px rgba(197, 160, 89, 0.1);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            flex-shrink: 0;
+            container-type: inline-size;
+            transition: all 0.3s ease;
+        }
+
+        @media print {
+            @page {
+                size: A4;
+                margin: 0;
+            }
+            body {
+                background-color: var(--white);
+                padding: 0;
+                min-height: auto;
+            }
+            .workspace-container {
+                display: block;
+                width: 100%;
+            }
+            .a4-page {
+                box-shadow: none;
+                width: 210mm !important;
+                height: 297mm !important;
+                aspect-ratio: auto;
+                margin: 0;
+                border: none;
+            }
+            .screen-instruction, .print-btn, .insta-badge, .instructions-panel {
+                display: none !important;
+            }
+            [contenteditable="true"]:empty::before {
+                content: "" !important;
+            }
+        }
+
+        /* Fluid Design Tokens Using Container Query Units (cqw) */
+        .outer-border {
+            position: absolute;
+            top: 5.7cqw;
+            bottom: 5.7cqw;
+            left: 5.7cqw;
+            right: 5.7cqw;
+            border: 1px solid var(--gold);
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .inner-border {
+            position: absolute;
+            top: 2.85cqw;
+            bottom: 2.85cqw;
+            left: 2.85cqw;
+            right: 2.85cqw;
+            border: 1.5px solid var(--black);
+        }
+
+        .corner {
+            position: absolute;
+            width: 3.5cqw;
+            height: 3.5cqw;
+            border: 1.5px solid var(--gold);
+        }
+        .corner-tl { top: -2px; left: -2px; border-right: none; border-bottom: none; }
+        .corner-tr { top: -2px; right: -2px; border-left: none; border-bottom: none; }
+        .corner-bl { bottom: -2px; left: -2px; border-right: none; border-top: none; }
+        .corner-br { bottom: -2px; right: -2px; border-left: none; border-top: none; }
+
+        .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 16cqw;
+            font-family: 'Cinzel', serif;
+            color: rgba(0, 0, 0, 0.02);
+            font-weight: 700;
+            letter-spacing: 3.5cqw;
+            z-index: 1;
+            pointer-events: none;
+            user-select: none;
+            white-space: nowrap;
+        }
+
+        .content-wrapper {
+            position: relative;
+            z-index: 20;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 16.6cqw 11.9cqw 14.3cqw 11.9cqw;
+        }
+
+        .header {
+            text-align: center;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .emblem {
+            margin-bottom: 2.5cqw;
+            color: var(--gold);
+        }
+        .emblem svg {
+            width: 7cqw;
+            height: 7cqw;
+        }
+
+        .college-name {
+            font-family: 'Cinzel', serif;
+            font-size: 4.3cqw;
+            font-weight: 700;
+            color: var(--black);
+            letter-spacing: 0.3cqw;
+            margin-bottom: 1.2cqw;
+            text-transform: uppercase;
+            width: 100%;
+            line-height: 1.3;
+        }
+
+        .course-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8cqw;
+            font-style: italic;
+            color: var(--dark-grey);
+            margin-bottom: 0.8cqw;
+            width: 100%;
+        }
+
+        .session-year {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.9cqw;
+            font-weight: 500;
+            color: var(--gold);
+            letter-spacing: 0.4cqw;
+            text-transform: uppercase;
+            margin-bottom: 4cqw;
+            width: 100%;
+        }
+
+        .separator {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            margin: 2cqw 0;
+        }
+        .separator::before, .separator::after {
+            content: '';
+            width: 15cqw;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+        .separator span {
+            display: inline-block;
+            width: 1cqw;
+            height: 1cqw;
+            background-color: var(--gold);
+            transform: rotate(45deg);
+            margin: 0 2cqw;
+        }
+
+        .assignment-title {
+            font-family: 'Cinzel', serif;
+            font-size: 7.3cqw;
+            font-weight: 700;
+            color: var(--black);
+            letter-spacing: 2.2cqw;
+            text-transform: uppercase;
+            text-align: center;
+            margin: 4.5cqw 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .details-section {
+            width: 90%;
+            margin: 0 auto 3cqw auto;
+            display: flex;
+            flex-direction: column;
+            gap: 3.5cqw;
+            flex-grow: 1;
+            justify-content: center;
+        }
+
+        .field-row {
+            display: flex;
+            align-items: flex-end;
+            width: 100%;
+            transition: transform 0.3s ease;
+        }
+        
+        @media screen {
+            .field-row:hover {
+                transform: translateX(1cqw);
+            }
+            .field-row:hover .field-value {
+                border-bottom-color: var(--gold);
+            }
+        }
+
+        .field-label {
+            font-family: 'Cinzel', serif;
+            font-size: 2cqw;
+            font-weight: 600;
+            color: var(--black);
+            width: 28cqw;
+            flex-shrink: 0;
+            text-transform: uppercase;
+            letter-spacing: 0.2cqw;
+        }
+
+        .field-value {
+            flex-grow: 1;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8cqw;
+            color: var(--black);
+            border-bottom: 1px dashed var(--light-grey);
+            padding-bottom: 0.5cqw;
+            padding-left: 2cqw;
+            min-height: 4.2cqw;
+        }
+
+        /* Editable Elements Global */
+        [contenteditable="true"] {
+            outline: none;
+            border-bottom: 1px dashed transparent;
+            transition: all 0.3s ease;
+        }
+
+        [contenteditable="true"]:empty:not(:focus)::before {
+            content: attr(placeholder);
+            color: #cbd5e1;
+            font-style: italic;
+        }
+
+        @media screen {
+            [contenteditable="true"]:hover {
+                border-bottom: 1px dashed var(--light-grey);
+                background-color: rgba(197, 160, 89, 0.02);
+            }
+            [contenteditable="true"]:focus {
+                border-bottom: 1px solid var(--gold);
+                background-color: rgba(197, 160, 89, 0.05);
+            }
+        }
+
+        .footer {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            padding: 0 5cqw;
+        }
+
+        .signature-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 30cqw;
+        }
+
+        .signature-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5cqw;
+            font-weight: 500;
+            color: var(--black);
+            margin-bottom: 1cqw;
+            text-align: center;
+            width: 100%;
+            min-height: 3.8cqw;
+        }
+
+        .signature-line {
+            width: 100%;
+            height: 1px;
+            background-color: var(--black);
+            margin-bottom: 1.2cqw;
+        }
+
+        .signature-label {
+            font-family: 'Cinzel', serif;
+            font-size: 1.6cqw;
+            font-weight: 600;
+            color: var(--black);
+            text-transform: uppercase;
+            letter-spacing: 0.2cqw;
+        }
+
+        /* Instagram Handle Styling */
+        .insta-badge {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            font-family: 'Poppins', sans-serif;
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .insta-badge:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+        .made-by-text {
+            color: var(--dark-grey);
+            font-size: 12px;
+            font-weight: 400;
+        }
+
+        .insta-text {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .insta-icon {
+            stroke: url(#insta-gradient);
+        }
+
+        /* Instruction overlay for screen */
+        .screen-instruction {
+            position: fixed;
+            top: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--black);
+            color: var(--white);
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 300;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            z-index: 100;
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .screen-instruction b {
+            color: var(--gold);
+            font-weight: 500;
+        }
+
+        /* Premium Floating Button */
+        .print-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--gold);
+            color: var(--black);
+            border: none;
+            padding: 16px 30px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(197, 160, 89, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 100;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .print-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(197, 160, 89, 0.5);
+            background-color: #dcb66c;
+        }
+
+        .print-btn:active {
+            transform: translateY(-2px);
+        }
+
+        /* Custom viewport adjustments for standard print button placement on tiny screens */
+        @media (max-width: 500px) {
+            .print-btn {
+                bottom: 20px;
+                right: 20px;
+                padding: 12px 24px;
+                font-size: 13px;
+            }
+            .screen-instruction {
+                display: none !important; /* Hide tiny top instruction on mobile */
+            }
+            body {
+                padding: 20px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SVG Gradients -->
+    <svg width="0" height="0" style="position: absolute;">
+        <defs>
+            <linearGradient id="insta-gradient" x1="0%" y1="100%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#f09433"/>
+                <stop offset="25%" stop-color="#e6683c"/>
+                <stop offset="50%" stop-color="#dc2743"/>
+                <stop offset="75%" stop-color="#cc2366"/>
+                <stop offset="100%" stop-color="#bc1888"/>
+            </linearGradient>
+        </defs>
+    </svg>
+
+    <div class="screen-instruction">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+        </svg>
+        Click text to edit as you wish.
+    </div>
+
+    <!-- Floating PDF Generator Button -->
+    <button class="print-btn" onclick="window.print()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 6 2 18 2 18 9"></polyline>
+            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+            <rect x="6" y="14" width="12" height="8"></rect>
+        </svg>
+        Save as PDF / Print
+    </button>
+
+    <!-- Workspace container holding instructions sidebar and the paper sheet -->
+    <div class="workspace-container">
+        
+        <!-- Left Sidebar: English & Hindi Instructions -->
+        <div class="instructions-panel">
+            <h2>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C5A059" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                </svg>
+                Guidelines
+            </h2>
+            
+            <div class="instruction-section">
+                <h3>English Instructions</h3>
+                <ul class="instruction-list">
+                    <li><b>Click to Edit:</b> Click on any text inside the page to type your custom information directly.</li>
+                    <li><b>Leave Blanks:</b> If you want to keep fields like 'Roll Number' blank, delete the text. The placeholder text will hide automatically on print.</li>
+                    <li><b>PDF Generation:</b> Click the floating gold <b>Save as PDF</b> button on the bottom right.</li>
+                    <li><b>Print Settings:</b> In the print window, set destination as <b>Save as PDF</b>, paper size as <b>A4</b>, and check the <b>Background Graphics</b> option.</li>
+                </ul>
+            </div>
+
+            <div class="instruction-section">
+                <h3>हिंदी निर्देश</h3>
+                <ul class="instruction-list">
+                    <li><b>बदलने के लिए क्लिक करें:</b> पेज पर किसी भी जानकारी पर क्लिक करके सीधे अपनी जानकारी टाइप करें।</li>
+                    <li><b>खाली छोड़ें:</b> यदि आप किसी फील्ड (जैसे रोल नंबर) को खाली रखना चाहते हैं, तो उसे डिलीट कर दें। प्रिंट करते समय खाली स्थान साफ दिखाई देगा।</li>
+                    <li><b>PDF सेव करें:</b> नीचे दाईं ओर दिए गए <b>Save as PDF</b> बटन पर क्लिक करें।</li>
+                    <li><b>प्रिंट सेटिंग्स:</b> प्रिंट विंडो में डेस्टिनेशन को <b>Save as PDF</b> चुनें, पेपर साइज <b>A4</b> रखें, और <b>Background Graphics</b> विकल्प को चालू (Checked) करें।</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Main A4 Paper (Only this gets printed) -->
+        <div class="a4-page">
+            <div class="watermark">ASSIGNMENT</div>
+            
+            <!-- Double Border Design -->
+            <div class="outer-border">
+                <div class="inner-border">
+                    <div class="corner corner-tl"></div>
+                    <div class="corner corner-tr"></div>
+                    <div class="corner corner-bl"></div>
+                    <div class="corner corner-br"></div>
+                </div>
+            </div>
+
+            <div class="content-wrapper">
+                
+                <!-- Top Header Section -->
+                <div class="header">
+                    <div class="emblem">
+                        <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#C5A059" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                        </svg>
+                    </div>
+                    <div class="college-name" contenteditable="true" spellcheck="false" placeholder="Enter College Name">S.M.P.B.J. Government College, Sheoganj</div>
+                    <div class="course-name" contenteditable="true" spellcheck="false" placeholder="Enter Course/Class">B.Sc Semester I (Mathematics)</div>
+                    <div class="separator"><span></span></div>
+                    <div class="session-year" contenteditable="true" spellcheck="false" placeholder="Enter Session">Academic Session 2025 - 2026</div>
+                </div>
+
+                <!-- Big Title -->
+                <div class="assignment-title">Assignment</div>
+
+                <!-- Editable Fields -->
+                <div class="details-section">
+                    <div class="field-row">
+                        <div class="field-label">Subject</div>
+                        <div class="field-value" contenteditable="true" spellcheck="false" placeholder="Enter Subject">Chemistry</div>
+                    </div>
+                    <div class="field-row">
+                        <div class="field-label">Student Name</div>
+                        <div class="field-value" contenteditable="true" spellcheck="false" placeholder="Enter Student Name">Khushi Kumari</div>
+                    </div>
+                    <div class="field-row">
+                        <div class="field-label">Father's Name</div>
+                        <div class="field-value" contenteditable="true" spellcheck="false" placeholder="Enter Father's Name">Manoj Kumar Ba</div>
+                    </div>
+                    <div class="field-row">
+                        <div class="field-label">Roll Number</div>
+                        <div class="field-value" contenteditable="true" spellcheck="false" placeholder="Enter Roll Number (Leave empty to keep blank)"></div>
+                    </div>
+                    <div class="field-row">
+                        <div class="field-label">Submitted On</div>
+                        <div class="field-value" contenteditable="true" spellcheck="false" placeholder="Enter Submission Date (Leave empty to keep blank)"></div>
+                    </div>
+                </div>
+
+                <!-- Signatures -->
+                <div class="footer">
+                    <div class="signature-block">
+                        <div class="signature-name" contenteditable="true" spellcheck="false" placeholder="Recipient Name">Sr. Bhawar Lal Sir</div>
+                        <div class="signature-line"></div>
+                        <div class="signature-label">Submitted To</div>
+                    </div>
+                    <div class="signature-block">
+                        <div class="signature-name" contenteditable="true" spellcheck="false" placeholder="Student Name">Khushi Kumari</div>
+                        <div class="signature-line"></div>
+                        <div class="signature-label">Submitted By</div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Instagram Link (Pinned bottom-left on desktop, stacks on mobile. Outside print area) -->
+    <a href="https://instagram.com/pixncraftstudio" target="_blank" class="insta-badge">
+        <span class="made-by-text">Made by:</span>
+        <svg class="insta-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+        </svg>
+        <span class="insta-text">pixncraftstudio</span>
+    </a>
+
+    <!-- Minimal JS to prevent multi-line breaks in single-line fields -->
+    <script>
+        document.querySelectorAll('[contenteditable="true"]').forEach(element => {
+            element.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    element.blur();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
