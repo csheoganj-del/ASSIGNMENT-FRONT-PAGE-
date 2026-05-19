@@ -542,6 +542,94 @@
         }
         .theme-india .separator span { background-color: #000080; border-radius: 50%; width: 1.2cqw; height: 1.2cqw; }
 
+        /* --------------------------------------------------------
+           THEME 12: MATHEMATICS (Geometric & Precise)
+           -------------------------------------------------------- */
+        .a4-page.theme-maths {
+            --primary: #2563EB; --text-main: #1E293B; --text-muted: #64748B; --page-bg: #F8FAFC;
+            --font-heading: 'Poppins', sans-serif; --font-body: 'Poppins', sans-serif;
+            background-image: linear-gradient(rgba(37, 99, 235, 0.05) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(37, 99, 235, 0.05) 1px, transparent 1px);
+            background-size: 2cqw 2cqw;
+        }
+        .theme-maths .outer-border { border: 2px dashed var(--primary); top: 3.5cqw; bottom: 3.5cqw; left: 3.5cqw; right: 3.5cqw; }
+        .theme-maths .inner-border { border: 1.5px solid var(--text-main); top: 1cqw; bottom: 1cqw; left: 1cqw; right: 1cqw; }
+        .theme-maths .corner { width: 1.5cqw; height: 1.5cqw; background: var(--primary); border-radius: 0; transform: rotate(45deg); }
+        .theme-maths .corner-tl { top: -0.75cqw; left: -0.75cqw; }
+        .theme-maths .corner-tr { top: -0.75cqw; right: -0.75cqw; }
+        .theme-maths .corner-bl { bottom: -0.75cqw; left: -0.75cqw; }
+        .theme-maths .corner-br { bottom: -0.75cqw; right: -0.75cqw; }
+        .theme-maths .assignment-title { letter-spacing: 2cqw; font-weight: 800; text-transform: uppercase; }
+
+        /* --------------------------------------------------------
+           THEME 13: BIOLOGY / BOTANY (Organic & Earthy)
+           -------------------------------------------------------- */
+        .a4-page.theme-biology {
+            --primary: #4D7C0F; --text-main: #14532D; --text-muted: #78350F; --page-bg: #FAFAF9;
+            --font-heading: 'Playfair Display', serif; --font-body: 'Poppins', sans-serif;
+        }
+        .theme-biology .outer-border { 
+            border: 3px solid var(--primary); 
+            border-radius: 15cqw 4cqw 15cqw 4cqw; /* Leaf shape */
+            top: 4cqw; bottom: 4cqw; left: 4cqw; right: 4cqw; 
+        }
+        .theme-biology .inner-border { 
+            border: 1px dashed var(--text-muted); 
+            border-radius: 12cqw 3cqw 12cqw 3cqw;
+            top: 1.5cqw; bottom: 1.5cqw; left: 1.5cqw; right: 1.5cqw; 
+        }
+        .theme-biology .corner { display: none; }
+        .theme-biology .separator::before, .theme-biology .separator::after { background: linear-gradient(90deg, transparent, var(--text-muted), transparent); height: 1px; }
+        .theme-biology .separator span { background: var(--primary); border-radius: 50% 0 50% 0; transform: rotate(45deg); }
+
+        /* --------------------------------------------------------
+           THEME 14: ARTS / HUMANITIES (Expressive & Elegant)
+           -------------------------------------------------------- */
+        .a4-page.theme-arts {
+            --primary: #9D174D; --text-main: #4C1D95; --text-muted: #B45309; --page-bg: #FFFBFB;
+            --font-heading: 'Cinzel', serif; --font-body: 'Playfair Display', serif;
+        }
+        .theme-arts .outer-border { 
+            border: 1px solid var(--primary);
+            box-shadow: -1cqw 1cqw 0 0 rgba(157, 23, 77, 0.15), 1cqw -1cqw 0 0 rgba(76, 29, 149, 0.15);
+            top: 5cqw; bottom: 5cqw; left: 5cqw; right: 5cqw; 
+        }
+        .theme-arts .inner-border { border: 1px solid var(--text-main); top: -1.5cqw; bottom: 1.5cqw; left: 1.5cqw; right: -1.5cqw; } /* Asymmetrical shift */
+        .theme-arts .corner { display: none; }
+        .theme-arts .assignment-title { font-style: italic; letter-spacing: 0.5cqw; text-transform: capitalize; font-size: 7.5cqw; }
+
+        /* --------------------------------------------------------
+           THEME 15: COMMERCE / ACCOUNTING (Ledger style, Corporate)
+           -------------------------------------------------------- */
+        .a4-page.theme-commerce {
+            --primary: #0F172A; --text-main: #000000; --text-muted: #475569; --page-bg: #FFFFFF;
+            --font-heading: 'Playfair Display', serif; --font-body: 'Poppins', sans-serif;
+            background-image: linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px);
+            background-size: 100% 4cqw; /* Mimics lined ledger paper */
+            background-position: 0 16cqw;
+        }
+        .theme-commerce .outer-border { border: 4px double var(--primary); top: 3.5cqw; bottom: 3.5cqw; left: 6cqw; right: 4cqw; }
+        .theme-commerce .inner-border { border: none; border-left: 2px solid #DC2626; top: 0; bottom: 0; left: 1.5cqw; right: 0; } /* Red margin line */
+        .theme-commerce .corner { display: none; }
+        .theme-commerce .separator { display: none; } /* Clean look */
+
+        /* --------------------------------------------------------
+           THEME 16: COMPUTER SCIENCE / IT (Terminal, Brackets)
+           -------------------------------------------------------- */
+        .a4-page.theme-cs {
+            --primary: #059669; --text-main: #111827; --text-muted: #4B5563; --page-bg: #F9FAFB;
+            --font-heading: 'Courier New', monospace; --font-body: 'Courier New', monospace;
+        }
+        .theme-cs .outer-border { border: 2px solid var(--text-main); top: 4cqw; bottom: 4cqw; left: 4cqw; right: 4cqw; }
+        .theme-cs .inner-border { border: 1.5px dashed var(--primary); top: 1.5cqw; bottom: 1.5cqw; left: 1.5cqw; right: 1.5cqw; }
+        .theme-cs .corner { width: 3cqw; height: 3cqw; background: transparent; border: 3px solid var(--primary); }
+        .theme-cs .corner-tl { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+        .theme-cs .corner-tr { top: -1px; right: -1px; border-left: none; border-bottom: none; }
+        .theme-cs .corner-bl { bottom: -1px; left: -1px; border-right: none; border-top: none; }
+        .theme-cs .corner-br { bottom: -1px; right: -1px; border-left: none; border-top: none; }
+        .theme-cs .assignment-title::before { content: "< "; color: var(--primary); }
+        .theme-cs .assignment-title::after { content: " />"; color: var(--primary); }
+
         /* -------------------------------------------------------- */
 
         /* Instagram Handle Styling */
@@ -653,6 +741,12 @@
                     <button class="theme-btn" data-theme="theme-scallop" style="background: radial-gradient(circle, #9C27B0 30%, #F3E5F5 30%);" title="Elegant Scallop"></button>
                     <button class="theme-btn" data-theme="theme-blueprint" style="background: repeating-linear-gradient(90deg, transparent, transparent 4px, rgba(255,255,255,0.5) 4px, rgba(255,255,255,0.5) 5px), #1565C0;" title="Engineering Blueprint"></button>
                     <button class="theme-btn" data-theme="theme-india" style="background: linear-gradient(135deg, #FF9933 33%, #FFFFFF 33%, #FFFFFF 66%, #138808 66%); box-shadow: inset 0 0 0 1px #000080;" title="Tricolor Pride"></button>
+                    
+                    <button class="theme-btn" data-theme="theme-maths" style="background: linear-gradient(135deg, #2563EB 50%, #F8FAFC 50%); border-color: #1E293B;" title="B.Sc. Mathematics"></button>
+                    <button class="theme-btn" data-theme="theme-biology" style="background: linear-gradient(135deg, #4D7C0F 50%, #FAFAF9 50%); border-radius: 8px 2px 8px 2px;" title="B.Sc. Biology"></button>
+                    <button class="theme-btn" data-theme="theme-arts" style="background: linear-gradient(135deg, #9D174D 50%, #4C1D95 50%);" title="B.A. Arts / Humanities"></button>
+                    <button class="theme-btn" data-theme="theme-commerce" style="background: linear-gradient(90deg, #FFFFFF 20%, #DC2626 20%, #DC2626 25%, #F1F5F9 25%); border: 2px solid #0F172A;" title="B.Com. Commerce"></button>
+                    <button class="theme-btn" data-theme="theme-cs" style="background: #111827; border: 2px dashed #059669;" title="Computer Science / IT"></button>
                 </div>
             </div>
 
