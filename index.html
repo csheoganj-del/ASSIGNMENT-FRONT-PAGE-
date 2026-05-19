@@ -12,6 +12,7 @@
     
     <style>
         :root {
+            /* Global Workspace Variables */
             --gold: #C5A059;
             --black: #0F172A;
             --dark-grey: #334155;
@@ -154,13 +155,49 @@
             font-weight: bold;
         }
 
-        /* Ultra-Fluid, Container Query Driven A4 Page */
+        /* Theme Selector UI */
+        .theme-selector {
+            display: flex;
+            gap: 12px;
+            margin-top: 5px;
+            flex-wrap: wrap;
+        }
+        .theme-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        .theme-btn:hover {
+            transform: scale(1.15);
+        }
+        .theme-btn.active {
+            border-color: var(--black);
+            box-shadow: 0 0 0 2px white, 0 0 0 4px var(--black);
+        }
+
+        /* --------------------------------------------------------
+           A4 PAGE THEME VARIABLES
+           -------------------------------------------------------- */
+        
         .a4-page {
+            /* Default: Classic Luxury */
+            --primary: #C5A059;
+            --text-main: #0F172A;
+            --text-muted: #334155;
+            --page-bg: #FFFFFF;
+            --font-heading: 'Cinzel', serif;
+            --font-body: 'Playfair Display', serif;
+            --font-ui: 'Poppins', sans-serif;
+            
             width: 100%;
             max-width: 210mm;
             aspect-ratio: 210 / 297;
             height: auto;
-            background: var(--white);
+            background: var(--page-bg);
             position: relative;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 20px rgba(197, 160, 89, 0.1);
             display: flex;
@@ -168,8 +205,64 @@
             overflow: hidden;
             flex-shrink: 0;
             container-type: inline-size;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
         }
+
+        /* Theme: Minimal Modern */
+        .a4-page.theme-minimal {
+            --primary: #000000;
+            --text-main: #111111;
+            --text-muted: #555555;
+            --font-heading: 'Poppins', sans-serif;
+            --font-body: 'Poppins', sans-serif;
+            --page-bg: #FFFFFF;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+        }
+        .a4-page.theme-minimal .outer-border { border: 2.5px solid var(--text-main); }
+        .a4-page.theme-minimal .inner-border { display: none; }
+        .a4-page.theme-minimal .corner { display: none; }
+        .a4-page.theme-minimal .separator::before, .a4-page.theme-minimal .separator::after { background: var(--text-main); height: 2px; }
+        .a4-page.theme-minimal .separator span { background-color: var(--text-main); border-radius: 50%; }
+
+        /* Theme: Royal Blue */
+        .a4-page.theme-royal {
+            --primary: #1D4ED8;
+            --text-main: #0F172A;
+            --text-muted: #1E293B;
+            --font-heading: 'Cinzel', serif;
+            --font-body: 'Playfair Display', serif;
+            --page-bg: #F8FAFC;
+        }
+        .a4-page.theme-royal .outer-border { border: 4px double var(--primary); }
+        .a4-page.theme-royal .inner-border { border: 1.5px solid var(--primary); }
+        .a4-page.theme-royal .corner { border-radius: 50%; }
+
+        /* Theme: Crimson Academic */
+        .a4-page.theme-crimson {
+            --primary: #991B1B;
+            --text-main: #450A0A;
+            --text-muted: #7F1D1D;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Playfair Display', serif;
+            --page-bg: #FEF2F2;
+        }
+        .a4-page.theme-crimson .outer-border { border: 2.5px dashed var(--primary); }
+        .a4-page.theme-crimson .inner-border { border: 1.5px solid var(--text-main); }
+        .a4-page.theme-crimson .corner { display: none; }
+
+        /* Theme: Emerald Scholar */
+        .a4-page.theme-emerald {
+            --primary: #047857;
+            --text-main: #022C22;
+            --text-muted: #064E3B;
+            --font-heading: 'Cinzel', serif;
+            --font-body: 'Poppins', sans-serif;
+            --page-bg: #F0FDF4;
+        }
+        .a4-page.theme-emerald .outer-border { border: 3px solid var(--primary); }
+        .a4-page.theme-emerald .inner-border { border: 1px dashed var(--text-main); }
+        .a4-page.theme-emerald .corner { width: 4cqw; height: 4cqw; border-width: 2.5px; }
+
 
         @media print {
             @page {
@@ -201,16 +294,20 @@
             }
         }
 
-        /* Fluid Design Tokens Using Container Query Units (cqw) */
+        /* --------------------------------------------------------
+           Fluid Design Tokens Using Container Query Units (cqw)
+           -------------------------------------------------------- */
+        
         .outer-border {
             position: absolute;
             top: 5.7cqw;
             bottom: 5.7cqw;
             left: 5.7cqw;
             right: 5.7cqw;
-            border: 1px solid var(--gold);
+            border: 1px solid var(--primary);
             pointer-events: none;
             z-index: 10;
+            transition: all 0.3s ease;
         }
 
         .inner-border {
@@ -219,14 +316,16 @@
             bottom: 2.85cqw;
             left: 2.85cqw;
             right: 2.85cqw;
-            border: 1.5px solid var(--black);
+            border: 1.5px solid var(--text-main);
+            transition: all 0.3s ease;
         }
 
         .corner {
             position: absolute;
             width: 3.5cqw;
             height: 3.5cqw;
-            border: 1.5px solid var(--gold);
+            border: 1.5px solid var(--primary);
+            transition: all 0.3s ease;
         }
         .corner-tl { top: -2px; left: -2px; border-right: none; border-bottom: none; }
         .corner-tr { top: -2px; right: -2px; border-left: none; border-bottom: none; }
@@ -239,8 +338,9 @@
             left: 50%;
             transform: translate(-50%, -50%) rotate(-45deg);
             font-size: 16cqw;
-            font-family: 'Cinzel', serif;
-            color: rgba(0, 0, 0, 0.02);
+            font-family: var(--font-heading);
+            color: var(--text-main);
+            opacity: 0.03;
             font-weight: 700;
             letter-spacing: 3.5cqw;
             z-index: 1;
@@ -270,7 +370,7 @@
 
         .emblem {
             margin-bottom: 2.5cqw;
-            color: var(--gold);
+            color: var(--primary);
         }
         .emblem svg {
             width: 7cqw;
@@ -278,10 +378,10 @@
         }
 
         .college-name {
-            font-family: 'Cinzel', serif;
+            font-family: var(--font-heading);
             font-size: 4.3cqw;
             font-weight: 700;
-            color: var(--black);
+            color: var(--text-main);
             letter-spacing: 0.3cqw;
             margin-bottom: 1.2cqw;
             text-transform: uppercase;
@@ -290,19 +390,19 @@
         }
 
         .course-name {
-            font-family: 'Playfair Display', serif;
+            font-family: var(--font-body);
             font-size: 2.8cqw;
             font-style: italic;
-            color: var(--dark-grey);
+            color: var(--text-muted);
             margin-bottom: 0.8cqw;
             width: 100%;
         }
 
         .session-year {
-            font-family: 'Poppins', sans-serif;
+            font-family: var(--font-ui);
             font-size: 1.9cqw;
             font-weight: 500;
-            color: var(--gold);
+            color: var(--primary);
             letter-spacing: 0.4cqw;
             text-transform: uppercase;
             margin-bottom: 4cqw;
@@ -320,22 +420,22 @@
             content: '';
             width: 15cqw;
             height: 1px;
-            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
         }
         .separator span {
             display: inline-block;
             width: 1cqw;
             height: 1cqw;
-            background-color: var(--gold);
+            background-color: var(--primary);
             transform: rotate(45deg);
             margin: 0 2cqw;
         }
 
         .assignment-title {
-            font-family: 'Cinzel', serif;
+            font-family: var(--font-heading);
             font-size: 7.3cqw;
             font-weight: 700;
-            color: var(--black);
+            color: var(--text-main);
             letter-spacing: 2.2cqw;
             text-transform: uppercase;
             text-align: center;
@@ -365,15 +465,15 @@
                 transform: translateX(1cqw);
             }
             .field-row:hover .field-value {
-                border-bottom-color: var(--gold);
+                border-bottom-color: var(--primary);
             }
         }
 
         .field-label {
-            font-family: 'Cinzel', serif;
+            font-family: var(--font-heading);
             font-size: 2cqw;
             font-weight: 600;
-            color: var(--black);
+            color: var(--text-main);
             width: 28cqw;
             flex-shrink: 0;
             text-transform: uppercase;
@@ -382,13 +482,14 @@
 
         .field-value {
             flex-grow: 1;
-            font-family: 'Playfair Display', serif;
+            font-family: var(--font-body);
             font-size: 2.8cqw;
-            color: var(--black);
+            color: var(--text-main);
             border-bottom: 1px dashed var(--light-grey);
             padding-bottom: 0.5cqw;
             padding-left: 2cqw;
             min-height: 4.2cqw;
+            transition: border-color 0.3s;
         }
 
         /* Editable Elements Global */
@@ -400,18 +501,18 @@
 
         [contenteditable="true"]:empty:not(:focus)::before {
             content: attr(placeholder);
-            color: #cbd5e1;
+            color: var(--light-grey);
             font-style: italic;
         }
 
         @media screen {
             [contenteditable="true"]:hover {
                 border-bottom: 1px dashed var(--light-grey);
-                background-color: rgba(197, 160, 89, 0.02);
+                background-color: rgba(0, 0, 0, 0.02);
             }
             [contenteditable="true"]:focus {
-                border-bottom: 1px solid var(--gold);
-                background-color: rgba(197, 160, 89, 0.05);
+                border-bottom: 1px solid var(--primary);
+                background-color: rgba(0, 0, 0, 0.04);
             }
         }
 
@@ -431,10 +532,10 @@
         }
 
         .signature-name {
-            font-family: 'Playfair Display', serif;
+            font-family: var(--font-body);
             font-size: 2.5cqw;
             font-weight: 500;
-            color: var(--black);
+            color: var(--text-main);
             margin-bottom: 1cqw;
             text-align: center;
             width: 100%;
@@ -444,15 +545,15 @@
         .signature-line {
             width: 100%;
             height: 1px;
-            background-color: var(--black);
+            background-color: var(--text-main);
             margin-bottom: 1.2cqw;
         }
 
         .signature-label {
-            font-family: 'Cinzel', serif;
+            font-family: var(--font-heading);
             font-size: 1.6cqw;
             font-weight: 600;
-            color: var(--black);
+            color: var(--text-main);
             text-transform: uppercase;
             letter-spacing: 0.2cqw;
         }
@@ -617,12 +718,23 @@
             </h2>
             
             <div class="instruction-section">
+                <h3>Select Theme / थीम चुनें</h3>
+                <div class="theme-selector">
+                    <button class="theme-btn active" data-theme="theme-classic" style="background: linear-gradient(135deg, #0F172A 50%, #C5A059 50%);" title="Classic Luxury"></button>
+                    <button class="theme-btn" data-theme="theme-minimal" style="background: linear-gradient(135deg, #111111 50%, #FFFFFF 50%);" title="Minimal Modern"></button>
+                    <button class="theme-btn" data-theme="theme-royal" style="background: linear-gradient(135deg, #0F172A 50%, #1D4ED8 50%);" title="Royal Blue"></button>
+                    <button class="theme-btn" data-theme="theme-crimson" style="background: linear-gradient(135deg, #450A0A 50%, #991B1B 50%);" title="Crimson Academic"></button>
+                    <button class="theme-btn" data-theme="theme-emerald" style="background: linear-gradient(135deg, #022C22 50%, #047857 50%);" title="Emerald Scholar"></button>
+                </div>
+            </div>
+
+            <div class="instruction-section">
                 <h3>English Instructions</h3>
                 <ul class="instruction-list">
                     <li><b>Click to Edit:</b> Click on any text inside the page to type your custom information directly.</li>
-                    <li><b>Leave Blanks:</b> If you want to keep fields like 'Roll Number' blank, delete the text. The placeholder text will hide automatically on print.</li>
+                    <li><b>Leave Blanks:</b> If you want to keep fields blank, delete the text. The placeholder text will hide automatically on print.</li>
                     <li><b>PDF Generation:</b> Click the floating gold <b>Save as PDF</b> button on the bottom right.</li>
-                    <li><b>Print Settings:</b> In the print window, set destination as <b>Save as PDF</b>, paper size as <b>A4</b>, and check the <b>Background Graphics</b> option.</li>
+                    <li><b>Print Settings:</b> In the print window, set paper size as <b>A4</b>, and check the <b>Background Graphics</b> option.</li>
                 </ul>
             </div>
 
@@ -630,15 +742,15 @@
                 <h3>हिंदी निर्देश</h3>
                 <ul class="instruction-list">
                     <li><b>बदलने के लिए क्लिक करें:</b> पेज पर किसी भी जानकारी पर क्लिक करके सीधे अपनी जानकारी टाइप करें।</li>
-                    <li><b>खाली छोड़ें:</b> यदि आप किसी फील्ड (जैसे रोल नंबर) को खाली रखना चाहते हैं, तो उसे डिलीट कर दें। प्रिंट करते समय खाली स्थान साफ दिखाई देगा।</li>
+                    <li><b>खाली छोड़ें:</b> यदि आप किसी फील्ड को खाली रखना चाहते हैं, तो उसे डिलीट कर दें। प्रिंट करते समय खाली स्थान साफ दिखाई देगा।</li>
                     <li><b>PDF सेव करें:</b> नीचे दाईं ओर दिए गए <b>Save as PDF</b> बटन पर क्लिक करें।</li>
-                    <li><b>प्रिंट सेटिंग्स:</b> प्रिंट विंडो में डेस्टिनेशन को <b>Save as PDF</b> चुनें, पेपर साइज <b>A4</b> रखें, और <b>Background Graphics</b> विकल्प को चालू (Checked) करें।</li>
+                    <li><b>प्रिंट सेटिंग्स:</b> प्रिंट विंडो में पेपर साइज <b>A4</b> रखें, और <b>Background Graphics</b> विकल्प को चालू (Checked) करें।</li>
                 </ul>
             </div>
         </div>
 
         <!-- Main A4 Paper (Only this gets printed) -->
-        <div class="a4-page">
+        <div class="a4-page theme-classic">
             <div class="watermark">ASSIGNMENT</div>
             
             <!-- Double Border Design -->
@@ -656,7 +768,8 @@
                 <!-- Top Header Section -->
                 <div class="header">
                     <div class="emblem">
-                        <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#C5A059" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                        <!-- Changed stroke color to currentColor to adapt to themes -->
+                        <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
                             <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
                         </svg>
@@ -724,14 +837,34 @@
         <span class="insta-text">pixncraftstudio</span>
     </a>
 
-    <!-- Minimal JS to prevent multi-line breaks in single-line fields -->
+    <!-- Application Logic -->
     <script>
+        // Prevent multi-line breaks in single-line fields
         document.querySelectorAll('[contenteditable="true"]').forEach(element => {
             element.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter') {
                     e.preventDefault();
                     element.blur();
                 }
+            });
+        });
+
+        // Theme Switching Logic
+        const themeBtns = document.querySelectorAll('.theme-btn');
+        const page = document.querySelector('.a4-page');
+
+        themeBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove all existing theme classes
+                page.className = 'a4-page';
+                
+                // Add the selected theme class
+                const themeClass = btn.getAttribute('data-theme');
+                page.classList.add(themeClass);
+
+                // Update active button state
+                themeBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
             });
         });
     </script>
