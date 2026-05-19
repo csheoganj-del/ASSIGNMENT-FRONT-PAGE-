@@ -1020,6 +1020,67 @@
         .theme-arts-drama .corner { display: none; }
 
         /* --------------------------------------------------------
+           COMMERCE COLLECTION (58-62)
+           -------------------------------------------------------- */
+        .theme-commerce-ledger {
+            --primary: #DC2626; --text-main: #111827; --text-muted: #4B5563; --page-bg: #FFFFFF;
+        }
+        .theme-commerce-ledger .outer-border { 
+            border: none; top: 0; bottom: 0; left: 0; right: 0; z-index: -1;
+            background-image: linear-gradient(#E0F2FE 1px, transparent 1px); background-size: 100% 3cqw;
+        }
+        .theme-commerce-ledger .inner-border { 
+            border: none; border-left: 3px double var(--primary); 
+            top: 0; bottom: 0; left: 6cqw; right: auto; width: 0;
+        }
+        .theme-commerce-ledger .corner { display: none; }
+
+        .theme-commerce-finance {
+            --primary: #059669; --text-main: #064E3B; --text-muted: #10B981; --page-bg: #FFFFFF;
+        }
+        .theme-commerce-finance .outer-border { border: 2px solid var(--primary); top: 3.5cqw; bottom: 3.5cqw; left: 3.5cqw; right: 3.5cqw; }
+        .theme-commerce-finance .inner-border { border: none; }
+        .theme-commerce-finance .corner { background: #FFFFFF; width: 4cqw; height: 4cqw; border: none; display: flex; align-items: center; justify-content: center; font-family: 'Arial', sans-serif; font-size: 6cqw; color: var(--primary); font-weight: bold; }
+        .theme-commerce-finance .corner-tl { top: -2cqw; left: -2cqw; } .theme-commerce-finance .corner-tl::before { content: '⬈'; }
+        .theme-commerce-finance .corner-tr { top: -2cqw; right: -2cqw; } .theme-commerce-finance .corner-tr::before { content: '⬈'; }
+        .theme-commerce-finance .corner-bl { bottom: -2cqw; left: -2cqw; } .theme-commerce-finance .corner-bl::before { content: '⬈'; }
+        .theme-commerce-finance .corner-br { bottom: -2cqw; right: -2cqw; } .theme-commerce-finance .corner-br::before { content: '⬈'; }
+
+        .theme-commerce-vault {
+            --primary: #475569; --text-main: #0F172A; --text-muted: #64748B; --page-bg: #FFFFFF;
+        }
+        .theme-commerce-vault .outer-border { 
+            border: 8px solid var(--primary); top: 3cqw; bottom: 3cqw; left: 3cqw; right: 3cqw; box-shadow: inset 0 0 0 4px #94A3B8, inset 0 0 0 8px #CBD5E1;
+        }
+        .theme-commerce-vault .inner-border { border: none; }
+        .theme-commerce-vault .corner { width: 6cqw; height: 6cqw; background: #94A3B8; border: 4px solid var(--primary); border-radius: 50%; }
+        .theme-commerce-vault .corner-tl { top: -2cqw; left: -2cqw; }
+        .theme-commerce-vault .corner-tr { top: -2cqw; right: -2cqw; }
+        .theme-commerce-vault .corner-bl { bottom: -2cqw; left: -2cqw; }
+        .theme-commerce-vault .corner-br { bottom: -2cqw; right: -2cqw; }
+
+        .theme-commerce-currency {
+            --primary: #CA8A04; --text-main: #111111; --text-muted: #854D0E; --page-bg: #FFFFFF;
+        }
+        .theme-commerce-currency .outer-border { border: 1px dashed var(--primary); top: 3.5cqw; bottom: 3.5cqw; left: 3.5cqw; right: 3.5cqw; }
+        .theme-commerce-currency .inner-border { border: 1px solid var(--primary); top: 1.5cqw; bottom: 1.5cqw; left: 1.5cqw; right: 1.5cqw; }
+        .theme-commerce-currency .corner { background: #FFFFFF; width: 4cqw; height: 4cqw; border: none; display: flex; align-items: center; justify-content: center; font-family: 'Times New Roman', serif; font-size: 5cqw; color: var(--primary); font-weight: bold; }
+        .theme-commerce-currency .corner-tl { top: -2cqw; left: -2cqw; } .theme-commerce-currency .corner-tl::before { content: '₹'; }
+        .theme-commerce-currency .corner-tr { top: -2cqw; right: -2cqw; } .theme-commerce-currency .corner-tr::before { content: '$'; }
+        .theme-commerce-currency .corner-bl { bottom: -2cqw; left: -2cqw; } .theme-commerce-currency .corner-bl::before { content: '€'; }
+        .theme-commerce-currency .corner-br { bottom: -2cqw; right: -2cqw; } .theme-commerce-currency .corner-br::before { content: '£'; }
+
+        .theme-commerce-executive {
+            --primary: #171717; --text-main: #171717; --text-muted: #52525B; --page-bg: #FFFFFF;
+        }
+        .theme-commerce-executive .outer-border { 
+            border: none; border-left: 20px solid var(--primary); top: 0; bottom: 0; left: 0; right: auto; 
+            background-image: repeating-linear-gradient(90deg, transparent, transparent 2px, #D4AF37 2px, #D4AF37 3px);
+        }
+        .theme-commerce-executive .inner-border { border: none; border-bottom: 4px solid var(--primary); top: auto; bottom: 4cqw; left: 4cqw; right: 4cqw; }
+        .theme-commerce-executive .corner { display: none; }
+
+        /* --------------------------------------------------------
            FONT TOOLBAR
            -------------------------------------------------------- */
         .font-toolbar {
@@ -1279,6 +1340,12 @@
                     <button class="theme-btn" data-theme="theme-arts-canvas" style="background: #FFFFFF; border: 4px ridge #8B4513;" title="Fine Arts / Canvas"></button>
                     <button class="theme-btn" data-theme="theme-arts-music" style="background: #FFFFFF; border-top: 4px double #111827; border-bottom: 4px double #111827; position: relative;" title="Music / Composition"><span style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); color:#111827; font-family:'Times New Roman',serif; font-size:20px;">𝄞</span></button>
                     <button class="theme-btn" data-theme="theme-arts-drama" style="background: #FFFFFF; border-left: 4px solid #991B1B; border-right: 4px solid #991B1B; border-top: 8px solid #991B1B; border-radius: 0 0 4px 4px;" title="Theater / Drama"></button>
+                    
+                    <button class="theme-btn" data-theme="theme-commerce-ledger" style="background-image: linear-gradient(#E0F2FE 2px, transparent 2px); background-size: 100% 4px; border-left: 3px double #DC2626;" title="Accounting Ledger"></button>
+                    <button class="theme-btn" data-theme="theme-commerce-finance" style="background: #FFFFFF; border: 2px solid #059669; position: relative;" title="Stock Market Finance"><span style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); color:#059669; font-weight:bold; font-size:16px;">⬈</span></button>
+                    <button class="theme-btn" data-theme="theme-commerce-vault" style="background: #FFFFFF; border: 4px solid #475569; box-shadow: inset 0 0 0 2px #94A3B8, inset 0 0 0 4px #CBD5E1;" title="Banking Vault"></button>
+                    <button class="theme-btn" data-theme="theme-commerce-currency" style="background: #FFFFFF; border: 1px dashed #CA8A04; position: relative;" title="Forex Currency"><span style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); color:#CA8A04; font-weight:bold; font-size:16px;">$</span></button>
+                    <button class="theme-btn" data-theme="theme-commerce-executive" style="background-image: repeating-linear-gradient(90deg, #FFFFFF, #FFFFFF 2px, #D4AF37 2px, #D4AF37 3px); border-left: 4px solid #171717;" title="Business Executive"></button>
                 </div>
             </div>
 
