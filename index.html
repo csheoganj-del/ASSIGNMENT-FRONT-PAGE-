@@ -289,68 +289,68 @@
         .content-wrapper {
             position: relative; z-index: 20; width: 100%; height: 100%;
             display: flex; flex-direction: column; justify-content: space-between;
-            padding: 18cqw 14cqw 14cqw 14cqw;
+            padding: 14cqw 12cqw 16cqw 12cqw;
         }
 
         .header { text-align: center; width: 100%; display: flex; flex-direction: column; align-items: center; }
         .emblem { 
-            margin-bottom: 2.5cqw; color: var(--primary); cursor: pointer; 
+            margin-bottom: 1.5cqw; color: var(--primary); cursor: pointer; 
             transition: transform 0.2s ease, opacity 0.2s ease; display: flex; justify-content: center; align-items: center;
         }
         @media screen { .emblem:hover { transform: scale(1.05); opacity: 0.8; } }
-        .emblem svg, .emblem img { width: 7cqw; height: 7cqw; object-fit: contain; }
+        .emblem svg, .emblem img { width: 6cqw; height: 6cqw; object-fit: contain; }
 
         .college-name {
-            font-family: var(--font-heading); font-size: 4.3cqw; font-weight: 700;
-            color: var(--text-main); letter-spacing: 0.3cqw; margin-bottom: 1.2cqw;
+            font-family: var(--font-heading); font-size: 3.8cqw; font-weight: 700;
+            color: var(--text-main); letter-spacing: 0.2cqw; margin-bottom: 0.8cqw;
             text-transform: uppercase; width: 100%; line-height: 1.3;
         }
 
         .course-name {
-            font-family: var(--font-body); font-size: 2.8cqw; font-style: italic;
-            color: var(--text-muted); margin-bottom: 0.8cqw; width: 100%;
+            font-family: var(--font-body); font-size: 2.2cqw; font-style: italic;
+            color: var(--text-muted); margin-bottom: 0.5cqw; width: 100%;
         }
 
         .session-year {
-            font-family: var(--font-ui); font-size: 1.9cqw; font-weight: 500;
-            color: var(--primary); letter-spacing: 0.4cqw; text-transform: uppercase;
-            margin-bottom: 4cqw; width: 100%;
+            font-family: var(--font-ui); font-size: 1.6cqw; font-weight: 500;
+            color: var(--primary); letter-spacing: 0.3cqw; text-transform: uppercase;
+            margin-bottom: 2cqw; width: 100%;
         }
 
-        .separator { display: flex; align-items: center; justify-content: center; width: 100%; margin: 2cqw 0; }
-        .separator::before, .separator::after { content: ''; width: 15cqw; height: 1px; background: linear-gradient(90deg, transparent, var(--primary), transparent); }
-        .separator span { display: inline-block; width: 1cqw; height: 1cqw; background-color: var(--primary); transform: rotate(45deg); margin: 0 2cqw; }
+        .separator { display: flex; align-items: center; justify-content: center; width: 100%; margin: 1.5cqw 0; }
+        .separator::before, .separator::after { content: ''; width: 12cqw; height: 1px; background: linear-gradient(90deg, transparent, var(--primary), transparent); }
+        .separator span { display: inline-block; width: 0.8cqw; height: 0.8cqw; background-color: var(--primary); transform: rotate(45deg); margin: 0 1.5cqw; }
 
         .assignment-title {
-            font-family: var(--font-heading); font-size: 7.3cqw; font-weight: 700;
-            color: var(--text-main); letter-spacing: 2.2cqw; text-transform: uppercase;
-            text-align: center; margin: 4.5cqw 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
+            font-family: var(--font-heading); font-size: 6.5cqw; font-weight: 700;
+            color: var(--text-main); letter-spacing: 1.5cqw; text-transform: uppercase;
+            text-align: center; margin: 2cqw 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
         }
 
-        .details-section { width: 90%; margin: 0 auto 3cqw auto; display: flex; flex-direction: column; gap: 3.5cqw; flex-grow: 1; justify-content: center; }
+        .details-section { width: 90%; margin: 0 auto; display: flex; flex-direction: column; gap: 2.5cqw; flex-grow: 1; justify-content: center; }
         .field-row { display: flex; align-items: flex-end; width: 100%; transition: transform 0.3s ease; }
         @media screen { .field-row:hover { transform: translateX(1cqw); } .field-row:hover .field-value { border-bottom-color: var(--primary); } }
 
         .field-label {
-            font-family: var(--font-heading); font-size: 2cqw; font-weight: 600;
+            font-family: var(--font-heading); font-size: 1.8cqw; font-weight: 600;
             color: var(--text-main); width: 28cqw; flex-shrink: 0; text-transform: uppercase; letter-spacing: 0.2cqw;
         }
 
         .field-value {
-            flex-grow: 1; font-family: var(--font-body); font-size: 2.8cqw;
+            flex-grow: 1; font-family: var(--font-body); font-size: 2.2cqw;
             color: var(--text-main); border-bottom: 1px dashed var(--light-grey);
-            padding-bottom: 0.5cqw; padding-left: 2cqw; min-height: 4.2cqw; transition: border-color 0.3s;
+            padding-bottom: 0.3cqw; padding-left: 1.5cqw; min-height: 3.5cqw; transition: border-color 0.3s;
         }
 
         .footer { width: 100%; display: flex; justify-content: space-between; align-items: flex-end; padding: 0 5cqw; margin-top: auto; }
         .signature-block { display: flex; flex-direction: column; align-items: center; width: 30cqw; }
         .signature-name {
-            font-family: var(--font-body); font-size: 2.5cqw; font-weight: 500;
-            color: var(--text-main); margin-bottom: 1cqw; text-align: center; width: 100%; min-height: 3.8cqw;
+            font-family: var(--font-body); font-size: 2cqw; font-weight: 500;
+            color: var(--text-main); margin-bottom: 0.5cqw; text-align: center; width: 100%; min-height: 3cqw;
         }
-        .signature-line { width: 100%; height: 1px; background-color: var(--text-main); margin-bottom: 1.2cqw; }
+        .signature-line { width: 100%; height: 1px; background-color: var(--text-main); margin-bottom: 0.8cqw; }
         .signature-label {
-            font-family: var(--font-heading); font-size: 1.6cqw; font-weight: 600;
+            font-family: var(--font-heading); font-size: 1.4cqw; font-weight: 600;
             color: var(--text-main); text-transform: uppercase; letter-spacing: 0.2cqw;
         }
 
@@ -390,7 +390,7 @@
         .theme-minimal .separator::before, .theme-minimal .separator::after { background: var(--primary); height: 2px; }
         .theme-minimal .separator span { display: none; }
         .theme-minimal .watermark { opacity: 0.05; font-weight: 900; }
-        .theme-minimal .assignment-title { text-shadow: none; letter-spacing: 3cqw; }
+        .theme-minimal .assignment-title { text-shadow: none; letter-spacing: 1.5cqw; }
 
         /* --------------------------------------------------------
            THEME 4: CRIMSON HERITAGE (Deep Red, Cream, Dashed Lines)
@@ -594,11 +594,11 @@
                     </div>
                     <div class="field-row">
                         <div class="field-label">Roll Number</div>
-                        <div class="field-value" contenteditable="true" spellcheck="false" placeholder="Enter Roll Number (Leave empty to keep blank)"></div>
+                        <div class="field-value" contenteditable="true" spellcheck="false" placeholder="Enter Roll Number (Optional)"></div>
                     </div>
                     <div class="field-row">
                         <div class="field-label">Submitted On</div>
-                        <div class="field-value" contenteditable="true" spellcheck="false" placeholder="Enter Submission Date (Leave empty to keep blank)"></div>
+                        <div class="field-value" contenteditable="true" spellcheck="false" placeholder="Enter Submission Date (Optional)"></div>
                     </div>
                 </div>
 
