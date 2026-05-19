@@ -158,7 +158,7 @@
         /* Theme Selector UI */
         .theme-selector {
             display: grid;
-            grid-template-columns: repeat(5, 1fr);
+            grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
             gap: 8px;
             margin-top: 5px;
         }
@@ -507,6 +507,41 @@
         .theme-blueprint .corner-br { bottom: -0.5cqw; right: -0.5cqw; }
         .theme-blueprint .assignment-title { border: 1px solid #FFFFFF; padding: 1cqw; letter-spacing: 1cqw; background: rgba(255,255,255,0.05); }
 
+        /* --------------------------------------------------------
+           THEME 11: TRICOLOR PRIDE (India Flag Border)
+           -------------------------------------------------------- */
+        .a4-page.theme-india {
+            --primary: #000080;
+            --text-main: #0F172A; 
+            --text-muted: #334155; 
+            --page-bg: #FFFFFF;
+            --font-heading: 'Cinzel', serif; 
+            --font-body: 'Poppins', sans-serif;
+        }
+        .theme-india .outer-border { 
+            border: 0.8cqw solid #138808; 
+            box-shadow: 0 0 0 0.8cqw #FFFFFF, 0 0 0 1.6cqw #FF9933;
+            top: 5cqw; bottom: 5cqw; left: 5cqw; right: 5cqw; 
+        }
+        .theme-india .inner-border { border: none; top: 0; bottom: 0; left: 0; right: 0; }
+        .theme-india .corner { 
+            width: 2.8cqw; height: 2.8cqw; 
+            background: #000080; 
+            border: 0.4cqw dashed #FFFFFF; 
+            border-radius: 50%; 
+            box-shadow: 0 0 0 0.2cqw #000080, 0 0 0 0.6cqw #FFFFFF;
+        }
+        .theme-india .corner-tl { top: -0.4cqw; left: -0.4cqw; transform: translate(-50%, -50%); }
+        .theme-india .corner-tr { top: -0.4cqw; right: -0.4cqw; transform: translate(50%, -50%); }
+        .theme-india .corner-bl { bottom: -0.4cqw; left: -0.4cqw; transform: translate(-50%, 50%); }
+        .theme-india .corner-br { bottom: -0.4cqw; right: -0.4cqw; transform: translate(50%, 50%); }
+        
+        .theme-india .separator::before, .theme-india .separator::after { 
+            background: linear-gradient(90deg, transparent, #FF9933 20%, #FFFFFF 50%, #138808 80%, transparent); 
+            height: 2px;
+        }
+        .theme-india .separator span { background-color: #000080; border-radius: 50%; width: 1.2cqw; height: 1.2cqw; }
+
         /* -------------------------------------------------------- */
 
         /* Instagram Handle Styling */
@@ -617,6 +652,7 @@
                     <button class="theme-btn" data-theme="theme-neon" style="background: linear-gradient(135deg, #0B0F19 50%, #00F0FF 50%); border-color: #FF00FF;" title="Neon Cyberpunk"></button>
                     <button class="theme-btn" data-theme="theme-scallop" style="background: radial-gradient(circle, #9C27B0 30%, #F3E5F5 30%);" title="Elegant Scallop"></button>
                     <button class="theme-btn" data-theme="theme-blueprint" style="background: repeating-linear-gradient(90deg, transparent, transparent 4px, rgba(255,255,255,0.5) 4px, rgba(255,255,255,0.5) 5px), #1565C0;" title="Engineering Blueprint"></button>
+                    <button class="theme-btn" data-theme="theme-india" style="background: linear-gradient(135deg, #FF9933 33%, #FFFFFF 33%, #FFFFFF 66%, #138808 66%); box-shadow: inset 0 0 0 1px #000080;" title="Tricolor Pride"></button>
                 </div>
             </div>
 
