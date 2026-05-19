@@ -630,6 +630,84 @@
         .theme-cs .assignment-title::before { content: "< "; color: var(--primary); }
         .theme-cs .assignment-title::after { content: " />"; color: var(--primary); }
 
+        /* --------------------------------------------------------
+           THEME 17: LITERATURE (Parchment & Scroll)
+           -------------------------------------------------------- */
+        .a4-page.theme-literature {
+            --primary: #5D4037; --text-main: #3E2723; --text-muted: #8D6E63; --page-bg: #F4ECD8;
+            --font-heading: 'Playfair Display', serif; --font-body: 'Playfair Display', serif;
+        }
+        .theme-literature .outer-border { border: 2px solid var(--primary); top: 4cqw; bottom: 4cqw; left: 4cqw; right: 4cqw; }
+        .theme-literature .inner-border { border: 1px solid var(--text-main); top: 1.5cqw; bottom: 1.5cqw; left: 1.5cqw; right: 1.5cqw; }
+        .theme-literature .corner { width: 3.5cqw; height: 3.5cqw; background: var(--page-bg); border: 2px solid var(--primary); border-radius: 50% 0 50% 0; }
+        .theme-literature .corner-tl { top: -1.75cqw; left: -1.75cqw; }
+        .theme-literature .corner-tr { top: -1.75cqw; right: -1.75cqw; transform: rotate(90deg); }
+        .theme-literature .corner-br { bottom: -1.75cqw; right: -1.75cqw; transform: rotate(180deg); }
+        .theme-literature .corner-bl { bottom: -1.75cqw; left: -1.75cqw; transform: rotate(270deg); }
+        .theme-literature .assignment-title { text-transform: capitalize; font-style: italic; }
+
+        /* --------------------------------------------------------
+           THEME 18: PHYSICS / ASTRONOMY (Dark Void, Orbit Rings)
+           -------------------------------------------------------- */
+        .a4-page.theme-physics {
+            --primary: #66FCF1; --text-main: #FFFFFF; --text-muted: #C5C6C7; --page-bg: #0B0C10;
+            --font-heading: 'Poppins', sans-serif; --font-body: 'Poppins', sans-serif;
+        }
+        .theme-physics .outer-border { border: 1px solid rgba(102, 252, 241, 0.2); border-radius: 100%; top: -15cqw; bottom: -15cqw; left: -5cqw; right: -5cqw; } 
+        .theme-physics .inner-border { border: 1px solid var(--primary); top: 4cqw; bottom: 4cqw; left: 4cqw; right: 4cqw; border-radius: 0; }
+        .theme-physics .corner { width: 0.8cqw; height: 0.8cqw; background: var(--primary); border-radius: 50%; box-shadow: 0 0 1cqw var(--primary); border: none; }
+        .theme-physics .corner-tl { top: 0cqw; left: 0cqw; transform: translate(-50%, -50%); }
+        .theme-physics .corner-tr { top: 0cqw; right: 0cqw; transform: translate(50%, -50%); }
+        .theme-physics .corner-bl { bottom: 0cqw; left: 0cqw; transform: translate(-50%, 50%); }
+        .theme-physics .corner-br { bottom: 0cqw; right: 0cqw; transform: translate(50%, 50%); }
+        .theme-physics .inner-border::before {
+            content: ''; position: absolute; border: 1px dashed rgba(102, 252, 241, 0.4); border-radius: 50%;
+            top: -10cqw; bottom: -10cqw; left: -15cqw; right: -15cqw; pointer-events: none;
+        }
+
+        /* --------------------------------------------------------
+           THEME 19: LAW / POLITICAL SCIENCE (Greek Pillars)
+           -------------------------------------------------------- */
+        .a4-page.theme-law {
+            --primary: #B8860B; --text-main: #111111; --text-muted: #555555; --page-bg: #FFFFFF;
+            --font-heading: 'Cinzel', serif; --font-body: 'Playfair Display', serif;
+        }
+        .theme-law .outer-border { border-left: 2cqw solid var(--text-main); border-right: 2cqw solid var(--text-main); border-top: 0.5cqw solid var(--text-main); border-bottom: 0.5cqw solid var(--text-main); top: 3cqw; bottom: 3cqw; left: 4cqw; right: 4cqw; }
+        .theme-law .inner-border { border-left: 0.5cqw solid var(--primary); border-right: 0.5cqw solid var(--primary); border-top: 1px solid var(--primary); border-bottom: 1px solid var(--primary); top: 1cqw; bottom: 1cqw; left: 1cqw; right: 1cqw; }
+        .theme-law .corner { display: none; }
+        
+        /* --------------------------------------------------------
+           THEME 20: MEDICAL / NURSING (Clinical & Red Cross)
+           -------------------------------------------------------- */
+        .a4-page.theme-medical {
+            --primary: #0277BD; --text-main: #01579B; --text-muted: #4F8A10; --page-bg: #FAFAFA;
+            --font-heading: 'Poppins', sans-serif; --font-body: 'Poppins', sans-serif;
+        }
+        .theme-medical .outer-border { border: 2px solid var(--primary); top: 4cqw; bottom: 4cqw; left: 4cqw; right: 4cqw; border-radius: 2cqw; }
+        .theme-medical .inner-border { border: 1px solid rgba(2, 119, 189, 0.3); top: 1.5cqw; bottom: 1.5cqw; left: 1.5cqw; right: 1.5cqw; border-radius: 1cqw; }
+        .theme-medical .corner { width: 2cqw; height: 0.6cqw; background: #D32F2F; border: none; }
+        .theme-medical .corner::after { content: ''; position: absolute; width: 0.6cqw; height: 2cqw; background: #D32F2F; top: -0.7cqw; left: 0.7cqw; }
+        .theme-medical .corner-tl { top: -1cqw; left: -1cqw; }
+        .theme-medical .corner-tr { top: -1cqw; right: -1cqw; }
+        .theme-medical .corner-bl { bottom: -1cqw; left: -1cqw; }
+        .theme-medical .corner-br { bottom: -1cqw; right: -1cqw; }
+
+        /* --------------------------------------------------------
+           THEME 21: FINE ARTS (Rainbow Paint Gradient)
+           -------------------------------------------------------- */
+        .a4-page.theme-finearts {
+            --primary: #E91E63; --text-main: #212121; --text-muted: #757575; --page-bg: #FFFFFF;
+            --font-heading: 'Playfair Display', serif; --font-body: 'Poppins', sans-serif;
+        }
+        .theme-finearts .outer-border { 
+            border: 1.5cqw solid transparent;
+            border-image: linear-gradient(45deg, #FF5252, #E040FB, #448AFF, #18FFFF, #69F0AE, #EEFF41, #FFAB40) 1;
+            top: 3.5cqw; bottom: 3.5cqw; left: 3.5cqw; right: 3.5cqw; 
+        }
+        .theme-finearts .inner-border { border: 1.5px dashed var(--text-muted); top: 2cqw; bottom: 2cqw; left: 2cqw; right: 2cqw; }
+        .theme-finearts .corner { display: none; }
+        .theme-finearts .assignment-title { background: linear-gradient(45deg, #FF5252, #E040FB, #448AFF, #18FFFF, #69F0AE, #EEFF41, #FFAB40); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: none; }
+
         /* -------------------------------------------------------- */
 
         /* Instagram Handle Styling */
@@ -747,6 +825,14 @@
                     <button class="theme-btn" data-theme="theme-arts" style="background: linear-gradient(135deg, #9D174D 50%, #4C1D95 50%);" title="B.A. Arts / Humanities"></button>
                     <button class="theme-btn" data-theme="theme-commerce" style="background: linear-gradient(90deg, #FFFFFF 20%, #DC2626 20%, #DC2626 25%, #F1F5F9 25%); border: 2px solid #0F172A;" title="B.Com. Commerce"></button>
                     <button class="theme-btn" data-theme="theme-cs" style="background: #111827; border: 2px dashed #059669;" title="Computer Science / IT"></button>
+                    
+                    <button class="theme-btn" data-theme="theme-literature" style="background: #F4ECD8; border: 2px solid #5D4037; border-radius: 50% 0 50% 0;" title="B.A. Literature"></button>
+                    <button class="theme-btn" data-theme="theme-physics" style="background: radial-gradient(circle, #0B0C10 40%, #66FCF1 100%);" title="B.Sc. Physics / Astronomy"></button>
+                    <button class="theme-btn" data-theme="theme-law" style="background: #FFFFFF; border-left: 6px solid #111111; border-right: 6px solid #111111;" title="LL.B. Law / Political Science"></button>
+                    <button class="theme-btn" data-theme="theme-medical" style="background: #FAFAFA; border: 2px solid #0277BD; position: relative;" title="MBBS / Medical / Nursing">
+                        <span style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #D32F2F; font-weight: bold; font-size: 16px;">+</span>
+                    </button>
+                    <button class="theme-btn" data-theme="theme-finearts" style="background: linear-gradient(45deg, #FF5252, #E040FB, #448AFF, #64FFDA, #FFFF00);" title="B.F.A Fine Arts"></button>
                 </div>
             </div>
 
