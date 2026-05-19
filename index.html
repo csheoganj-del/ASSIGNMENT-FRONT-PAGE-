@@ -419,6 +419,94 @@
         .theme-emerald .separator span { border-radius: 50%; transform: none; width: 1.5cqw; height: 1.5cqw; }
         .theme-emerald .watermark { opacity: 0.03; color: var(--primary); }
 
+        /* --------------------------------------------------------
+           THEME 6: VINTAGE POSTAL (Airmail Edges)
+           -------------------------------------------------------- */
+        .a4-page.theme-postal {
+            --primary: #D32F2F; --text-main: #1A237E; --text-muted: #3949AB; --page-bg: #FDFBF7;
+            --font-heading: 'Courier New', monospace; --font-body: 'Courier New', monospace;
+        }
+        .theme-postal .outer-border { 
+            border: 1.5cqw solid transparent; 
+            border-image: repeating-linear-gradient(135deg, #D32F2F, #D32F2F 1.5cqw, transparent 1.5cqw, transparent 3cqw, #1A237E 3cqw, #1A237E 4.5cqw, transparent 4.5cqw, transparent 6cqw) 20;
+            top: 2.5cqw; bottom: 2.5cqw; left: 2.5cqw; right: 2.5cqw;
+        }
+        .theme-postal .inner-border { border: 1.5px solid var(--text-main); top: 2.5cqw; bottom: 2.5cqw; left: 2.5cqw; right: 2.5cqw; }
+        .theme-postal .corner { display: none; }
+        .theme-postal .assignment-title { border-top: 2px dashed var(--text-main); border-bottom: 2px dashed var(--text-main); padding: 1cqw 0; text-shadow: none; letter-spacing: 0.5cqw; }
+        .theme-postal .separator span { border-radius: 0; width: 4cqw; height: 1cqw; transform: none; background: var(--text-main); }
+
+        /* --------------------------------------------------------
+           THEME 7: DECO GEOMETRY (Dark Art Deco, Gold accents, Diamond corners)
+           -------------------------------------------------------- */
+        .a4-page.theme-deco {
+            --primary: #D4AF37; --text-main: #FFFFFF; --text-muted: #BBBBBB; --page-bg: #1A1A1A;
+            --font-heading: 'Cinzel', serif; --font-body: 'Poppins', sans-serif;
+        }
+        .theme-deco .outer-border { border: 2px solid var(--primary); top: 4cqw; bottom: 4cqw; left: 4cqw; right: 4cqw; }
+        .theme-deco .inner-border { border: 1px solid var(--primary); top: 1cqw; bottom: 1cqw; left: 1cqw; right: 1cqw; }
+        .theme-deco .corner { width: 3cqw; height: 3cqw; border: 2px solid var(--primary); transform: rotate(45deg); background: var(--page-bg); }
+        .theme-deco .corner-tl { top: -1.5cqw; left: -1.5cqw; }
+        .theme-deco .corner-tr { top: -1.5cqw; right: -1.5cqw; }
+        .theme-deco .corner-bl { bottom: -1.5cqw; left: -1.5cqw; }
+        .theme-deco .corner-br { bottom: -1.5cqw; right: -1.5cqw; }
+        .theme-deco .watermark { opacity: 0.05; color: var(--primary); }
+
+        /* --------------------------------------------------------
+           THEME 8: NEON CYBERPUNK (Glowing Borders)
+           -------------------------------------------------------- */
+        .a4-page.theme-neon {
+            --primary: #00F0FF; --text-main: #FFFFFF; --text-muted: #B0BEC5; --page-bg: #0B0F19;
+            --font-heading: 'Poppins', sans-serif; --font-body: 'Poppins', sans-serif;
+        }
+        .theme-neon .outer-border { 
+            border: 2px solid #FF00FF; box-shadow: 0 0 1cqw #FF00FF, inset 0 0 1cqw #FF00FF;
+            top: 4cqw; bottom: 4cqw; left: 4cqw; right: 4cqw; border-radius: 1.5cqw;
+        }
+        .theme-neon .inner-border { 
+            border: 1px solid var(--primary); box-shadow: 0 0 0.5cqw var(--primary), inset 0 0 0.5cqw var(--primary);
+            top: 1.5cqw; bottom: 1.5cqw; left: 1.5cqw; right: 1.5cqw; border-radius: 0.8cqw;
+        }
+        .theme-neon .corner { display: none; }
+        .theme-neon .assignment-title { text-shadow: 0 0 1cqw var(--primary); font-weight: 900; letter-spacing: 2.5cqw; }
+        .theme-neon .separator::before, .theme-neon .separator::after { background: linear-gradient(90deg, transparent, #FF00FF, transparent); }
+
+        /* --------------------------------------------------------
+           THEME 9: ELEGANT SCALLOP (Dotted playful borders)
+           -------------------------------------------------------- */
+        .a4-page.theme-scallop {
+            --primary: #9C27B0; --text-main: #4A148C; --text-muted: #7B1FA2; --page-bg: #FDF4F6;
+            --font-heading: 'Playfair Display', serif; --font-body: 'Playfair Display', serif;
+        }
+        .theme-scallop .outer-border { 
+            border: 1.5cqw dotted var(--primary); top: 3.5cqw; bottom: 3.5cqw; left: 3.5cqw; right: 3.5cqw; border-radius: 4cqw;
+        }
+        .theme-scallop .inner-border { 
+            border: 1.5px solid var(--text-main); top: 2.5cqw; bottom: 2.5cqw; left: 2.5cqw; right: 2.5cqw; border-radius: 2cqw;
+        }
+        .theme-scallop .corner { display: none; }
+        .theme-scallop .separator span { border-radius: 50%; }
+
+        /* --------------------------------------------------------
+           THEME 10: ENGINEERING BLUEPRINT (Grid Background)
+           -------------------------------------------------------- */
+        .a4-page.theme-blueprint {
+            --primary: #FFFFFF; --text-main: #FFFFFF; --text-muted: #BBDEFB; --page-bg: #1565C0;
+            --font-heading: 'Courier New', monospace; --font-body: 'Courier New', monospace;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 2cqw 2cqw;
+        }
+        .theme-blueprint .outer-border { border: 2px solid #FFFFFF; top: 3.5cqw; bottom: 3.5cqw; left: 3.5cqw; right: 3.5cqw; }
+        .theme-blueprint .inner-border { border: 1px solid rgba(255,255,255,0.5); top: 1cqw; bottom: 1cqw; left: 1cqw; right: 1cqw; }
+        .theme-blueprint .corner { width: 1cqw; height: 1cqw; background: #FFFFFF; border-radius: 50%; border: none; }
+        .theme-blueprint .corner-tl { top: -0.5cqw; left: -0.5cqw; }
+        .theme-blueprint .corner-tr { top: -0.5cqw; right: -0.5cqw; }
+        .theme-blueprint .corner-bl { bottom: -0.5cqw; left: -0.5cqw; }
+        .theme-blueprint .corner-br { bottom: -0.5cqw; right: -0.5cqw; }
+        .theme-blueprint .assignment-title { border: 1px solid #FFFFFF; padding: 1cqw; letter-spacing: 1cqw; background: rgba(255,255,255,0.05); }
+
         /* -------------------------------------------------------- */
 
         /* Instagram Handle Styling */
@@ -523,6 +611,12 @@
                     <button class="theme-btn" data-theme="theme-minimal" style="background: linear-gradient(135deg, #111111 50%, #FFFFFF 50%);" title="Modern Minimalist"></button>
                     <button class="theme-btn" data-theme="theme-crimson" style="background: linear-gradient(135deg, #450A0A 50%, #991B1B 50%);" title="Crimson Heritage"></button>
                     <button class="theme-btn" data-theme="theme-emerald" style="background: linear-gradient(135deg, #022C22 50%, #065F46 50%);" title="Emerald Elegant"></button>
+                    
+                    <button class="theme-btn" data-theme="theme-postal" style="background: repeating-linear-gradient(135deg, #D32F2F, #D32F2F 4px, #FDFBF7 4px, #FDFBF7 8px, #1A237E 8px, #1A237E 12px, #FDFBF7 12px, #FDFBF7 16px);" title="Vintage Postal"></button>
+                    <button class="theme-btn" data-theme="theme-deco" style="background: linear-gradient(135deg, #1A1A1A 50%, #D4AF37 50%);" title="Deco Geometry"></button>
+                    <button class="theme-btn" data-theme="theme-neon" style="background: linear-gradient(135deg, #0B0F19 50%, #00F0FF 50%); border-color: #FF00FF;" title="Neon Cyberpunk"></button>
+                    <button class="theme-btn" data-theme="theme-scallop" style="background: radial-gradient(circle, #9C27B0 30%, #F3E5F5 30%);" title="Elegant Scallop"></button>
+                    <button class="theme-btn" data-theme="theme-blueprint" style="background: repeating-linear-gradient(90deg, transparent, transparent 4px, rgba(255,255,255,0.5) 4px, rgba(255,255,255,0.5) 5px), #1565C0;" title="Engineering Blueprint"></button>
                 </div>
             </div>
 
