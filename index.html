@@ -914,6 +914,58 @@
         .theme-math-pi .corner-br { bottom: -2cqw; right: -2cqw; } .theme-math-pi .corner-br::before { content: 'π'; font-size: 3.5cqw;}
 
         /* --------------------------------------------------------
+           BIOLOGY COLLECTION (48-52)
+           -------------------------------------------------------- */
+        .theme-bio-dna {
+            --primary: #8B5CF6; --text-main: #111827; --text-muted: #6B7280; --page-bg: #FFFFFF;
+        }
+        .theme-bio-dna .outer-border { border: 2px dashed var(--primary); top: 3.5cqw; bottom: 3.5cqw; left: 3.5cqw; right: 3.5cqw; }
+        .theme-bio-dna .inner-border { border: 2px solid #C4B5FD; top: 1.5cqw; bottom: 1.5cqw; left: 1.5cqw; right: 1.5cqw; }
+        .theme-bio-dna .corner { background: #FFFFFF; width: 4cqw; height: 4cqw; border: 2px solid var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .theme-bio-dna .corner::before { content: '§'; font-family: 'Times New Roman', serif; font-size: 4cqw; color: var(--primary); }
+        .theme-bio-dna .corner-tl { top: -2cqw; left: -2cqw; }
+        .theme-bio-dna .corner-tr { top: -2cqw; right: -2cqw; }
+        .theme-bio-dna .corner-bl { bottom: -2cqw; left: -2cqw; }
+        .theme-bio-dna .corner-br { bottom: -2cqw; right: -2cqw; }
+
+        .theme-bio-botany {
+            --primary: #15803D; --text-main: #14532D; --text-muted: #166534; --page-bg: #FFFFFF;
+        }
+        .theme-bio-botany .outer-border { border: 1.5px solid var(--primary); top: 4cqw; bottom: 4cqw; left: 4cqw; right: 4cqw; }
+        .theme-bio-botany .inner-border { border: none; }
+        .theme-bio-botany .corner { background: var(--primary); width: 4cqw; height: 4cqw; border: none; border-radius: 0 100% 0 100%; transform-origin: center; }
+        .theme-bio-botany .corner-tl { top: -2cqw; left: -2cqw; transform: rotate(0deg); }
+        .theme-bio-botany .corner-tr { top: -2cqw; right: -2cqw; transform: rotate(90deg); }
+        .theme-bio-botany .corner-bl { bottom: -2cqw; left: -2cqw; transform: rotate(-90deg); }
+        .theme-bio-botany .corner-br { bottom: -2cqw; right: -2cqw; transform: rotate(180deg); }
+
+        .theme-bio-cell {
+            --primary: #0369A1; --text-main: #0C4A6E; --text-muted: #0284C7; --page-bg: #FFFFFF;
+        }
+        .theme-bio-cell .outer-border { border: 8px dotted var(--primary); top: 3cqw; bottom: 3cqw; left: 3cqw; right: 3cqw; border-radius: 4cqw; opacity: 0.5; }
+        .theme-bio-cell .inner-border { border: 2px solid var(--primary); top: 2cqw; bottom: 2cqw; left: 2cqw; right: 2cqw; border-radius: 3cqw; }
+        .theme-bio-cell .corner { display: none; }
+
+        .theme-bio-anatomy {
+            --primary: #BE123C; --text-main: #4C0519; --text-muted: #9F1239; --page-bg: #FFFFFF;
+        }
+        .theme-bio-anatomy .outer-border { border: 3px double var(--primary); top: 4cqw; bottom: 4cqw; left: 4cqw; right: 4cqw; }
+        .theme-bio-anatomy .inner-border { border: none; }
+        .theme-bio-anatomy .corner { background: #FFFFFF; width: 4cqw; height: 4cqw; border: none; display: flex; align-items: center; justify-content: center; }
+        .theme-bio-anatomy .corner::before { content: '⚕'; font-family: 'Times New Roman', serif; font-size: 6cqw; color: var(--primary); }
+        .theme-bio-anatomy .corner-tl { top: -2cqw; left: -2cqw; }
+        .theme-bio-anatomy .corner-tr { top: -2cqw; right: -2cqw; }
+        .theme-bio-anatomy .corner-bl { bottom: -2cqw; left: -2cqw; }
+        .theme-bio-anatomy .corner-br { bottom: -2cqw; right: -2cqw; }
+
+        .theme-bio-microscope {
+            --primary: #334155; --text-main: #0F172A; --text-muted: #475569; --page-bg: #FFFFFF;
+        }
+        .theme-bio-microscope .outer-border { border: 15cqw solid #000000; border-radius: 50%; top: -10cqw; bottom: -10cqw; left: -10cqw; right: -10cqw; opacity: 0.05; }
+        .theme-bio-microscope .inner-border { border: 2px solid var(--primary); top: 2cqw; bottom: 2cqw; left: 2cqw; right: 2cqw; }
+        .theme-bio-microscope .corner { display: none; }
+
+        /* --------------------------------------------------------
            FONT TOOLBAR
            -------------------------------------------------------- */
         .font-toolbar {
@@ -1161,6 +1213,12 @@
                     <button class="theme-btn" data-theme="theme-math-sigma" style="background: #FFFFFF; border: 1px solid #111111; position: relative;" title="Number Theory"><span style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); color:#7C3AED; font-family:'Times New Roman',serif; font-size:20px; font-weight:bold;">∑</span></button>
                     <button class="theme-btn" data-theme="theme-math-graph" style="background-image: linear-gradient(#E2E8F0 2px, transparent 2px), linear-gradient(90deg, #E2E8F0 2px, transparent 2px); background-size: 8px 8px; border: 2px solid #2563EB;" title="Cartesian Graph"></button>
                     <button class="theme-btn" data-theme="theme-math-pi" style="background: #FFFFFF; border: 3px double #E11D48; position: relative;" title="Mathematical Pi"><span style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); color:#E11D48; font-family:'Times New Roman',serif; font-size:20px; font-weight:bold;">π</span></button>
+                    
+                    <button class="theme-btn" data-theme="theme-bio-dna" style="background: #FFFFFF; border: 2px dashed #8B5CF6; border-radius: 50%; position: relative;" title="Genetics / DNA"><span style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); color:#8B5CF6; font-family:'Times New Roman',serif; font-size:20px;">§</span></button>
+                    <button class="theme-btn" data-theme="theme-bio-botany" style="background: #15803D; border-radius: 0 50% 0 50%;" title="Botany / Leaf"></button>
+                    <button class="theme-btn" data-theme="theme-bio-cell" style="background: #FFFFFF; border: 3px dotted #0369A1; border-radius: 12px;" title="Cellular Microbiology"></button>
+                    <button class="theme-btn" data-theme="theme-bio-anatomy" style="background: #FFFFFF; border: 3px double #BE123C; position: relative;" title="Anatomy / Medical"><span style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); color:#BE123C; font-family:'Times New Roman',serif; font-size:20px;">⚕</span></button>
+                    <button class="theme-btn" data-theme="theme-bio-microscope" style="background: #FFFFFF; border: 8px solid #E2E8F0; border-radius: 50%;" title="Microscope View"></button>
                 </div>
             </div>
 
