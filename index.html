@@ -966,6 +966,60 @@
         .theme-bio-microscope .corner { display: none; }
 
         /* --------------------------------------------------------
+           ARTS COLLECTION (53-57)
+           -------------------------------------------------------- */
+        .theme-arts-poetry {
+            --primary: #4C1D95; --text-main: #111827; --text-muted: #6B7280; --page-bg: #FFFFFF;
+        }
+        .theme-arts-poetry .outer-border { border: 1px solid var(--primary); top: 4cqw; bottom: 4cqw; left: 4cqw; right: 4cqw; }
+        .theme-arts-poetry .inner-border { border: none; }
+        .theme-arts-poetry .corner { background: #FFFFFF; width: 6cqw; height: 6cqw; border: none; display: flex; align-items: center; justify-content: center; font-family: 'Times New Roman', serif; font-size: 8cqw; color: var(--primary); }
+        .theme-arts-poetry .corner-tl { top: -3cqw; left: -3cqw; } .theme-arts-poetry .corner-tl::before { content: '“'; }
+        .theme-arts-poetry .corner-tr { top: -3cqw; right: -3cqw; } .theme-arts-poetry .corner-tr::before { content: '”'; }
+        .theme-arts-poetry .corner-bl { bottom: -3cqw; left: -3cqw; } .theme-arts-poetry .corner-bl::before { content: '“'; }
+        .theme-arts-poetry .corner-br { bottom: -3cqw; right: -3cqw; } .theme-arts-poetry .corner-br::before { content: '”'; }
+
+        .theme-arts-history {
+            --primary: #92400E; --text-main: #3E2723; --text-muted: #5D4037; --page-bg: #FFFFFF;
+        }
+        .theme-arts-history .outer-border { 
+            border: none; border-left: 10px groove #D4D4D8; border-right: 10px groove #D4D4D8; 
+            top: 3cqw; bottom: 3cqw; left: 3cqw; right: 3cqw; 
+        }
+        .theme-arts-history .inner-border { 
+            border-top: 4px solid var(--primary); border-bottom: 4px solid var(--primary); border-left: none; border-right: none; 
+            top: 2.5cqw; bottom: 2.5cqw; left: 5cqw; right: 5cqw; 
+        }
+        .theme-arts-history .corner { display: none; }
+
+        .theme-arts-canvas {
+            --primary: #000000; --text-main: #111111; --text-muted: #555555; --page-bg: #FFFFFF;
+        }
+        .theme-arts-canvas .outer-border { 
+            border: 15px ridge #8B4513; top: 2cqw; bottom: 2cqw; left: 2cqw; right: 2cqw; box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+        }
+        .theme-arts-canvas .inner-border { border: 1px solid rgba(0,0,0,0.1); top: 4cqw; bottom: 4cqw; left: 4cqw; right: 4cqw; }
+        .theme-arts-canvas .corner { display: none; }
+
+        .theme-arts-music {
+            --primary: #111827; --text-main: #111827; --text-muted: #6B7280; --page-bg: #FFFFFF;
+        }
+        .theme-arts-music .outer-border { border: none; border-top: 10px double var(--primary); border-bottom: 10px double var(--primary); top: 4cqw; bottom: 4cqw; left: 3cqw; right: 3cqw; }
+        .theme-arts-music .inner-border { border: none; }
+        .theme-arts-music .corner { background: #FFFFFF; width: 5cqw; height: 5cqw; border: none; display: flex; align-items: center; justify-content: center; font-family: 'Times New Roman', serif; font-size: 6cqw; color: var(--primary); }
+        .theme-arts-music .corner-tl { top: -2.5cqw; left: 0; } .theme-arts-music .corner-tl::before { content: '𝄞'; }
+        .theme-arts-music .corner-tr { top: -2.5cqw; right: 0; } .theme-arts-music .corner-tr::before { content: '𝄢'; }
+        .theme-arts-music .corner-bl { bottom: -2.5cqw; left: 0; } .theme-arts-music .corner-bl::before { content: '𝄞'; }
+        .theme-arts-music .corner-br { bottom: -2.5cqw; right: 0; } .theme-arts-music .corner-br::before { content: '𝄢'; }
+
+        .theme-arts-drama {
+            --primary: #991B1B; --text-main: #111111; --text-muted: #555555; --page-bg: #FFFFFF;
+        }
+        .theme-arts-drama .outer-border { border: none; border-left: 20px solid var(--primary); border-right: 20px solid var(--primary); top: 0; bottom: 0; left: 0; right: 0; }
+        .theme-arts-drama .inner-border { border: none; border-top: 30px solid var(--primary); top: 0; bottom: auto; left: 0; right: 0; border-radius: 0 0 50% 50%; }
+        .theme-arts-drama .corner { display: none; }
+
+        /* --------------------------------------------------------
            FONT TOOLBAR
            -------------------------------------------------------- */
         .font-toolbar {
@@ -1219,6 +1273,12 @@
                     <button class="theme-btn" data-theme="theme-bio-cell" style="background: #FFFFFF; border: 3px dotted #0369A1; border-radius: 12px;" title="Cellular Microbiology"></button>
                     <button class="theme-btn" data-theme="theme-bio-anatomy" style="background: #FFFFFF; border: 3px double #BE123C; position: relative;" title="Anatomy / Medical"><span style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); color:#BE123C; font-family:'Times New Roman',serif; font-size:20px;">⚕</span></button>
                     <button class="theme-btn" data-theme="theme-bio-microscope" style="background: #FFFFFF; border: 8px solid #E2E8F0; border-radius: 50%;" title="Microscope View"></button>
+                    
+                    <button class="theme-btn" data-theme="theme-arts-poetry" style="background: #FFFFFF; border: 1px solid #4C1D95; position: relative;" title="Literature / Poetry"><span style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); color:#4C1D95; font-family:'Times New Roman',serif; font-size:24px;">“</span></button>
+                    <button class="theme-btn" data-theme="theme-arts-history" style="background: #FFFFFF; border-left: 4px groove #D4D4D8; border-right: 4px groove #D4D4D8; border-top: 2px solid #92400E; border-bottom: 2px solid #92400E;" title="History / Antiquity"></button>
+                    <button class="theme-btn" data-theme="theme-arts-canvas" style="background: #FFFFFF; border: 4px ridge #8B4513;" title="Fine Arts / Canvas"></button>
+                    <button class="theme-btn" data-theme="theme-arts-music" style="background: #FFFFFF; border-top: 4px double #111827; border-bottom: 4px double #111827; position: relative;" title="Music / Composition"><span style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); color:#111827; font-family:'Times New Roman',serif; font-size:20px;">𝄞</span></button>
+                    <button class="theme-btn" data-theme="theme-arts-drama" style="background: #FFFFFF; border-left: 4px solid #991B1B; border-right: 4px solid #991B1B; border-top: 8px solid #991B1B; border-radius: 0 0 4px 4px;" title="Theater / Drama"></button>
                 </div>
             </div>
 
